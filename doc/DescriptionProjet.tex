@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+
+\title{Projet d'application\\Excilys Banking}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\begin{tabular}{ | c | c | c | c | }
+\hline \textbf{Version} & \textbf{Édité par} & \textbf{Date} & \textbf{Notes} \\
+\hline 1.0 & Luc Ponnau & 12/06/2012 &  \\
+\hline & & & \\
+\hline & & & \\
+\hline & & & \\
+\hline & & & \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Introduction}
+
+Ce document décrit le projet d'application \emph{Excilys Banking} mené au sein
+de l'entreprise \emph{EBusiness Information}. Ce projet, développé uniquement
+par des stagiaires, marque la fin de la période de formation et permet de
+valider la maîtrise de technologies telles que \emph{Spring} ou \emph{Hibernate},
+ainsi que des méthodes agiles. Le projet repose sur la création d'un site
+d'e-banking à destination d'une banque fictive.
+
+\section{Description du projet}
+
+\subsection{But}
+
+Le but du projet est de pratiquer la méthode de développement \emph{Scrum} sur
+une période de six itérations au sein d'une équipe de développement
+restreinte et sur un projet mettant en \oe{}uvre
+des technologies phares du monde Java/JEE: \emph{Hibernate} et \emph{Spring}.\\
+
+Il est attendu de délivrer les fonctionnalités choisies par le \emph{Product Owner}
+à chaque fin d'itération et finalement l'ensemble des fonctionnalités définies
+dans le \emph{Scrum backlog} en fin de projet.\\
+
+L'équipe fournira également des rapports et une documentation complète du
+processus de développement.
+
+\subsection{Personnel}
+
+Le projet est développé au sein d'\emph{EBusiness Information} par
+Jeremie Martinez et Luc Ponnau, et encadré par Stéphane Landelle, directeur
+technique de l'entreprise. 
+
+\subsection{Spécification}
+
+ebanking
+
+\subsection{Méthodes et technologies employées}
+
+Le processus développement repose sur la méthode agile \emph{Scrum} et suit les
+principes du développement dirigé par les tests.\\
+
+Les technologies suivantes sont mises en \oe{}uvre dans le projet:
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+\hline Java & Java6, Spring, Hibernate \\
+\hline Test & JUnit \\
+\hline Log & Slf4j, Logback \\
+\hline Compilation & Maven \\
+\hline Sources & Git \\
+\hline Base de données & PostgreSQL \\
+\hline Serveur & Tomcat \\
+\hline Integration & Jenkins \\
+\hline Documentation & \LaTeX \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Organisation du projet}
+
+L'équipe de développement comprend deux personnes. Les journées de travail
+commencent à 9h30 et finissent à 18h, avec une pause d'une heure et demie
+pour le déjeuner.\\
+
+Le processus de développement est décomposé en sprints \emph{Scrum} d'une semaine
+chacun, allant du mardi au mardi. Des réunions de planification auront lieu
+chaque mardi matin à 10h, des \emph{Daily scums} chaque matin à 10h et des
+réunions de livraison et rétrospective chaque lundi à 16h. Les réunions
+se déroulent selon les recommandations de la méthode \emph{Scrum}.\\
+
+\subsection{Planning et livraisons}
+
+Le projet débute le 12 juin 2012. Une livraison est attendue à chaque fin de
+sprint et le projet est prévu pour s'étaler sur six sprints de developpement
+plus un sprint d'initialisation. La livraison finale de l'ensemble des
+fonctionnalités attendues et donc prévue pour le 31 juillet 2012.
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+\hline \textbf{Date} & \textbf{Livraison} \\
+\hline 26/06/2012 & Iteration 1 \\
+\hline 03/07/2012 & Iteration 2 \\
+\hline 10/07/2012 & Iteration 3 \\
+\hline 17/07/2012 & Iteration 4 \\
+\hline 24/07/2012 & Iteration 5 \\
+\hline 31/07/2012 & Livraison finale \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Documentation}
+
+La totalité des documents associés au projets, à l'exception des rapports de
+tests, sont rédigés sous forme de documents \LaTeX et maintenus par l'équipe de
+développement. Les documents compilés sous forme PDF sont disponibles en
+téléchargement sur le site \emph{github} du projet\footnote{https://github.com/lponnau/ExcilysBanking/downloads}.
+
+\subsection{Scrum backlog}
+
+Le \emph{Scrum backlog} contient l'ensemble des histoires définies pour
+l'application ainsi que leurs coûts et valeurs estimées. Il ne peut être modifié
+que par le \emph{Product Owner}. L'équipe de développement intervient seulement
+lors de l'estimation des coûts.
+
+\subsection{Historique de planning}
+
+L'historique de planning retrace l'ensemble des sprints réalisés et en cours de
+réalisation. Il contient la définition des tâches à réaliser pour implémenter
+chaque histoire ainsi que leurs statut et le compte rendu des réunions
+hebdomadaires.
+
+\subsection{Rapports}
+
+L'équipe de développement produit des rapports lors de l'exécution des phases
+de tests unitaires et d'intégration. Ces rapports formattés automatiquement
+par \emph{Maven} sous forme de pages HTML et intégrés au site \emph{Maven} du
+projet\footnote{url à définir.}.
+
+\section{Modèle Scrum}
+
+\subsection{Définition des Rôles}
+
+L'équipe de développement est consituée de Jérémie Martinez et Luc Ponnau.
+Stéphane Landelle a le double rôle de \emph{Product Owner} et de référant 
+technique.
+
+\begin{center}
+\begin{tabular}{ | c | c | }
+\hline \textbf{Role} & \textbf{Nom} \\
+\hline Product Owner & Stéphane Landelle \\
+\hline Scrum Master & Luc Ponnau \\
+\hline \multirow{2}{*}{Developpeur} & Jérémie Martinez \\ & Luc Ponnau \\
+\hline Référant Technique & Stéphane Landelle \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Fonctionnement du projet}
+
+\subsubsection{Organisation}
+
+Chaque développeur travaille sur le poste qui lui a été assigné lors de son
+arrivée. Les réunions de plannification, de livraison et de rétrospective
+ont lieu dans la salle de réunion de l'open space. Dans le cas où la salle
+n'est pas disponible, les réunion pouront être repoussées de quelques 
+
+Les tâches définies pour chaque itération sont représentées par des papiers
+\emph{post-it} sur lesquels sont inscrits le nom de la tâche ainsi que son
+estimation en nombre d'heures. Les 
+
+\subsubsection{Plannification}
+
+\subsubsection{Déroulement des sprints}
+
+\subsubsection{Fini fini}
+
+\subsubsection{Planning}
+
+\section{Méthode de développement}
+
+\subsection{Tests unitaires}
+
+\subsection{Environnement de développement}
+
+\subsubsection{Développement Java}
+
+\subsubsection{Base de données}
+
+\subsubsection{Serveurs}
+
+\subsection{Gestion du code source}
+
+\subsection{Intégration}
+
+\subsection{Déploiement}
+
+\subsection{Automatisation avec Maven}
+
+\section{Normes}
+
+\section{Normalisation du code Java}
+
+\section{...}
+
+\end{document}

@@ -17,7 +17,7 @@ Using:  - Java6
 	- Jenkins
 	- Slf4j/Logback
 	- Maven
-	- PostgreSQL and HSQLDB
+	- PostgreSQL and H2
 	- Tomcat
 
 Developpers:

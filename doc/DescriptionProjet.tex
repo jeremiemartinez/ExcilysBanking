@@ -164,30 +164,46 @@ projet. Le site Maven contiendra également la \emph{Javadoc} ainsi que les rapp
 
 \subsection{Développement Java}
 
+Pour ce projet, nous utiliserons \emph{Java6} ainsi que les frameworks suivants:
+
+\begin{itemize}
+\item \emph{Eclipse Indigo}
+\item \emph{Spring}
+\item \emph{Hibernate4}
+\end{itemize}
+
 \subsection{Base de données}
 
-\subsection{Serveurs}
+Pour la base de données de production, nous utiliserons le SGBD \emph{PostGreSQL} et pour la base de données de test, nous utiliserons HSQLDB.
+
+\subsection{Serveur}
+
+Nous avons également fait le choix d'utiliser un serveur \emph{Tomcat V7} pour réaliser ce projet.
 
 \subsection{Tests unitaires}
 
+Nos tests unitaires seront implémentés grâce au framework \emph{JUnit4}.
+
 \subsection{Gestion du code source}
+
+Nous gérons notre code grâce à l'utilitaire \emph{git} et hébergeront notre projet sur le site \emph{github.com}.
 
 \subsection{Intégration}
 
-\subsection{Déploiement}
+Au niveau de l'intégration, nous utiliserons le serveur d'intégration \emph{Jenkins}
 
 \subsection{Automatisation avec Maven}
+
+Enfin, afin de pouvoir compiler, lancer les tests, construire et deployer notre projet, nous utiliserons l'outil \emph{Maven}.
 
 \section{Normes}
 
 \subsection{Langage}
 
-\subsection{Outils de normalisation}
+Nous faisons le choix de réaliser l'ensemble de notre code en anglais.
 
-\subsection{Règles}
+\subsection{Outils de normalisation et règles associées}
 
-formatter eclipse, saveaction, english writting
-
-\section{...}
+Pour s'assurer que notre code respecte bien les principes de codage que nous nous sommes fixés, nous utiliserons les outils \emph{saveaction} d'\emph{Eclipse}, \emph{checkstyle} et enfin les \emph{Formatters} fournis par \emph{Eclipse}. On pourra trouver nos formatters dans le répertoire \emph{doc/formatters} et notre fichier de configuration pour \emph{checkstyle} dans le répertoire \emph{doc/checkstyle}.
 
 \end{document}

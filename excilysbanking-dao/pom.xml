@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>excilysbanking-dao</artifactId>
 	<name>excilysbanking-dao</name>
-
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>com.excilys</groupId>

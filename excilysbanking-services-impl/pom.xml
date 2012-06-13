@@ -4,10 +4,40 @@
 	<parent>
 		<artifactId>excilysbanking</artifactId>
 		<groupId>com.excilys</groupId>
-		<version>0.1-SNAPSHOT</version>
+		<version>1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>excilysbanking-services-impl</artifactId>
+	<name>excilysbanking-services-impl</name>
+	<packaging>jar</packaging>
 
-	<name>ExcilysBanking Services Impl</name>
+	<dependencies>
+		<!-- Modules -->
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-entities</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-services</artifactId>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+	</dependencies>
+
 </project>

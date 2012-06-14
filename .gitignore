@@ -7,4 +7,5 @@ target
 .classpath
 .project
 .checkstyle
+.springBeans
 

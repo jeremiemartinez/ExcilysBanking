@@ -208,6 +208,15 @@
 					<url>http://localhost:8080/</url>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<port>8282</port>
+					<tempWebappDirectory>target/site/tempdir</tempWebappDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

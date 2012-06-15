@@ -32,6 +32,7 @@
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<javax.annotation.version>6.0</javax.annotation.version>
 		<commons-logging.version>99.0-does-not-exist</commons-logging.version>
+		<slf4j.bridge.version>1.6.4</slf4j.bridge.version>
 	</properties>
 
 	<modules>
@@ -180,6 +181,12 @@
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>${commons-logging.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.bridge.version}</version>
 		</dependency>
 	</dependencies>
 

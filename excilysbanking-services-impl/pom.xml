@@ -21,7 +21,6 @@
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-dao</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-services</artifactId>

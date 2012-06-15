@@ -1,5 +1,0 @@
-CREATE USER excilys;
-ALTER ROLE excilys WITH CREATEDB;
-CREATE DATABASE excilysbanking OWNER excilys;
-ALTER USER excilys WITH ENCRYPTED PASSWORD 'excilys';
-GRANT ALL PRIVILEGES ON DATABASE excilysbanking TO excilys;

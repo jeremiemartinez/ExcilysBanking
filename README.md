@@ -1,6 +1,6 @@
 #		eBanking Project
 
-# Using:  
+### Using:  
 * Java6
 * J2EE
 * Spring
@@ -12,8 +12,8 @@
 * PostgreSQL and H2
 * Tomcat
 
-# Developpers:
+### Developpers:
 * Jérémie Martinez (jmartinez@excilys.com)
 * Luc Ponnau (lponnau@excilys.com)
 
-#[Detailed Project Description](https://github.com/downloads/lponnau/ExcilysBanking/DescriptionProjet.pdf)
+###[Detailed Project Description](https://github.com/downloads/lponnau/ExcilysBanking/DescriptionProjet.pdf)

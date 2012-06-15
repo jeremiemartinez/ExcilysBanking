@@ -15,6 +15,10 @@
 		<!-- Modules -->
 		<dependency>
 			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-entities</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-dao</artifactId>
 		</dependency>
 		<!--  Flyway -->

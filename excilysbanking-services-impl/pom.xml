@@ -17,14 +17,22 @@
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-entities</artifactId>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-dao</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-services</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-dao-impl</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

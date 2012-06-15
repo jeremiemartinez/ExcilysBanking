@@ -9,6 +9,13 @@
 	<packaging>pom</packaging>
 	<name>ExcilysBanking</name>
 
+	<repositories>
+		<repository>
+			<id>excilys</id>
+			<url>http://repository.excilys.com/content/repositories/thirdparty</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.10</junit.version>
@@ -24,6 +31,7 @@
 		<hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<javax.annotation.version>6.0</javax.annotation.version>
+		<commons-logging.version>99.0-does-not-exist</commons-logging.version>
 	</properties>
 
 	<modules>
@@ -167,6 +175,11 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
 		</dependency>
 	</dependencies>
 

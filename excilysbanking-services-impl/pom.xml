@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-dao-impl</artifactId>
-			<version>1.0-SNAPSHOT</version>
 			<scope>runtime</scope>
 		</dependency>
 		

@@ -1,4 +1,4 @@
-		eBanking Project
+#		eBanking Project
 
        ____              _    _             
       |  _ \            | |  (_)            
@@ -9,19 +9,19 @@
                                        __/ |
                                       |___/ 
 
-Using:  - Java6
-	- J2EE
-	- Spring
-	- Hibernate,
-	- JUnit
-	- Jenkins
-	- Slf4j/Logback
-	- Maven
-	- PostgreSQL and H2
-	- Tomcat
+#Using:  * Java6
+	* J2EE
+	* Spring
+	* Hibernate,
+	* JUnit
+	* Jenkins
+	* Slf4j/Logback
+	* Maven
+	* PostgreSQL and H2
+	* Tomcat
 
-Developpers:
-	- Jérémie Martinez (jmartinez@excilys.com)
-	- Luc Ponnau (lponnau@excilys.com)
+#Developpers:
+	* Jérémie Martinez (jmartinez@excilys.com)
+	* Luc Ponnau (lponnau@excilys.com)
 
 [Detailed Project Description](https://github.com/downloads/lponnau/ExcilysBanking/DescriptionProjet.pdf)

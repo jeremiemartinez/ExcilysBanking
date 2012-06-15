@@ -26,4 +26,4 @@
 * Jérémie Martinez (jmartinez@excilys.com)
 * Luc Ponnau (lponnau@excilys.com)
 
-[Detailed Project Description](https://github.com/downloads/lponnau/ExcilysBanking/DescriptionProjet.pdf)
+#[Detailed Project Description](https://github.com/downloads/lponnau/ExcilysBanking/DescriptionProjet.pdf)

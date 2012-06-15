@@ -52,9 +52,8 @@
 			</dependency>
 			<dependency>
 				<groupId>com.excilys</groupId>
-				<artifactId>excilysbanking-dao-iml</artifactId>
+				<artifactId>excilysbanking-dao-impl</artifactId>
 				<version>${project.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.excilys</groupId>
@@ -114,6 +113,11 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.excilys.excilysbanking.services.UserService;
 
 @Controller
-@RequestMapping("/ListingTest/test")
+@RequestMapping("/test")
 public class ControllerListing {
 
 	@Autowired

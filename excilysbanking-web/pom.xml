@@ -25,6 +25,16 @@
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-services</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-dao-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-services-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

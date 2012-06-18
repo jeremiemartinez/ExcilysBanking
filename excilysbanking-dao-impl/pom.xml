@@ -22,20 +22,14 @@
 			<artifactId>excilysbanking-dao</artifactId>
 		</dependency>
 		<!-- Flyway -->
-		<!-- dependency>
+		<dependency>
 			<groupId>com.googlecode.flyway</groupId>
 			<artifactId>flyway-core</artifactId>
-		</dependency-->
-
+		</dependency>
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 

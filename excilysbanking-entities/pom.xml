@@ -10,6 +10,7 @@
 	<artifactId>excilysbanking-entities</artifactId>
 	<name>excilysbanking-entities</name>
 	<packaging>jar</packaging>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>

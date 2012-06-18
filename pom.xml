@@ -32,6 +32,8 @@
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<commons-logging.version>99.0-does-not-exist</commons-logging.version>
 		<slf4j.bridge.version>1.6.4</slf4j.bridge.version>
+		<posgresql.version>9.1-902.jdbc4</posgresql.version>
+		<jstl.version>1.2</jstl.version>
 	</properties>
 
 	<modules>
@@ -93,7 +95,7 @@
 			<dependency>
 				<groupId>postgresql</groupId>
 				<artifactId>postgresql</artifactId>
-				<version>9.1-902.jdbc4</version>
+				<version>${posgresql.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 
@@ -147,6 +149,11 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
 				<version>${javax.servlet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
 			</dependency>
 
 			<!-- Flyway -->

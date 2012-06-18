@@ -6,16 +6,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import com.excilys.excilysbanking.dao.UserDAO;
 import com.excilys.excilysbanking.entities.User;
 
-@Repository
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
-	@Qualifier("sessionFactory")
 	private SessionFactory sessions;
 
 	@Override

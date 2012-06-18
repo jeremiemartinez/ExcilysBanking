@@ -11,9 +11,8 @@
 		</layout>
 	</appender>
 
-	<logger name="com.excilys.excilysbanking" additivity="false">
+	<logger name="com.excilys.excilysbanking">
 		<level value="debug"/>
-		<appender-ref ref="stdout"/>
 	</logger>
 
 	<root level="debug">

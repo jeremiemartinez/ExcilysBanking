@@ -8,7 +8,7 @@ import com.excilys.excilysbanking.dao.UserDAO;
 import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.UserService;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired

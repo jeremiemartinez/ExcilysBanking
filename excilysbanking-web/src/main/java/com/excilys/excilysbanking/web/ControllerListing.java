@@ -17,7 +17,8 @@ public class ControllerListing {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String doJob(Model m) {
-		m.addAttribute("jmartinez", userService.getAllUsers().get(0).getName());
+		m.addAttribute("nameCaller", userService.getUserByLogin("jmartinez").getName());
+		m.addAttribute("listAllUsers", userService.getAllUsers());
 		return "listing";
 	}
 }

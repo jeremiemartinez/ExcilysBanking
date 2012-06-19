@@ -12,6 +12,7 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
+
 		<!-- Modules -->
 		<dependency>
 			<groupId>com.excilys</groupId>
@@ -21,11 +22,13 @@
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-dao</artifactId>
 		</dependency>
+
 		<!-- Flyway -->
 		<dependency>
 			<groupId>com.googlecode.flyway</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

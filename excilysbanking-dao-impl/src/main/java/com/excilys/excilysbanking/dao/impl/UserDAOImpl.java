@@ -7,10 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
+import org.springframework.validation.annotation.Validated;
 import com.excilys.excilysbanking.dao.UserDAO;
 import com.excilys.excilysbanking.entities.User;
 
 @Repository("userDAO")
+@Validated
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
@@ -18,11 +21,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findUserByLogin(String param) {
+
 		User user = (User) sessions.getCurrentSession().get(User.class, param);
-		if (user == null)
-			throw new IllegalArgumentException("Login does not exist...");
-		else
-			return user;
+		Assert.notNull(user, "Login does not exist...");
+		return user;
 	}
 
 	@Override

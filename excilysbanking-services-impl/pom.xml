@@ -51,14 +51,6 @@
 
 		<!-- Test -->
 		<dependency>
-			<groupId>com.excilys.ebi.spring-dbunit</groupId>
-			<artifactId>spring-dbunit-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.excilys.ebi.spring-dbunit</groupId>
-			<artifactId>spring-dbunit-servlet</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 		</dependency>

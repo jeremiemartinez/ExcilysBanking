@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
@@ -10,14 +11,14 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.excilys.excilysbanking.dao" />
 
-<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
-<!-- 		<property name="driverClassName" value="org.h2.Driver" /> -->
-<!-- 		<property name="url" value="jdbc:h2:mem:test" /> -->
-<!-- 		<property name="username" value="sa" /> -->
-<!-- 		<property name="password" value="" /> -->
-<!-- 	</bean> -->
-	<jdbc:embedded-database id="dataSource" type="H2"/>
-	
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+	<!-- <property name="driverClassName" value="org.h2.Driver" /> -->
+	<!-- <property name="url" value="jdbc:h2:mem:test" /> -->
+	<!-- <property name="username" value="sa" /> -->
+	<!-- <property name="password" value="" /> -->
+	<!-- </bean> -->
+	<jdbc:embedded-database id="dataSource" type="H2" />
+
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -39,5 +40,11 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-
+	<bean
+		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+		<property name="validatorFactory">
+			<bean
+				class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+		</property>
+	</bean>
 </beans>

@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.dao;
 
 import static org.junit.Assert.assertEquals;
+import org.hibernate.validator.method.MethodConstraintViolationException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 	public void findByLoginTest() {
 		assertEquals(userDAOTest.findUserByLogin("jmartinez").getNationality(), "French");
 		assertEquals(userDAOTest.findUserByLogin("lponnau").getPhone(), "0836656565");
+	}
+
+	@Test(expected = MethodConstraintViolationException.class)
+	public void findByLogin_null_fails() {
+		userDAOTest.findUserByLogin(null);
 	}
 }

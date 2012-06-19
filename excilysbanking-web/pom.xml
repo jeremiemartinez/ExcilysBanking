@@ -15,7 +15,6 @@
 	<dependencies>
 
 		<!-- Modules -->
-
 		<dependency>
 			<groupId>com.excilys</groupId>
 			<artifactId>excilysbanking-entities</artifactId>
@@ -31,7 +30,6 @@
 		</dependency>
 
 		<!-- Spring -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -52,5 +50,6 @@
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
 </project>

@@ -43,6 +43,7 @@
 		<dbcp.version>1.4</dbcp.version>
 		<spring.jdbc.version>3.1.1.RELEASE</spring.jdbc.version>
 		<mockito.version>1.9.0</mockito.version>
+		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 	</properties>
 
 	<modules>
@@ -209,7 +210,11 @@
 				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

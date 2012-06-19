@@ -19,7 +19,7 @@ import com.excilys.ebi.spring.dbunit.test.DataSetTestExecutionListener;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:context/appcontext-dao-test.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
-@DataSet(locations = "/datasets/datasetUser.xml", dbType = DBType.H2)
+@DataSet(locations = "classpath:/datasets/datasetUser.xml", dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
 public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {

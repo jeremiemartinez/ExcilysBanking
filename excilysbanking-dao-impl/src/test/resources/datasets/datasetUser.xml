@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<users login="jmartinez" password="password" name="Jeremie Martinez" phone="0652776432" nationality="French"/>
-	<users login="lponnau" password="merenoel" name="Luc Ponnau" phone="0836656565" nationality="Finnish"/>
+	<authorities authority_id="0" authority="ROLE_ADMIN" />
+	<authorities authority_id="1" authority="ROLE_USER" />
+	<users username="lponnau" password="excilys" firstname="Luc"
+		lastname="Ponnau" />
+	<users username="jmartinez" password="excilys" firstname="Jérémie"
+		lastname="Martinez" />
+	<users_authorities username="lponnau" authority_id="1" />
+	<users_authorities username="jmartinez" authority_id="0" />
+	<users_authorities username="jmartinez" authority_id="1" />
 </dataset>

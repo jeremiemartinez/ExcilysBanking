@@ -40,11 +40,4 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean
-		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
-		<property name="validatorFactory">
-			<bean
-				class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-		</property>
-	</bean>
 </beans>

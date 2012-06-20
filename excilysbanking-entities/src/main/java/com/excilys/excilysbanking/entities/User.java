@@ -3,20 +3,22 @@ package com.excilys.excilysbanking.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
 public class User implements UserDetails, Serializable {
+
+	private static final long serialVersionUID = 5858881328596684803L;
 
 	@Id
 	@Generated("assigned")
@@ -31,24 +33,23 @@ public class User implements UserDetails, Serializable {
 	@Column
 	private String lastname;
 
-	@ManyToOne
-	private Authority authority;
+	@ManyToMany
+	@JoinTable(name = "users_authorities", joinColumns = { @JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "authority_id", nullable = false, updatable = false) })
+	private List<Authority> authorities = new ArrayList<Authority>();
 
 	public User() {}
 
-	public User(String username, String password, String firstname, String lastname, Authority authority) {
+	public User(String username, String password, String firstname, String lastname, List<Authority> authorities) {
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.authority = authority;
+		this.authorities = authorities;
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<Authority> list = new ArrayList<Authority>();
-		list.add(authority);
-		return list;
+	public List<Authority> getAuthorities() {
+		return authorities;
 	}
 
 	@Override
@@ -105,8 +106,8 @@ public class User implements UserDetails, Serializable {
 		this.password = password;
 	}
 
-	public void setAuthorities(Authority authorities) {
-		this.authority = authorities;
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
@@ -118,10 +119,10 @@ public class User implements UserDetails, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (authority == null) {
-			if (other.authority != null)
+		if (authorities == null) {
+			if (other.authorities != null)
 				return false;
-		} else if (!authority.equals(other.authority))
+		} else if (!authorities.equals(other.authorities))
 			return false;
 		if (firstname == null) {
 			if (other.firstname != null)
@@ -150,6 +151,6 @@ public class User implements UserDetails, Serializable {
 	public String toString() {
 		StringBuilder sb = new StringBuilder("User [username=");
 		return sb.append(username).append(", password=").append(password).append(", firstname=").append(firstname).append(", lastname=").append(lastname)
-				.append(", authorities=").append(authority).append("]").toString();
+				.append(", authorities=").append(authorities).append("]").toString();
 	}
 }

@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,39 +15,38 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name = "authorities")
 public class Authority implements GrantedAuthority {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4461574436681644583L;
+	private static final long serialVersionUID = 2431697487487879447L;
 
 	public enum AuthorityType {
 		ROLE_USER, ROLE_ADMIN;
 	}
 
 	@Id
-	@Column(name = "authority_id")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private Integer authority_id;
 
 	@Enumerated(EnumType.STRING)
+	@Column
 	private AuthorityType authority;
 
 	public Authority() {}
 
-	public Authority(Integer id, AuthorityType authority) {
-		this.id = id;
+	public Authority(Integer authority_id, AuthorityType authority) {
+		this.authority_id = authority_id;
 		this.authority = authority;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getAuthority_id() {
+		return authority_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setauthority_id(Integer authority_id) {
+		this.authority_id = authority_id;
 	}
 
-	public void setAuthority(AuthorityType authority) {
-		this.authority = authority;
+	public void setRole(AuthorityType authorityType) {
+		this.authority = authorityType;
 	}
 
 	@Override
@@ -67,15 +68,15 @@ public class Authority implements GrantedAuthority {
 				return false;
 		} else if (!authority.equals(other.authority))
 			return false;
-		if (id != other.id)
+		if (authority_id != other.authority_id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Authority [id=");
-		return sb.append(id).append(", authority=").append(authority.toString()).append("]").toString();
+		StringBuilder sb = new StringBuilder("Authority [authority_id=");
+		return sb.append(authority_id).append(", authority=").append(authority.toString()).append("]").toString();
 	}
 
 }

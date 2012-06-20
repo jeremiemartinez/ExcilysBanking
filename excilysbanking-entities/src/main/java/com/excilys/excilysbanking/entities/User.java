@@ -2,92 +2,111 @@
 package com.excilys.excilysbanking.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User implements UserDetails, Serializable {
 
 	@Id
-	@Column(unique = true)
-	private String login;
+	@Generated("assigned")
+	private String username;
 
 	@Column(nullable = false)
 	private String password;
 
 	@Column
-	private String name;
+	private String firstname;
 
 	@Column
-	private String phone;
+	private String lastname;
 
-	@Column
-	private String nationality;
+	@ManyToOne
+	private Authority authority;
 
 	public User() {}
 
-	public User(String login, String password, String name, String phone, String nationality) {
-		this.login = login;
+	public User(String username, String password, String firstname, String lastname, Authority authority) {
+		this.username = username;
 		this.password = password;
-		this.name = name;
-		this.phone = phone;
-		this.nationality = nationality;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.authority = authority;
 	}
 
-	public String getLogin() {
-		return login;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<Authority> list = new ArrayList<Authority>();
+		list.add(authority);
+		return list;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	@Override
+	public String getUsername() {
+		return this.username;
 	}
 
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	@Override
 	public String getPassword() {
-		return password;
+		return this.password;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((nationality == null) ? 0 : nationality.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
-		return result;
+	public void setAuthorities(Authority authorities) {
+		this.authority = authorities;
 	}
 
 	@Override
@@ -96,40 +115,41 @@ public class User implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof User))
+		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (login == null) {
-			if (other.login != null)
+		if (authority == null) {
+			if (other.authority != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!authority.equals(other.authority))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (firstname == null) {
+			if (other.firstname != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!firstname.equals(other.firstname))
 			return false;
-		if (nationality == null) {
-			if (other.nationality != null)
+		if (lastname == null) {
+			if (other.lastname != null)
 				return false;
-		} else if (!nationality.equals(other.nationality))
+		} else if (!lastname.equals(other.lastname))
 			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!phone.equals(other.phone))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [login=" + login + ", password=" + password + ", name=" + name + ", phone=" + phone + ", nationality=" + nationality + "]";
+		StringBuilder sb = new StringBuilder("User [username=");
+		return sb.append(username).append(", password=").append(password).append(", firstname=").append(firstname).append(", lastname=").append(lastname)
+				.append(", authorities=").append(authority).append("]").toString();
 	}
-
 }

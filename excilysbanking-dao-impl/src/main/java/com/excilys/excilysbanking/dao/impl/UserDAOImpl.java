@@ -20,9 +20,9 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessions;
 
 	@Override
-	public User findUserByLogin(String param) {
+	public User findUserByUsername(String username) {
 
-		User user = (User) sessions.getCurrentSession().get(User.class, param);
+		User user = (User) sessions.getCurrentSession().get(User.class, username);
 		Assert.notNull(user, "Login does not exist...");
 		return user;
 	}

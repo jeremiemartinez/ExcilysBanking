@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<comptes compte_id="2138962500" solde="2000" type="CARTE" username="jmartinez"/>	
+	<comptes compte_id="42" solde="2.68" type="CARTE" username="lponnau"/>
+	<comptes compte_id="6464" solde="10000" type="CARTE" username="jmartinez"/>
+</dataset>

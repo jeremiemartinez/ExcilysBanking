@@ -2,15 +2,16 @@
 package com.excilys.excilysbanking.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -35,7 +36,10 @@ public class User implements UserDetails, Serializable {
 
 	@ManyToMany
 	@JoinTable(name = "users_authorities", joinColumns = { @JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "authority_id", nullable = false, updatable = false) })
-	private List<Authority> authorities = new ArrayList<Authority>();
+	private List<Authority> authorities;
+
+	@OneToMany(targetEntity = com.excilys.excilysbanking.entities.Compte.class, cascade = CascadeType.ALL, mappedBy = "user")
+	private List<Compte> comptes;
 
 	public User() {}
 
@@ -110,6 +114,14 @@ public class User implements UserDetails, Serializable {
 		this.authorities = authorities;
 	}
 
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -123,6 +135,11 @@ public class User implements UserDetails, Serializable {
 			if (other.authorities != null)
 				return false;
 		} else if (!authorities.equals(other.authorities))
+			return false;
+		if (comptes == null) {
+			if (other.comptes != null)
+				return false;
+		} else if (!comptes.equals(other.comptes))
 			return false;
 		if (firstname == null) {
 			if (other.firstname != null)
@@ -149,8 +166,10 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("User [username=");
-		return sb.append(username).append(", password=").append(password).append(", firstname=").append(firstname).append(", lastname=").append(lastname)
-				.append(", authorities=").append(authorities).append("]").toString();
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [username=").append(username).append(", password=").append(password).append(", firstname=").append(firstname)
+				.append(", lastname=").append(lastname).append(", authorities=").append(authorities).append(", comptes=").append(comptes).append("]");
+		return builder.toString();
 	}
+
 }

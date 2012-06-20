@@ -16,12 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.excilys.ebi.spring.dbunit.config.DBType;
 import com.excilys.ebi.spring.dbunit.test.DataSet;
 import com.excilys.ebi.spring.dbunit.test.DataSetTestExecutionListener;
+import com.excilys.excilysbanking.entities.Compte;
 import com.excilys.excilysbanking.entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:context/appcontext-dao-test.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
-@DataSet(locations = "classpath:/datasets/datasetUser.xml", dbType = DBType.H2)
+@DataSet(locations = { "classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml" }, dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
 public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
@@ -39,6 +40,11 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 		assertEquals(userTest.getAuthorities().get(0).getAuthority(), "ROLE_ADMIN");
 		assertEquals(userTest.getAuthorities().get(1).getAuthority(), "ROLE_USER");
 		assertEquals(userTest2.getAuthorities().get(0).getAuthority(), "ROLE_USER");
+		assertEquals(userTest.getComptes().size(), 2);
+		assertEquals(userTest.getComptes().get(0).getCompte_id(), new Integer(2138962500));
+		assertEquals(userTest.getComptes().get(0).getSolde(), new Double(2000));
+		assertEquals(userTest.getComptes().get(1).getSolde(), new Double(10000));
+		assertEquals(userTest.getComptes().get(0).getType(), Compte.CompteType.CARTE);
 	}
 
 	@Test

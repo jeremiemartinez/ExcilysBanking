@@ -29,6 +29,7 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAllUsers() {
 		log.debug("Calling Method findAllUsers");

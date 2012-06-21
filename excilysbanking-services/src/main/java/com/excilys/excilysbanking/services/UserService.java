@@ -6,7 +6,7 @@ import com.excilys.excilysbanking.entities.User;
 
 public interface UserService {
 
-	User getUserByLogin(String login);
+	User getUserByUsername(String username);
 
 	List<User> getAllUsers();
 }

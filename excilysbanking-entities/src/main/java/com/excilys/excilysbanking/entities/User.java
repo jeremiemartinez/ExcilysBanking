@@ -43,12 +43,11 @@ public class User implements UserDetails, Serializable {
 
 	public User() {}
 
-	public User(String username, String password, String firstname, String lastname, List<Authority> authorities) {
+	public User(String username, String password, String firstname, String lastname) {
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.authorities = authorities;
 	}
 
 	@Override

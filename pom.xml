@@ -45,6 +45,7 @@
 		<mockito.version>1.9.0</mockito.version>
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<spring-security.version>3.1.0.RELEASE</spring-security.version>
+		<querydsl.version>2.3.0</querydsl.version>
 	</properties>
 
 	<modules>
@@ -109,7 +110,17 @@
 				<version>${posgresql.version}</version>
 				<scope>runtime</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-apt</artifactId>
+				<version>${querydsl.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-jpa</artifactId>
+				<version>${querydsl.version}</version>
+			</dependency>
 
 			<!-- Spring -->
 
@@ -153,7 +164,7 @@
 				<artifactId>spring-tx</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-expression</artifactId>

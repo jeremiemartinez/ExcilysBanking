@@ -24,6 +24,7 @@ public class CompteDAOImpl implements CompteDAO {
 	@Override
 	public List<Compte> findComptesByUsername(String username) {
 		log.debug("Calling Method findComptesByUsername");
+
 		String query = "SELECT c from Compte c where c.user=:username";
 		Session session = sessions.getCurrentSession();
 		Query results = session.createQuery(query).setString("username", username);

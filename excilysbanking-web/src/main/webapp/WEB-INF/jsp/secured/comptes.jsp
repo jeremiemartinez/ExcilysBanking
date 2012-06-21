@@ -10,9 +10,22 @@
 </head>
 <body>
 
-	<h3>Vos comptes</h3>
+	<h2>Bienvenue ${name} !</h2>
 
 	<a href="<c:url value="/j_spring_security_logout" />">Déconnexion</a>
+
+	<h3>Vos comptes</h3>
+
+	<table>
+		<c:forEach var="c" items="${comptesList}">
+			<tr>
+				<td>${c.compte_id}</td>
+				<td>${c.type}</td>
+				<td>${c.solde}</td>
+			</tr>
+		</c:forEach>
+	</table>
+
 
 </body>
 </html>

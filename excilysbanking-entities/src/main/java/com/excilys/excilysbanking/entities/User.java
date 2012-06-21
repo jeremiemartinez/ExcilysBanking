@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.FetchType;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
@@ -35,7 +36,7 @@ public class User implements UserDetails, Serializable {
 	@Column
 	private String lastname;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_authorities", joinColumns = { @JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "authority_id", nullable = false, updatable = false) })
 	private List<Authority> authorities = new ArrayList<Authority>();
 	

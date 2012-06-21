@@ -12,7 +12,9 @@
 
 	<h3>Authentifiez-vous</h3>
 
-	<c:if test="${not empty error}">NON !</c:if>
+	<c:if test="${not empty errorLogin}">Error: The username or password you entered is incorrect.</c:if>
+	<c:if test="${not empty errorTooManySessions}">Error: Sorry too many sessions.</c:if>
+	<c:if test="${not empty errorSessionTimeOut}">Error: Sorry your session timed out.</c:if>
 
 	<form action="<c:url value='j_spring_security_check' />" method='POST'>
 

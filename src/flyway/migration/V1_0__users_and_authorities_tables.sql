@@ -1,7 +1,6 @@
-CREATE TYPE authorityType AS ENUM ('ROLE_ADMIN', 'ROLE_USER');
 CREATE TABLE IF NOT EXISTS authorities (
 	authority_id integer PRIMARY KEY,
-	authority authorityType
+	authority VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS users (

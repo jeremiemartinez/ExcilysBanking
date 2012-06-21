@@ -175,6 +175,11 @@
 				<artifactId>spring-security-core</artifactId>
 				<version>${spring-security.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring-security-config.version}</version>
+			</dependency>
 
 			<!-- Web -->
 			<dependency>
@@ -275,9 +280,12 @@
 	</dependencies>
 
 	<build>
-		<finalName>
-			${project.name}_${project.version}
-		</finalName>
+		<!-- <finalName> -->
+		<!-- ${project.name}_${project.version} -->
+		<!-- </finalName> -->
+		<!-- Switched to the following for easier access in the browser while testing/demoing 
+			the webapp -->
+		<finalName>ebank</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

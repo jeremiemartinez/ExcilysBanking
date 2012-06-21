@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import javax.persistence.CascadeType;
@@ -36,10 +37,10 @@ public class User implements UserDetails, Serializable {
 	
 	@ManyToMany
 	@JoinTable(name = "users_authorities", joinColumns = { @JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "authority_id", nullable = false, updatable = false) })
-	private List<Authority> authorities;
+	private List<Authority> authorities = new ArrayList<Authority>();
 	
 	@OneToMany(targetEntity = com.excilys.excilysbanking.entities.Compte.class, cascade = CascadeType.ALL, mappedBy = "user")
-	private List<Compte> comptes;
+	private List<Compte> comptes = new ArrayList<Compte>();
 	
 	public User() {}
 	
@@ -167,7 +168,7 @@ public class User implements UserDetails, Serializable {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("User [username=").append(username).append(", password=").append(password).append(", firstname=").append(firstname)
-				.append(", lastname=").append(lastname).append(", authorities=").append(authorities).append(", comptes=").append(comptes).append("]");
+				.append(", lastname=").append(lastname).append("]");
 		return builder.toString();
 	}
 	

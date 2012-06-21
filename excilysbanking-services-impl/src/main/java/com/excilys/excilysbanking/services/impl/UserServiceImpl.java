@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.services.impl;
 
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,23 +16,30 @@ import com.excilys.excilysbanking.services.UserService;
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
-
+	
 	@Autowired
 	private UserDAO userDAO;
-
+	
+	private User getUserByUsernameFetchAuthorities(String username) {
+		User user = userDAO.findUserByUsername(username);
+		if (user != null)
+			Hibernate.initialize(user.getAuthorities());
+		return user;
+	}
+	
 	@Override
 	public User getUserByUsername(String username) {
 		return userDAO.findUserByUsername(username);
 	}
-
+	
 	@Override
 	public List<User> getAllUsers() {
 		return userDAO.findAllUsers();
 	}
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return getUserByUsername(username);
+		return getUserByUsernameFetchAuthorities(username);
 	}
-
+	
 }

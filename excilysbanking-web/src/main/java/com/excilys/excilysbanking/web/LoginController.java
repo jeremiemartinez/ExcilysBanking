@@ -34,4 +34,9 @@ public class LoginController {
 	public String error404() {
 		return "/404";
 	}
+	
+	@RequestMapping("/403.html")
+	public String error403() {
+		return "/403";
+	}
 }

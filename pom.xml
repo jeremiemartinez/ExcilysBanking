@@ -46,6 +46,7 @@
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 		<spring-security.version>3.1.0.RELEASE</spring-security.version>
 		<querydsl.version>2.3.0</querydsl.version>
+		<spring-security-config.version>3.1.1.RELEASE</spring-security-config.version>
 	</properties>
 
 	<modules>
@@ -187,6 +188,11 @@
 				<artifactId>spring-security-core</artifactId>
 				<version>${spring-security.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring-security-config.version}</version>
+			</dependency>
 
 			<!-- Web -->
 			<dependency>
@@ -287,9 +293,12 @@
 	</dependencies>
 
 	<build>
-		<finalName>
-			${project.name}_${project.version}
-		</finalName>
+		<!-- <finalName> -->
+		<!-- ${project.name}_${project.version} -->
+		<!-- </finalName> -->
+		<!-- Switched to the following for easier access in the browser while testing/demoing 
+			the webapp -->
+		<finalName>ebank</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

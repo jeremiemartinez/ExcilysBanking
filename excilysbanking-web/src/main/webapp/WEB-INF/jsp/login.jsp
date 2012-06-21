@@ -28,8 +28,16 @@
 				<td><input type='password' name='j_password' /></td>
 			</tr>
 			<tr>
+				<td>Rester connecté :</td>
+				<td><input type='checkbox' name='_spring_security_remember_me' /></td>
+			</tr>
+			<tr>
 				<td colspan='2'><input name="submit" type="submit"
 					value="Accéder aux comptes" /></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>
 			</tr>
 		</table>
 	</form>

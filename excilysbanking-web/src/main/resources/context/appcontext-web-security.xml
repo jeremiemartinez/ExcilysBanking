@@ -11,21 +11,25 @@
 		<intercept-url pattern="/secured/admin/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/secured/**" access="ROLE_USER" />
 		<intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
 		<form-login login-page="/login.html"
 			authentication-success-handler-ref="authSuccessHandler"
 			authentication-failure-url="/loginFail.html" />
-		<session-management invalid-session-url="/sessionTimeOut.html"
-			session-authentication-error-url="/tooManySessions.html">
-			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true"
-				expired-url="/tooManySessions.html" />
-		</session-management>
 
-		<logout logout-success-url="/index.html" />
+		<logout logout-success-url="/index.html" invalidate-session="false" />
+
+		<!-- <session-management invalid-session-url="/sessionTimeOut.html" session-authentication-error-url="/tooManySessions.html"> -->
+		<!-- <concurrency-control max-sessions="1" expired-url="/tooManySessions.html"/> -->
+		<!-- </session-management> -->
+
+		<session-management invalid-session-url="/sessionTimeOut.html" />
+
+		<remember-me user-service-ref="userService" />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
-		
+
 			<password-encoder hash="sha">
 				<salt-source user-property="username" />
 			</password-encoder>

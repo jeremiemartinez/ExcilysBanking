@@ -73,7 +73,7 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th><spring:message code="comptes.compteID"/></th>
+								<th><spring:message code="comptes.compteId"/></th>
 								<th><spring:message code="comptes.compteType"/></th>
 								<th><spring:message code="comptes.compteSolde"/></th>
 							</tr>

@@ -71,9 +71,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th><spring:message code="admin.userName"/></th>
+								<th><spring:message code="admin.username"/></th>
 								<th><spring:message code="admin.firstname"/></th>
-								<th><spring:message code="admin.lastName"/></th>
+								<th><spring:message code="admin.lastname"/></th>
 								<th><spring:message code="admin.authorities"/></th>
 							</tr>
 						</thead>
@@ -99,8 +99,8 @@
 								<th><spring:message code="admin.compteId"/></th>
 								<th><spring:message code="admin.compteType"/></th>
 								<th><spring:message code="admin.compteSolde"/></th>
-								<th><spring:message code="admin.userName"/></th>
-								<th><spring:message code="admin.fullName"/></th>
+								<th><spring:message code="admin.username"/></th>
+								<th><spring:message code="admin.fullname"/></th>
 							</tr>
 						</thead>
 						<tbody>

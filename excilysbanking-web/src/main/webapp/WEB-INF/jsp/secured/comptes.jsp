@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +16,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
 <script src="../js/jquery-1.7.2.js"></script>
 <script src="../js/bootstrap.js"></script>
-<title>Vos comptes</title>
+<title><spring:message code="comptes.title"/></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -34,28 +35,27 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/ebank/index.html">Excilys-Banking</a>
+				</a> <a class="brand" href="/ebank/index.html"><spring:message code="bank.name"/></a>
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown"> <i
 						class="icon-user"></i> ${name} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../index.html"><i class="icon-home"></i>&nbsp;
-								&nbsp; Retour index</a></li>
+								&nbsp; <spring:message code="comptes.return"/></a></li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
 							<li><a href="../index.html"><i class="icon-wrench"></i>&nbsp;
-									&nbsp; Interface administrateur</a></li>
+									&nbsp; <spring:message code="comptes.adminInterface"/></a></li>
 							<li class="divider"></li>
 						</c:if>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; Se déconnecter</a></li>
+								class="icon-off"></i>&nbsp; &nbsp; <spring:message code="comptes.disconnect"/></a></li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab">Vos
-								Comptes</a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message code="comptes.title"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 	</div>
 
 
-	<h3>Vos comptes</h3>
+	<h3><spring:message code="comptes.title"/></h3>
 	<div class="row-fluid">
 		<div class="span2"></div>
 		<div class="span8">
@@ -73,9 +73,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Compte ID</th>
-								<th>Type</th>
-								<th>Solde</th>
+								<th><spring:message code="comptes.compteID"/></th>
+								<th><spring:message code="comptes.compteType"/></th>
+								<th><spring:message code="comptes.compteSolde"/></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -102,10 +102,9 @@
 			<div class="span10">
 				<img class="pull-left" src="../img/excilys.jpeg" /> <br /> <img
 					class="pull-right" src="../img/ebi.png" /> <br />
-				<p class="shiftToRight">&copy; EBusiness Information - Groupe
-					Excilys</p>
+				<p class="shiftToRight">&copy; <spring:message code="footer.companyName"/></p>
 				<p class="shiftToRight">
-					<i class="icon-wrench"></i> Développeurs: <a
+					<i class="icon-wrench"></i> <spring:message code="footer.developper"/> <a
 						href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a
 						href="mailto:lponnau@excilys.com">Luc "Bizu" Ponnau</a>
 			</div>

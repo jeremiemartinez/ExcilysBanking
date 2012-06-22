@@ -17,7 +17,7 @@
 	href="../../img/favicon.ico">
 <script src="../../js/jquery-1.7.2.js"></script>
 <script src="../../js/bootstrap.js"></script>
-<title>Interface Administrateur</title>
+<title><spring:message code="admin.title"/></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -34,26 +34,26 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/ebank/index.html">Excilys-Banking</a>
+				</a> <a class="brand" href="/ebank/index.html"><spring:message code="bank.name"/></a>
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown"> <i
 						class="icon-user"></i> ${name} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../../index.html"><i class="icon-home"></i>&nbsp;
-								&nbsp; Retour index</a></li>
+								&nbsp; <spring:message code="admin.return"/></a></li>
 						<li class="divider"></li>
 						<li><a href="../comptes.html"><i class="icon-user"></i>&nbsp;
-								&nbsp; Inferface Utilisateur</a>
+								&nbsp; <spring:message code="admin.userInterface"/></a>
 						<li class="divider"></li>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; Se déconnecter</a></li>
+								class="icon-off"></i>&nbsp; &nbsp; <spring:message code="admin.disconnect"/></a></li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab">Utilisateurs</a></li>
-						<li><a href="#tab2" data-toggle="tab">Comptes</a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message code="admin.users"/></a></li>
+						<li><a href="#tab2" data-toggle="tab"><spring:message code="admin.comptes"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,14 +67,14 @@
 			<br />
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab1">
-					<h3>Liste de tout les utilisateurs</h3>
+					<h3><spring:message code="admin.usersList"/></h3>
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Nom d'utilisateur</th>
-								<th><spring:message code="label.firstname"/></th>
-								<th>Nom</th>
-								<th>Rôle</th>
+								<th><spring:message code="admin.userName"/></th>
+								<th><spring:message code="admin.firstname"/></th>
+								<th><spring:message code="admin.lastName"/></th>
+								<th><spring:message code="admin.authorities"/></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,15 +92,15 @@
 					</table>
 				</div>
 				<div class="tab-pane" id="tab2">
-					<h3>Liste de tout les comptes</h3>
+					<h3><spring:message code="admin.comptesList"/></h3>
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Compte ID</th>
-								<th>Type</th>
-								<th>Solde</th>
-								<th>Nom d'utilisateur</th>
-								<th>Nom complet</th>
+								<th><spring:message code="admin.compteId"/></th>
+								<th><spring:message code="admin.compteType"/></th>
+								<th><spring:message code="admin.compteSolde"/></th>
+								<th><spring:message code="admin.userName"/></th>
+								<th><spring:message code="admin.fullName"/></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -128,10 +128,9 @@
 			<div class="span10">
 				<img class="pull-left" src="../../img/excilys.jpeg" /> <br /> <img
 					class="pull-right" src="../../img/ebi.png" /> <br />
-				<p class="shiftToRight">&copy; EBusiness Information - Groupe
-					Excilys</p>
+				<p class="shiftToRight">&copy; <spring:message code="footer.companyName"/></p>
 				<p class="shiftToRight">
-					<i class="icon-wrench"></i> Développeurs: <a
+					<i class="icon-wrench"></i><spring:message code="footer.developper"/><a
 						href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a
 						href="mailto:lponnau@excilys.com">Luc "Bizu" Ponnau</a>
 			</div>

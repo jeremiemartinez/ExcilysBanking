@@ -131,9 +131,9 @@
 					<spring:message code="footer.companyName" />
 				</p>
 				<p class="shiftToRight">
-					<i class="icon-wrench"></i> <spring:message code="footer.developper"/> <a
-						href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a
-						href="mailto:lponnau@excilys.com">Luc "Bizu" Ponnau</a>
+					<i class="icon-wrench"></i> &nbsp;<spring:message code="footer.developper"/> <a
+						href="mailto:jmartinez@excilys.com">Jérémie Martinez aka "the toString maniac"</a> &amp; <a
+						href="mailto:lponnau@excilys.com">Luc Ponnau</a>
 			</div>
 			<div class="span1"></div>
 		</div>

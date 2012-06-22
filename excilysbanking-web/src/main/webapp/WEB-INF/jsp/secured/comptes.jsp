@@ -104,7 +104,7 @@
 					class="pull-right" src="../img/ebi.png" /> <br />
 				<p class="shiftToRight">&copy; <spring:message code="footer.companyName"/></p>
 				<p class="shiftToRight">
-					<i class="icon-wrench"></i> <spring:message code="footer.developper"/> <a
+					<i class="icon-wrench"></i>&nbsp;<spring:message code="footer.developper"/> <a
 						href="mailto:jmartinez@excilys.com">Jérémie Martinez aka "the toString maniac"</a> &amp; <a
 						href="mailto:lponnau@excilys.com">Luc Ponnau</a>
 			</div>

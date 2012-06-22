@@ -36,7 +36,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="index.html">Excilys-Banking</a>
 				<div class="btn-group pull-right">
-					<a class="btn" href="index.html"> <i class="icon-home"></i>
+					<a class="btn" href="/ebank/index.html"> <i class="icon-home"></i>
 						Index &nbsp;
 					</a>
 				</div>
@@ -56,7 +56,7 @@
 					<i class="icon-info-sign"></i> Accés refusé !
 				</p>
 				<br />
-				<p><a class="btn btn-primary btn-large" href="index.html">Retour &raquo;</a></p>
+				<p><a class="btn btn-primary btn-large" href="/index.html">Retour &raquo;</a></p>
 			</div>
 		</div>
 		<div class="span4"></div>

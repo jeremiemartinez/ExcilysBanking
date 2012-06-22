@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,7 +44,11 @@
 						<li><a href="../index.html"><i class="icon-home"></i>&nbsp;
 								&nbsp; Retour index</a></li>
 						<li class="divider"></li>
-
+						<c:if test="${not empty isAdmin}">
+							<li><a href="../index.html"><i class="icon-wrench"></i>&nbsp;
+									&nbsp; Interface administrateur</a></li>
+							<li class="divider"></li>
+						</c:if>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
 								class="icon-off"></i>&nbsp; &nbsp; Se déconnecter</a></li>
 					</ul>

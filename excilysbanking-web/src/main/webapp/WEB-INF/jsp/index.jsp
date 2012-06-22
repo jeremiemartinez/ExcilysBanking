@@ -13,8 +13,6 @@
 <!-- Le styles -->
 <link href="./css/bootstrap.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico">
-<script src="./js/jquery-1.7.2.js"></script>
-<script src="./js/bootstrap.js"></script>
 <title>Excilys-Banking</title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -36,9 +34,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="#">Excilys-Banking</a>
 				<div class="btn-group pull-right">
-					<a class="btn"
-						href="#moduleConnection"> <i class="icon-user"></i> Se
-						connecter &nbsp;
+					<a class="btn" href="#moduleConnection"> <i class="icon-user"></i>
+						Se connecter &nbsp;
 					</a>
 				</div>
 
@@ -49,7 +46,7 @@
 	<div class="row-fluid">
 		<div class="span4"></div>
 		<div class="span4">
-		<br/>
+			<br />
 			<div class="well">
 				<h3 id="moduleConnetion" class="center">Connexion</h3>
 				<hr>
@@ -116,17 +113,22 @@
 		<div class="row-fluid">
 			<div class="span1"></div>
 			<div class="span10">
-				<img class="pull-left" src="./img/excilys.jpeg"/>
-				<br/>
-				<img class="pull-right" src="./img/ebi.png"/>
-				<br/>	
-				<p class="shiftToRight">&copy; EBusiness Information - Groupe Excilys</p>
-				<p class="shiftToRight"><i class="icon-wrench"></i> Développeurs: <a href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a href="mailto:lponnau@excilys.com">Luc "Bizu" Ponnau</a>
-				
+				<img class="pull-left" src="./img/excilys.jpeg" /> <br /> <img
+					class="pull-right" src="./img/ebi.png" /> <br />
+				<p class="shiftToRight">&copy; EBusiness Information - Groupe
+					Excilys</p>
+				<p class="shiftToRight">
+					<i class="icon-wrench"></i> Développeurs: <a
+						href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a
+						href="mailto:lponnau@excilys.com">Luc "Bizu" Ponnau</a>
 			</div>
 			<div class="span1"></div>
 		</div>
 	</footer>
+	
+	<!-- Javascript -->
+	<script src="./js/jquery-1.7.2.js"></script>
+	<script src="./js/bootstrap.js"></script>
 
 </body>
 </html>

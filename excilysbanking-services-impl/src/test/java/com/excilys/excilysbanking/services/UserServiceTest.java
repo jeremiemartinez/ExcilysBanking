@@ -37,7 +37,7 @@ public class UserServiceTest {
 		authorities.add(new Authority(0, Authority.AuthorityType.ROLE_USER));
 		userTest.setAuthorities(authorities);
 		List<Compte> comptes = new ArrayList<Compte>();
-		comptes.add(new Compte(42, 2000.0, Compte.CompteType.CARTE, userTest));
+		comptes.add(new Compte(42, 2000.0, Compte.CompteType.ESPECE, userTest));
 		userTest.setComptes(comptes);
 		when(userDAOTest.findUserByUsername("jmartinez")).thenReturn(userTest);
 	}
@@ -50,7 +50,7 @@ public class UserServiceTest {
 		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().size(), 1);
 		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getCompte_id(), new Integer(42));
 		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getSolde(), new Double(2000.0));
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getType(), Compte.CompteType.CARTE);
+		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getType(), Compte.CompteType.ESPECE);
 		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getUser(), userTest);
 	}
 

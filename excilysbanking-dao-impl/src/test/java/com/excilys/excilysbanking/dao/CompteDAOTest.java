@@ -33,7 +33,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 	public void findCompteByIdTest() {
 		Compte compteTest = compteDAOTest.findCompteById(6464);
 		assertEquals(new Double(10000), compteTest.getSolde());
-		assertEquals(Compte.CompteType.CARTE, compteTest.getType());
+		assertEquals(Compte.CompteType.ESPECE, compteTest.getType());
 		assertEquals(compteTest.getUser().getUsername(), "jmartinez");
 	}
 
@@ -42,7 +42,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 		List<Compte> comptes = compteDAOTest.findAllComptes();
 		assertEquals(comptes.size(), 3);
 		assertEquals(new Double(2.68), comptes.get(1).getSolde());
-		assertEquals(Compte.CompteType.CARTE, comptes.get(1).getType());
+		assertEquals(Compte.CompteType.ESPECE, comptes.get(1).getType());
 		assertEquals(comptes.get(1).getUser().getUsername(), "lponnau");
 	}
 
@@ -51,7 +51,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 		List<Compte> comptes = compteDAOTest.findComptesByUsername("jmartinez");
 		assertEquals(comptes.size(), 2);
 		assertEquals(new Double(2000), comptes.get(0).getSolde());
-		assertEquals(Compte.CompteType.CARTE, comptes.get(0).getType());
+		assertEquals(Compte.CompteType.ESPECE, comptes.get(0).getType());
 		assertEquals(comptes.get(0).getUser().getUsername(), "jmartinez");
 	}
 }

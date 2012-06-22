@@ -44,7 +44,7 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 		assertEquals(userTest.getComptes().get(0).getCompte_id(), new Integer(2138962500));
 		assertEquals(userTest.getComptes().get(0).getSolde(), new Double(2000));
 		assertEquals(userTest.getComptes().get(1).getSolde(), new Double(10000));
-		assertEquals(userTest.getComptes().get(0).getType(), Compte.CompteType.CARTE);
+		assertEquals(userTest.getComptes().get(0).getType(), Compte.CompteType.ESPECE);
 	}
 
 	@Test

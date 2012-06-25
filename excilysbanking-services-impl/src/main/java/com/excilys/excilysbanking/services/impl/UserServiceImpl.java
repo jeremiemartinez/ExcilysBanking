@@ -19,10 +19,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Autowired
 	private UserDAO userDAO;
 
-	private User getUserByUsernameFetchAuthorities(String username) {
-		return userDAO.findUserByUsername(username);
-	}
-
 	@Override
 	public User getUserByUsername(String username) {
 		return userDAO.findUserByUsername(username);
@@ -35,7 +31,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return getUserByUsernameFetchAuthorities(username);
+		return getUserByUsername(username);
 	}
 
 }

@@ -108,7 +108,7 @@
 								<tr>
 									<td>${c.compte_id}</td>
 									<td>${c.type}</td>
-									<td>${c.solde}</td>
+									<td>${c.solde} $</td>
 									<td>${c.user.username}</td>
 									<td>${c.user.firstname} ${c.user.lastname}</td>
 								</tr>

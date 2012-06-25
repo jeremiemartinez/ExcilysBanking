@@ -83,7 +83,7 @@
 								<tr>
 									<td>${c.compte_id}</td>
 									<td>${c.type}</td>
-									<td>${c.solde}$</td>
+									<td>${c.solde} $</td>
 								</tr>
 							</c:forEach>
 						</tbody>

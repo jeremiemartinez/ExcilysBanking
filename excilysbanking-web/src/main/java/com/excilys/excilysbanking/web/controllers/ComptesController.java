@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.excilys.excilysbanking.entities.Authority;
 import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.CompteService;
 import com.excilys.excilysbanking.services.UserService;
@@ -21,17 +20,15 @@ public class ComptesController {
 	@Autowired
 	private CompteService compteService;
 
+	// getConnectedUser + isAdmin
 	@RequestMapping("/comptes.html")
 	public String comptes(Model m) {
-		String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-		User currentUser = userService.getUserByUsername(username);
+		User currentUser = userService.getConnectedUser();
 		String name = currentUser.getFirstname() + " " + currentUser.getLastname();
-		for (Authority a : currentUser.getAuthorities()) {
-			if (a.getAuthority().equals(Authority.AuthorityType.ROLE_ADMIN.name()))
-				m.addAttribute("isAdmin", "true");
-		}
+		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
+			m.addAttribute("isAdmin", "true");
 		m.addAttribute("name", name);
-		m.addAttribute("comptesList", compteService.getComptesByUsername(username));
+		m.addAttribute("comptesList", compteService.getComptesByUsername(currentUser.getUsername()));
 		return "/secured/comptes";
 	}
 }

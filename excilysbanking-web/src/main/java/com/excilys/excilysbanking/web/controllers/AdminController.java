@@ -20,6 +20,7 @@ public class AdminController {
 	@Autowired
 	private CompteService compteService;
 
+	// getConnectedUser
 	@RequestMapping("admin.html")
 	public String admin(Model m) {
 		String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();

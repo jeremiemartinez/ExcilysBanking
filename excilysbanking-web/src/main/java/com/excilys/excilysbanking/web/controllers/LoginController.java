@@ -1,13 +1,13 @@
 
 package com.excilys.excilysbanking.web.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.excilys.excilysbanking.entities.Authority;
+import com.excilys.excilysbanking.services.UserService;
 
 @Controller
 public class LoginController {
@@ -17,19 +17,21 @@ public class LoginController {
 	// System.out.println(enc.encodePassword("lucestunbizu", "jmartinez"));
 	// }
 
+	@Autowired
+	private UserService userService;
+
+	// isConnected
+	// isAdmin
 	@RequestMapping("/index.html")
 	public String index() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth.getPrincipal().equals("anonymousUser"))
+		if (userService.isConnected(auth))
 			return "/index";
 		else {
-			for (GrantedAuthority a : auth.getAuthorities()) {
-				if (a.getAuthority().equals(Authority.AuthorityType.ROLE_ADMIN.name())) {
-
-					return "redirect:/secured/admin/admin.html";
-				}
-			}
-			return "redirect:/secured/comptes.html";
+			if (userService.isAdmin(auth))
+				return "redirect:/secured/admin/admin.html";
+			else
+				return "redirect:/secured/comptes.html";
 		}
 	}
 

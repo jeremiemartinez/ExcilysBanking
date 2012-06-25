@@ -15,9 +15,7 @@
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="../../img/favicon.ico">
-<script src="../../js/jquery-1.7.2.js"></script>
-<script src="../../js/bootstrap.js"></script>
-<title><spring:message code="admin.title"/></title>
+<title><spring:message code="admin.title" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -34,26 +32,30 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/ebank/index.html"><spring:message code="bank.name"/></a>
+				</a> <a class="brand" href="/ebank/index.html"><spring:message
+						code="bank.name" /></a>
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown"> <i
 						class="icon-user"></i> ${name} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../../index.html"><i class="icon-home"></i>&nbsp;
-								&nbsp; <spring:message code="admin.return"/></a></li>
+								&nbsp; <spring:message code="admin.return" /></a></li>
 						<li class="divider"></li>
 						<li><a href="../comptes.html"><i class="icon-user"></i>&nbsp;
-								&nbsp; <spring:message code="admin.userInterface"/></a>
+								&nbsp; <spring:message code="admin.userInterface" /></a>
 						<li class="divider"></li>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; <spring:message code="admin.disconnect"/></a></li>
+								class="icon-off"></i>&nbsp; &nbsp; <spring:message
+									code="admin.disconnect" /></a></li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message code="admin.users"/></a></li>
-						<li><a href="#tab2" data-toggle="tab"><spring:message code="admin.comptes"/></a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message
+									code="admin.users" /></a></li>
+						<li><a href="#tab2" data-toggle="tab"><spring:message
+									code="admin.comptes" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,14 +69,16 @@
 			<br />
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab1">
-					<h3><spring:message code="admin.usersList"/></h3>
+					<h3>
+						<spring:message code="admin.usersList" />
+					</h3>
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th><spring:message code="admin.username"/></th>
-								<th><spring:message code="admin.firstname"/></th>
-								<th><spring:message code="admin.lastname"/></th>
-								<th><spring:message code="admin.authorities"/></th>
+								<th><spring:message code="admin.username" /></th>
+								<th><spring:message code="admin.firstname" /></th>
+								<th><spring:message code="admin.lastname" /></th>
+								<th><spring:message code="admin.authorities" /></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,15 +96,17 @@
 					</table>
 				</div>
 				<div class="tab-pane" id="tab2">
-					<h3><spring:message code="admin.comptesList"/></h3>
+					<h3>
+						<spring:message code="admin.comptesList" />
+					</h3>
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th><spring:message code="admin.compteId"/></th>
-								<th><spring:message code="admin.compteType"/></th>
-								<th><spring:message code="admin.compteSolde"/></th>
-								<th><spring:message code="admin.username"/></th>
-								<th><spring:message code="admin.fullname"/></th>
+								<th><spring:message code="admin.compteId" /></th>
+								<th><spring:message code="admin.compteType" /></th>
+								<th><spring:message code="admin.compteSolde" /></th>
+								<th><spring:message code="admin.username" /></th>
+								<th><spring:message code="admin.fullname" /></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -120,22 +126,12 @@
 			<div class="span2"></div>
 		</div>
 	</div>
-	<hr>
 
-	<footer>
-		<div class="row-fluid">
-			<div class="span1"></div>
-			<div class="span10">
-				<img class="pull-left" src="../../img/excilys.jpeg" /> <br /> <img
-					class="pull-right" src="../../img/ebi.png" /> <br />
-				<p class="shiftToRight">&copy; <spring:message code="footer.companyName"/></p>
-				<p class="shiftToRight">
-					<i class="icon-wrench"></i>&nbsp;<spring:message code="footer.developper"/><a
-						href="mailto:jmartinez@excilys.com">Jérémie Martinez</a> &amp; <a
-						href="mailto:lponnau@excilys.com">Luc Ponnau</a>
-			</div>
-			<div class="span1"></div>
-		</div>
-	</footer>
+	<c:import url="../../included/footer.jsp"></c:import>
+	
+	<!-- Javascript -->
+	<script src="../../js/jquery-1.7.2.js"></script>
+	<script src="../../js/bootstrap.js"></script>
+
 </body>
 </html>

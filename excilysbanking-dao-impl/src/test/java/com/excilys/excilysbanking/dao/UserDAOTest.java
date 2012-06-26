@@ -35,28 +35,43 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 	@Test
 	public void findUserByUsernameTest() {
 		User userTest = userDAOTest.findUserByUsername("jmartinez");
-		User userTest2 = userDAOTest.findUserByUsername("lponnau");
 		assertEquals("Martinez", userTest.getLastname());
 		assertEquals("Jérémie", userTest.getFirstname());
-		assertEquals(userTest.getAuthorities().size(), 2);
-		assertEquals(userTest.getAuthorities().get(0).getAuthority(), "ROLE_ADMIN");
-		assertEquals(userTest.getAuthorities().get(1).getAuthority(), "ROLE_USER");
-		assertEquals(userTest2.getAuthorities().get(0).getAuthority(), "ROLE_USER");
-		assertEquals(userTest.getComptes().size(), 2);
-		assertEquals(userTest.getComptes().get(0).getCompte_id(), new Integer(2138962500));
-		assertEquals(userTest.getComptes().get(0).getSolde(), new Double(2000));
-		assertEquals(userTest.getComptes().get(1).getSolde(), new Double(10000));
-		assertEquals(userTest.getComptes().get(0).getType(), Compte.CompteType.ESPECE);
+		
+		assertEquals(2, userTest.getAuthorities().size());
+		assertEquals("ROLE_ADMIN", userTest.getAuthorities().get(0).getAuthority());
+		assertEquals("ROLE_USER", userTest.getAuthorities().get(1).getAuthority());
+		
+		assertEquals(2, userTest.getComptes().size());
+		assertEquals(Integer.valueOf(2138962500), userTest.getComptes().get(0).getCompte_id());
+		assertEquals(Double.valueOf(2000), userTest.getComptes().get(0).getSolde());
+		assertEquals(Double.valueOf(10000), userTest.getComptes().get(1).getSolde());
+		assertEquals(Compte.CompteType.ESPECE, userTest.getComptes().get(0).getType());
 	}
 	
 	@Test
 	public void findAllUsersTest() {
 		List<User> users = userDAOTest.findAllUsers();
-		assertEquals(users.size(), 2);
-		assertEquals(users.get(0).getUsername(), "lponnau");
-		assertEquals(users.get(1).getUsername(), "jmartinez");
-		assertEquals(users.get(0).getAuthorities().size(), 1);
-		assertEquals(users.get(1).getAuthorities().size(), 2);
-		assertEquals(users.get(0).getAuthorities().get(0).getAuthority(), "ROLE_USER");
+		assertEquals(2, users.size());
+		assertEquals("lponnau", users.get(0).getUsername());
+		assertEquals("jmartinez", users.get(1).getUsername());
+		assertEquals(1, users.get(0).getAuthorities().size());
+		assertEquals(2, users.get(1).getAuthorities().size());
+		assertEquals("ROLE_USER", users.get(0).getAuthorities().get(0).getAuthority());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findUserByNullUsernameTest() {
+		userDAOTest.findUserByUsername(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findUserByEmptyUsernameTest() {
+		userDAOTest.findUserByUsername("");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findUserByWrongUsernameTest() {
+		userDAOTest.findUserByUsername("tDurden");
 	}
 }

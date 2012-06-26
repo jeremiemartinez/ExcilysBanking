@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.dao;
 
 import static org.junit.Assert.assertEquals;
+import java.util.Collections;
 import java.util.List;
 import org.joda.time.DateTime;
 import org.junit.Test;
@@ -33,30 +34,61 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	private OperationDAO operationDAOTest;
 	
 	@Test
-	public void findOperationByIdTest() {
-		Operation operationTest = operationDAOTest.findOperationById(151);
-		assertEquals(new Double(2000), operationTest.getMontant());
-		assertEquals(Operation.OperationType.CARTE, operationTest.getType());
-		assertEquals(operationTest.getCompte().getCompte_id(), new Integer(6464));
-		assertEquals(operationTest.getDate(), new DateTime(2012, 6, 25, 2, 0));
+	public void findMontantOperationsCarteByCompteIdTest() {
+		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteId(6464));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByNullCompteIdTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteId(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByWrongCompteIdTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteId(-9999);
 	}
 	
 	@Test
 	public void findOperationsCarteByCompteIdAndYearMonth() {
-		assertEquals(0, operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, 5).size());
+		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, 6);
+		assertEquals(2, ops.size());
+		
+		Operation op = ops.get(0);
+		assertEquals(Double.valueOf(-2000), op.getMontant());
+		assertEquals(Integer.valueOf(6464), op.getCompte().getCompte_id());
+		assertEquals("SNCF Pau-Montreal", op.getLibelle());
+		assertEquals(Operation.OperationType.CARTE, op.getType());
+		assertEquals(Integer.valueOf(151), op.getOperation_id());
+		assertEquals(new DateTime(2012, 6, 25, 2, 0), op.getDate());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findOperationsCarteByNullCompteIdAndYearMonth() {
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(null, 2012, 6);
 	}
 	
 	@Test
-	public void findAllOperationsTest() {
-		List<Operation> operations = operationDAOTest.findAllOperations();
-		assertEquals(operations.size(), 4);
-		assertEquals(new Double(-500), operations.get(1).getMontant());
-		assertEquals(operations.get(1).getCompte().getCompte_id(), new Integer(6464));
-		assertEquals(new DateTime(2012, 6, 25, 2, 0), operations.get(1).getDate());
+	public void findOperationsCarteByWrongCompteIdAndYearMonth() {
+		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findOperationsCarteByCompteIdAndNullYearMonth() {
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, null, 6);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findOperationsCarteByCompteIdAndYearNullMonth() {
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, null);
 	}
 	
 	@Test
-	public void findTotalMontantOperationsCarteByCompteIdTest() {
-		assertEquals(new Double(2500.0), operationDAOTest.findMontantOperationsCarteByCompteId(6464));
+	public void findOperationsCarteByCompteIdAndWrongYearMonth() {
+		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, -987, 6));
+	}
+	
+	@Test
+	public void findOperationsCarteByCompteIdAndYearWrongMonth() {
+		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, -123));
 	}
 }

@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.dao;
 
 import static org.junit.Assert.assertEquals;
+import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,28 +33,26 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 	private CompteDAO compteDAOTest;
 	
 	@Test
-	public void findCompteByIdTest() {
-		Compte compteTest = compteDAOTest.findCompteById(6464);
-		assertEquals(new Double(10000), compteTest.getSolde());
-		assertEquals(Compte.CompteType.ESPECE, compteTest.getType());
-		assertEquals(compteTest.getUser().getUsername(), "jmartinez");
-	}
-	
-	@Test
-	public void findAllComptesTest() {
-		List<Compte> comptes = compteDAOTest.findAllComptes();
-		assertEquals(comptes.size(), 3);
-		assertEquals(new Double(2.68), comptes.get(1).getSolde());
-		assertEquals(Compte.CompteType.ESPECE, comptes.get(1).getType());
-		assertEquals(comptes.get(1).getUser().getUsername(), "lponnau");
-	}
-	
-	@Test
 	public void findComptesByUsernameTest() {
 		List<Compte> comptes = compteDAOTest.findComptesByUsername("jmartinez");
-		assertEquals(comptes.size(), 2);
-		assertEquals(new Double(2000), comptes.get(0).getSolde());
+		assertEquals(2, comptes.size());
+		assertEquals(Double.valueOf(2000), comptes.get(0).getSolde());
 		assertEquals(Compte.CompteType.ESPECE, comptes.get(0).getType());
-		assertEquals(comptes.get(0).getUser().getUsername(), "jmartinez");
+		assertEquals("jmartinez", comptes.get(0).getUser().getUsername());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findComptesByNullUsernameTest() {
+		compteDAOTest.findComptesByUsername(null);
+	}
+	
+	@Test
+	public void findComptesByEmptyUsernameTest() {
+		assertEquals(Collections.emptyList(), compteDAOTest.findComptesByUsername(""));
+	}
+	
+	@Test
+	public void findComptesByWrongUsernameTest() {
+		assertEquals(Collections.emptyList(), compteDAOTest.findComptesByUsername("tDurden"));
 	}
 }

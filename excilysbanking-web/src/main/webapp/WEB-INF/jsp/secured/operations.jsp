@@ -18,6 +18,8 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
 <title><spring:message code="operations.title" /></title>
+<spring:message var="pattern" code="operations.dateFormat" />
+
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -50,11 +52,11 @@
 						<li><a href="../index"><i class="icon-home"></i>&nbsp;
 								&nbsp; <spring:message code="operations.return" /></a></li>
 						<li class="divider"></li>
-						<li><a href="./comptes"><i class="icon-book"></i>&nbsp;
+						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp;
 								&nbsp; <spring:message code="operations.comptes" /></a></li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
-							<li><a href="./admin/admin"><i class="icon-wrench"></i>&nbsp;
+							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp;
 									&nbsp; <spring:message code="operations.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</c:if>
@@ -82,7 +84,8 @@
 		<div class="span1"></div>
 		<div class="span1">
 			<a class="btn btn-primary"
-				href="/ebank/secured/operations/${id}/${previousDate}/"><spring:message code="operations.previousMonth"/></a>
+				href="/ebank/secured/operations/${id}/${previousDate}/"><spring:message
+					code="operations.previousMonth" /></a>
 
 		</div>
 		<div class="span8">
@@ -102,13 +105,44 @@
 						<tbody>
 
 							<tr>
-								<td></td>
+								<td><button class="btn" data-toggle="collapse"
+										data-target="#operationsCarte">Details</button></td>
 								<td><spring:message code="operations.carteDate" /></td>
 								<td><spring:message code="operations.carteType" /></td>
 								<td><spring:message code="operations.carteLibelle" /></td>
 								<td>${carteSum} $</td>
 							</tr>
-							<spring:message var="pattern" code="operations.dateFormat" />
+
+
+
+							<tr>
+								<td></td>
+								<td colspan=4><div id="operationsCarte" class="collapse">
+										<table class="table  table-condensed">
+											<thead>
+												<tr>
+													<th><spring:message code="operations.operationId" /></th>
+													<th><spring:message code="operations.date" /></th>
+													<th><spring:message code="operations.type" /></th>
+													<th><spring:message code="operations.libelle" /></th>
+													<th><spring:message code="operations.montant" /></th>
+												</tr>
+											</thead>
+											<c:forEach var="oc" items="${operationsCarteList}">
+												<tr>
+													<td>${oc.operation_id}</td>
+													<td><joda:format value="${oc.date}"
+															pattern="${pattern}" /></td>
+													<td>${oc.type}</td>
+													<td>${oc.libelle }</td>
+													<td>${oc.montant} $</td>
+												</tr>
+											</c:forEach>
+										</table>
+
+									</div></td>
+							</tr>
+
 							<c:forEach var="o" items="${operationsList}">
 								<tr>
 									<td>${o.operation_id}</td>
@@ -126,7 +160,8 @@
 		<div class="span1">
 			<c:if test="${not empty laterDate }">
 				<a class="btn btn-primary"
-					href="/ebank/secured/operations/${id}/${laterDate}/"><spring:message code="operations.laterMonth"/></a>
+					href="/ebank/secured/operations/${id}/${laterDate}/"><spring:message
+						code="operations.laterMonth" /></a>
 			</c:if>
 		</div>
 		<div class="span1"></div>

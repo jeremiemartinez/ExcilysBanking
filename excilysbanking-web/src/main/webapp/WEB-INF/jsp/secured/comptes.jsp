@@ -50,7 +50,7 @@
 								&nbsp; <spring:message code="comptes.return" /></a></li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
-							<li><a href="./admin/admin"><i class="icon-wrench"></i>&nbsp;
+							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp;
 									&nbsp; <spring:message code="comptes.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</c:if>

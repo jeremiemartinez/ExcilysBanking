@@ -1,6 +1,7 @@
 
 package com.excilys.excilysbanking.web.controllers;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,13 @@ public class ComptesController {
 			m.addAttribute("isAdmin", "true");
 		m.addAttribute("name", name);
 		m.addAttribute("comptesList", compteService.getComptesByUsername(currentUser.getUsername()));
+		m.addAttribute("date", buildDate());
 		return "/secured/comptes";
+	}
+
+	private String buildDate() {
+		DateTime datetime = DateTime.now();
+		StringBuilder sb = new StringBuilder();
+		return sb.append(datetime.getYear()).append("_").append(datetime.getMonthOfYear()).toString();
 	}
 }

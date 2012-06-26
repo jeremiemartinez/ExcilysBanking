@@ -50,6 +50,10 @@
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time-jsptags</artifactId>
+		</dependency>
 
 		<!-- Spring Security dependencies -->
 		<dependency>

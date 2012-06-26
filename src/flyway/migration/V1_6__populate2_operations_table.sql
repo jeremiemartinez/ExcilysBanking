@@ -1,0 +1,3 @@
+INSERT INTO operations (operation_id, compte_id, type, montant, date, libelle) VALUES (154, 6464, 'CARTE', 1000.0, '2012-05-25', 'String Léopard');
+INSERT INTO operations (operation_id, compte_id, type, montant, date, libelle) VALUES (155, 6464, 'CARTE', 500.0, '2012-05-25', 'Kayak');
+INSERT INTO operations (operation_id, compte_id, type, montant, date, libelle) VALUES (156, 6464, 'VIREMENT', -500.0, '2012-05-25', 'FNAQ');

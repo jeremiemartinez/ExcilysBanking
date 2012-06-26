@@ -71,6 +71,7 @@
 		<!-- Time -->
 		<jadira.version>3.0.0.CR1</jadira.version>
 		<joda.version>2.1</joda.version>
+		<joda.jsp.version>1.1.1</joda.jsp.version>
 
 	</properties>
 
@@ -282,6 +283,12 @@
 				<artifactId>usertype.core</artifactId>
 				<version>${jadira.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time-jsptags</artifactId>
+				<version>${joda.jsp.version}</version>
+			</dependency>
+
 
 		</dependencies>
 	</dependencyManagement>

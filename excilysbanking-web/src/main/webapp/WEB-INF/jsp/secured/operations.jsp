@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,7 +17,7 @@
 <link href="/ebank/resources/css/flags.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
-<title><spring:message code="comptes.title" /></title>
+<title><spring:message code="operations.title" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -47,22 +48,25 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../index"><i class="icon-home"></i>&nbsp;
-								&nbsp; <spring:message code="comptes.return" /></a></li>
+								&nbsp; <spring:message code="operations.return" /></a></li>
+						<li class="divider"></li>
+						<li><a href="./comptes"><i class="icon-book"></i>&nbsp;
+								&nbsp; <spring:message code="operations.comptes" /></a></li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
 							<li><a href="./admin/admin"><i class="icon-wrench"></i>&nbsp;
-									&nbsp; <spring:message code="comptes.adminInterface" /></a></li>
+									&nbsp; <spring:message code="operations.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</c:if>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
 								class="icon-off"></i>&nbsp; &nbsp; <spring:message
-									code="comptes.disconnect" /></a></li>
+									code="operations.disconnect" /></a></li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message
-									code="comptes.title" /></a></li>
+									code="operations.title" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -71,10 +75,16 @@
 
 
 	<h3>
-		<spring:message code="comptes.title" />
+		<spring:message code="operations.subtitle" />
+		${id}
 	</h3>
 	<div class="row-fluid">
-		<div class="span2"></div>
+		<div class="span1"></div>
+		<div class="span1">
+			<a class="btn btn-primary"
+				href="/ebank/secured/operations/${id}/${previousDate}/"><spring:message code="operations.previousMonth"/></a>
+
+		</div>
 		<div class="span8">
 			<br />
 			<div class="tab-content">
@@ -82,19 +92,30 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th><spring:message code="comptes.compteId" /></th>
-								<th><spring:message code="comptes.compteType" /></th>
-								<th><spring:message code="comptes.compteSolde" /></th>
-								<th><spring:message code="comptes.details"/></th>
+								<th><spring:message code="operations.operationId" /></th>
+								<th><spring:message code="operations.date" /></th>
+								<th><spring:message code="operations.type" /></th>
+								<th><spring:message code="operations.libelle" /></th>
+								<th><spring:message code="operations.montant" /></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="c" items="${comptesList}">
+
+							<tr>
+								<td></td>
+								<td><spring:message code="operations.carteDate" /></td>
+								<td><spring:message code="operations.carteType" /></td>
+								<td><spring:message code="operations.carteLibelle" /></td>
+								<td>${carteSum} $</td>
+							</tr>
+							<spring:message var="pattern" code="operations.dateFormat" />
+							<c:forEach var="o" items="${operationsList}">
 								<tr>
-									<td>${c.compte_id}</td>
-									<td>${c.type}</td>
-									<td>${c.solde} $</td>
-									<td><a href="./operations/${c.compte_id}/${date}"><spring:message code="comptes.operations"/></a></td>
+									<td>${o.operation_id}</td>
+									<td><joda:format value="${o.date}" pattern="${pattern}" /></td>
+									<td>${o.type}</td>
+									<td>${o.libelle }</td>
+									<td>${o.montant} $</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -102,7 +123,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="span2"></div>
+		<div class="span1">
+			<c:if test="${not empty laterDate }">
+				<a class="btn btn-primary"
+					href="/ebank/secured/operations/${id}/${laterDate}/"><spring:message code="operations.laterMonth"/></a>
+			</c:if>
+		</div>
+		<div class="span1"></div>
 	</div>
 
 	<c:import url="../included/footer.jsp"></c:import>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
@@ -19,16 +20,17 @@ import com.excilys.ebi.spring.dbunit.test.DataSetTestExecutionListener;
 import com.excilys.excilysbanking.entities.Compte;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:context/appcontext-dao-test.xml")
+@ContextConfiguration("classpath:context/appcontext-dao-impl.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
 @DataSet(locations = { "classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml" }, dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
+@ActiveProfiles("testing")
 public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
-
+	
 	@Autowired
 	private CompteDAO compteDAOTest;
-
+	
 	@Test
 	public void findCompteByIdTest() {
 		Compte compteTest = compteDAOTest.findCompteById(6464);
@@ -36,7 +38,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 		assertEquals(Compte.CompteType.ESPECE, compteTest.getType());
 		assertEquals(compteTest.getUser().getUsername(), "jmartinez");
 	}
-
+	
 	@Test
 	public void findAllComptesTest() {
 		List<Compte> comptes = compteDAOTest.findAllComptes();
@@ -45,7 +47,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 		assertEquals(Compte.CompteType.ESPECE, comptes.get(1).getType());
 		assertEquals(comptes.get(1).getUser().getUsername(), "lponnau");
 	}
-
+	
 	@Test
 	public void findComptesByUsernameTest() {
 		List<Compte> comptes = compteDAOTest.findComptesByUsername("jmartinez");

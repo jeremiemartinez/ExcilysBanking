@@ -7,6 +7,7 @@ import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
@@ -20,16 +21,17 @@ import com.excilys.ebi.spring.dbunit.test.DataSetTestExecutionListener;
 import com.excilys.excilysbanking.entities.Operation;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:context/appcontext-dao-test.xml")
+@ContextConfiguration("classpath:context/appcontext-dao-impl.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
 @DataSet(locations = "classpath:/datasets/dataset*.xml", dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
+@ActiveProfiles("testing")
 public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
-
+	
 	@Autowired
 	private OperationDAO operationDAOTest;
-
+	
 	@Test
 	public void findOperationByIdTest() {
 		Operation operationTest = operationDAOTest.findOperationById(151);
@@ -38,16 +40,16 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		assertEquals(operationTest.getCompte().getCompte_id(), new Integer(6464));
 		assertEquals(operationTest.getDate(), new DateTime(2012, 6, 25, 2, 0));
 	}
-
+	
 	@Test
 	public void findAllOperationsTest() {
 		List<Operation> operations = operationDAOTest.findAllOperations();
-		assertEquals(operations.size(), 3);
+		assertEquals(operations.size(), 4);
 		assertEquals(new Double(-500), operations.get(1).getMontant());
 		assertEquals(operations.get(1).getCompte().getCompte_id(), new Integer(6464));
 		assertEquals(new DateTime(2012, 6, 25, 2, 0), operations.get(1).getDate());
 	}
-
+	
 	@Test
 	public void findTotalMontantOperationsCarteByCompteIdTest() {
 		assertEquals(new Double(2500.0), operationDAOTest.findTotalMontantOperationsCarteByCompteId(6464));

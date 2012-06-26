@@ -42,6 +42,11 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	}
 	
 	@Test
+	public void findOperationsCarteByCompteIdAndYearMonth() {
+		assertEquals(0, operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, 5).size());
+	}
+	
+	@Test
 	public void findAllOperationsTest() {
 		List<Operation> operations = operationDAOTest.findAllOperations();
 		assertEquals(operations.size(), 4);
@@ -52,6 +57,6 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	
 	@Test
 	public void findTotalMontantOperationsCarteByCompteIdTest() {
-		assertEquals(new Double(2500.0), operationDAOTest.findTotalMontantOperationsCarteByCompteId(6464));
+		assertEquals(new Double(2500.0), operationDAOTest.findMontantOperationsCarteByCompteId(6464));
 	}
 }

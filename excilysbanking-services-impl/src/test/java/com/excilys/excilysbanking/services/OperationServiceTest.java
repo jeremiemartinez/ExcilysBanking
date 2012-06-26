@@ -22,13 +22,13 @@ import com.excilys.excilysbanking.services.impl.OperationServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OperationServiceTest {
-
+	
 	@Mock
 	private OperationDAO operationDAOTest;
-
+	
 	@InjectMocks
 	private OperationServiceImpl operationServiceTest;
-
+	
 	@Before
 	public void before() {
 		MockitoAnnotations.initMocks(this);
@@ -48,25 +48,25 @@ public class OperationServiceTest {
 		operationsNonCarte.add(operation3);
 		when(operationDAOTest.findOperationById(151)).thenReturn(operation1);
 		when(operationDAOTest.findAllOperations()).thenReturn(operations);
-		when(operationDAOTest.findOperationsNonCarteByCompteId(6464)).thenReturn(operationsNonCarte);
-		when(operationDAOTest.findTotalMontantOperationsCarteByCompteId(6464)).thenReturn(4000.0);
-
+		when(operationDAOTest.findOperationsVirementByCompteId(6464)).thenReturn(operationsNonCarte);
+		when(operationDAOTest.findMontantOperationsCarteByCompteId(6464)).thenReturn(4000.0);
+		
 	}
-
+	
 	@Test
 	public void getAllOperationsTest() {
 		assertEquals(operationServiceTest.getAllOperations().size(), 3);
 	}
-
+	
 	@Test
 	public void getOperationsNonCarteByCompteId() {
-		assertEquals(operationServiceTest.getOperationsNonCarteByCompteId(6464).size(), 1);
-		assertEquals(operationServiceTest.getOperationsNonCarteByCompteId(6464).get(0).getOperation_id(), new Integer(153));
-		assertEquals(operationServiceTest.getOperationsNonCarteByCompteId(6464).get(0).getMontant(), new Double(-1000.00));
+		assertEquals(operationServiceTest.getOperationsVirementByCompteId(6464).size(), 1);
+		assertEquals(operationServiceTest.getOperationsVirementByCompteId(6464).get(0).getOperation_id(), new Integer(153));
+		assertEquals(operationServiceTest.getOperationsVirementByCompteId(6464).get(0).getMontant(), new Double(-1000.00));
 	}
-
+	
 	@Test
 	public void getTotalMontantOperationNonCarteByCompteId() {
-		assertEquals(operationServiceTest.getTotalMontantOperationsCarteByCompteId(6464), new Double(4000.0));
+		assertEquals(operationServiceTest.getMontantOperationsCarteByCompteId(6464), new Double(4000.0));
 	}
 }

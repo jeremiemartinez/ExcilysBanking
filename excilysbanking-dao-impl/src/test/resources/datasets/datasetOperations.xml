@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<operations operation_id="151" compte_id="6464" type="CARTE" montant="2000" date="2012-06-25 00:00:00" />
-	<operations operation_id="152" compte_id="6464" type="CARTE" montant="-500" date="2012-06-25 00:00:00"/>
-	<operations operation_id="153" compte_id="6464" type="CARTE" montant="1000" date="2012-06-25 00:00:00" />
-	<operations operation_id="154" compte_id="6464" type="VIREMENT" montant="1000" date="2012-06-25 00:00:00" />
+	<operations operation_id="151" compte_id="6464" type="CARTE" montant="-2000" date="2012-06-25 00:00:00" libelle="SNCF Pau-Montreal"/>
+	<operations operation_id="152" compte_id="6464" type="CARTE" montant="-500" date="2012-06-25 00:00:00" libelle="Abonnement FHM"/>
+	<operations operation_id="153" compte_id="6464" type="VIREMENT" montant="1000" date="2012-06-25 00:00:00" libelle="Virement Mamie"/>
+	<operations operation_id="154" compte_id="6464" type="VIREMENT" montant="1000" date="2012-06-25 00:00:00" libelle="Paye juin"/>
 </dataset>

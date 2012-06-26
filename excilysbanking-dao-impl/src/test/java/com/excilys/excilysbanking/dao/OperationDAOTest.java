@@ -34,18 +34,38 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	private OperationDAO operationDAOTest;
 	
 	@Test
-	public void findMontantOperationsCarteByCompteIdTest() {
-		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteId(6464));
+	public void findMontantOperationsCarteByCompteIdAndYearMonthTest() {
+		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, 6));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void findMontantOperationsCarteByNullCompteIdTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteId(null);
+	public void findMontantOperationsCarteByNullCompteIdAndYearMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(null, 2012, 6);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void findMontantOperationsCarteByWrongCompteIdTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteId(-9999);
+	public void findMontantOperationsCarteByCompteIdAndNullYearMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, null, 6);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByCompteIdAndYearNullMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByWrongCompteIdAndYearMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByCompteIdAndWrongYearMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, -987, 6);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void findMontantOperationsCarteByCompteIdAndYearWrongMonthTest() {
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, -456);
 	}
 	
 	@Test
@@ -55,11 +75,17 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		
 		Operation op = ops.get(0);
 		assertEquals(Double.valueOf(-2000), op.getMontant());
-		assertEquals(Integer.valueOf(6464), op.getCompte().getCompte_id());
+		assertEquals(6464, op.getCompte().getCompte_id().intValue());
 		assertEquals("SNCF Pau-Montreal", op.getLibelle());
 		assertEquals(Operation.OperationType.CARTE, op.getType());
-		assertEquals(Integer.valueOf(151), op.getOperation_id());
-		assertEquals(new DateTime(2012, 6, 25, 2, 0), op.getDate());
+		assertEquals(151, op.getOperation_id().intValue());
+		
+		DateTime d = op.getDate();
+		assertEquals(2012, d.getYear());
+		assertEquals(6, d.getMonthOfYear());
+		assertEquals(25, d.getDayOfMonth());
+		assertEquals(2, d.getHourOfDay());
+		assertEquals(0, d.getMinuteOfHour());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

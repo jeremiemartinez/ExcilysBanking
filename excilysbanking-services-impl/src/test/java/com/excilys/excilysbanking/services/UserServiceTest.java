@@ -20,38 +20,56 @@ import com.excilys.excilysbanking.services.impl.UserServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
-
+	
 	@Mock
 	private UserDAO userDAOTest;
-
+	
 	@InjectMocks
 	private UserServiceImpl userServiceTest;
-
+	
 	private User userTest;
-
+	
+	@SuppressWarnings("unchecked")
 	@Before
 	public void before() {
 		MockitoAnnotations.initMocks(this);
 		userTest = new User("jmartinez", "password", "Jeremie", "Martinez");
+		
 		List<Authority> authorities = new ArrayList<Authority>();
 		authorities.add(new Authority(0, Authority.AuthorityType.ROLE_USER));
-		userTest.setAuthorities(authorities);
+		
 		List<Compte> comptes = new ArrayList<Compte>();
 		comptes.add(new Compte(42, 2000.0, Compte.CompteType.ESPECE, userTest));
+		
+		userTest.setAuthorities(authorities);
 		userTest.setComptes(comptes);
+		
 		when(userDAOTest.findUserByUsername("jmartinez")).thenReturn(userTest);
+		when(userDAOTest.findUserByUsername(null)).thenThrow(IllegalArgumentException.class);
+		when(userDAOTest.findUserByUsername("")).thenThrow(IllegalArgumentException.class);
 	}
-
+	
 	@Test
 	public void getUserByUsernameTest() {
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getFirstname(), "Jeremie");
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getLastname(), "Martinez");
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getAuthorities().size(), 1);
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().size(), 1);
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getCompte_id(), new Integer(42));
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getSolde(), new Double(2000.0));
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getType(), Compte.CompteType.ESPECE);
-		assertEquals(userServiceTest.getUserByUsername("jmartinez").getComptes().get(0).getUser(), userTest);
+		User user = userServiceTest.getUserByUsername("jmartinez");
+		assertEquals("Jeremie", user.getFirstname());
+		assertEquals("Martinez", user.getLastname());
+		assertEquals(1, user.getAuthorities().size());
+		assertEquals(1, user.getComptes().size());
+		assertEquals(Integer.valueOf(42), user.getComptes().get(0).getCompte_id());
+		assertEquals(Double.valueOf(2000), user.getComptes().get(0).getSolde());
+		assertEquals(Compte.CompteType.ESPECE, user.getComptes().get(0).getType());
+		assertEquals(userTest, user.getComptes().get(0).getUser());
 	}
-
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void getUserByNullUsernameTest() {
+		userServiceTest.getUserByUsername(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void getUserByEmptyUsernameTest() {
+		userServiceTest.getUserByUsername("");
+	}
+	
 }

@@ -12,6 +12,7 @@
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
 <!-- Le styles -->
+<link href="/ebank/resources/css/flags.css" rel="stylesheet">
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
@@ -38,8 +39,11 @@
 				</a> <a class="brand" href="/ebank/index"><spring:message
 						code="bank.name" /></a>
 				<div class="btn-group pull-right">
-					<a class="btn" href="/ebank/index"> <i class="icon-home"></i>
-						Index &nbsp;
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img
+						class="flag flag-fr" alt="French" /></a> <a class="btn"
+						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
+						alt="English" /></a> <a class="btn" href="/ebank/index"> <i
+						class="icon-home"></i> Index &nbsp;
 					</a>
 				</div>
 

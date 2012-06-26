@@ -13,7 +13,9 @@
 <meta name="author" content="Luc Ponnau">
 <!-- Le styles -->
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon" href="/ebank/resources/img/favicon.ico">
+<link href="/ebank/resources/css/flags.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon"
+	href="/ebank/resources/img/favicon.ico">
 <title><spring:message code="bank.name" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -35,8 +37,12 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a class="brand" href="#"><spring:message code="bank.name" /></a>
 				<div class="btn-group pull-right">
-					<a class="btn" href="#moduleConnection"> <i class="icon-user"></i>
-						<spring:message code="index.connect" /> &nbsp;
+				<a class="btn" href="_change_locale_to_fr"><img
+						class="flag flag-fr" alt="French" /></a>
+					<a class="btn" href="_change_locale_to_en"><img
+						class="flag flag-gb" alt="English" /></a> <a class="btn"
+						href="#moduleConnection"> <i class="icon-user"></i> <spring:message
+							code="index.connect" /> &nbsp;
 					</a>
 				</div>
 

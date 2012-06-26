@@ -13,6 +13,7 @@
 <meta name="author" content="Luc Ponnau">
 <!-- Le styles -->
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
+<link href="/ebank/resources/css/flags.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
 <title><spring:message code="admin.title" /></title>
@@ -35,8 +36,12 @@
 				</a> <a class="brand" href="/ebank/index.html"><spring:message
 						code="bank.name" /></a>
 				<div class="btn-group pull-right">
-					<a class="btn dropdown-toggle" data-toggle="dropdown"> <i
-						class="icon-user"></i> ${name} <span class="caret"></span>
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img
+						class="flag flag-fr" alt="French" /></a> <a class="btn"
+						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
+						alt="English" /></a> <a class="btn dropdown-toggle"
+						data-toggle="dropdown"> <i class="icon-user"></i> ${name} <span
+						class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="../../index"><i class="icon-home"></i>&nbsp;
@@ -128,7 +133,7 @@
 	</div>
 
 	<c:import url="../../included/footer.jsp"></c:import>
-	
+
 	<!-- Javascript -->
 	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
 	<script src="/ebank/resources/js/bootstrap.js"></script>

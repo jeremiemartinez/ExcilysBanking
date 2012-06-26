@@ -12,9 +12,9 @@
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
 <!-- Le styles -->
-<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../img/favicon.ico">
+	href="/ebank/resources/img/favicon.ico">
 <title><spring:message code="admin.title" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -39,10 +39,10 @@
 						class="icon-user"></i> ${name} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="../../index.html"><i class="icon-home"></i>&nbsp;
+						<li><a href="../../index"><i class="icon-home"></i>&nbsp;
 								&nbsp; <spring:message code="admin.return" /></a></li>
 						<li class="divider"></li>
-						<li><a href="../comptes.html"><i class="icon-user"></i>&nbsp;
+						<li><a href="../comptes"><i class="icon-user"></i>&nbsp;
 								&nbsp; <spring:message code="admin.userInterface" /></a>
 						<li class="divider"></li>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
@@ -130,8 +130,8 @@
 	<c:import url="../../included/footer.jsp"></c:import>
 	
 	<!-- Javascript -->
-	<script src="../../js/jquery-1.7.2.js"></script>
-	<script src="../../js/bootstrap.js"></script>
+	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
+	<script src="/ebank/resources/js/bootstrap.js"></script>
 
 </body>
 </html>

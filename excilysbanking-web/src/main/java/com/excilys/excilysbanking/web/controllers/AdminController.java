@@ -2,7 +2,6 @@
 package com.excilys.excilysbanking.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +19,9 @@ public class AdminController {
 	@Autowired
 	private CompteService compteService;
 
-	// getConnectedUser
-	@RequestMapping("admin.html")
+	@RequestMapping("admin")
 	public String admin(Model m) {
-		String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-		User currentUser = userService.getUserByUsername(username);
+		User currentUser = userService.getConnectedUser();
 		String name = currentUser.getFirstname() + " " + currentUser.getLastname();
 		m.addAttribute("name", name);
 		m.addAttribute("usersList", userService.getAllUsers());

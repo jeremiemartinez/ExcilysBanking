@@ -68,6 +68,10 @@
 		<maven-site-plugin.version>3.1</maven-site-plugin.version>
 		<surefire-plugin.version>2.12</surefire-plugin.version>
 
+		<!-- Time -->
+		<jadira.version>3.0.0.CR1</jadira.version>
+		<joda.version>2.1</joda.version>
+
 	</properties>
 
 	<modules>
@@ -266,6 +270,19 @@
 				<artifactId>querydsl-hql</artifactId>
 				<version>${querydsl.version}</version>
 			</dependency>
+
+			<!-- Time -->
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jadira.usertype</groupId>
+				<artifactId>usertype.core</artifactId>
+				<version>${jadira.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

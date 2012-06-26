@@ -20,8 +20,7 @@ public class ComptesController {
 	@Autowired
 	private CompteService compteService;
 
-	// getConnectedUser + isAdmin
-	@RequestMapping("/comptes.html")
+	@RequestMapping("/comptes")
 	public String comptes(Model m) {
 		User currentUser = userService.getConnectedUser();
 		String name = currentUser.getFirstname() + " " + currentUser.getLastname();

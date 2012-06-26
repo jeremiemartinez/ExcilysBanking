@@ -15,12 +15,11 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 	@Autowired
 	private UserService userService;
 
-	// isAdmin?
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth) throws IOException, ServletException {
 		if (userService.isAdmin(auth))
-			response.sendRedirect("secured/admin/admin.html");
+			response.sendRedirect("secured/admin/admin");
 		else
-			response.sendRedirect("secured/comptes.html");
+			response.sendRedirect("secured/comptes");
 	}
 }

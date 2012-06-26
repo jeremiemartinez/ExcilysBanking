@@ -5,8 +5,8 @@
 	<div class="row-fluid">
 		<div class="span1"></div>
 		<div class="span10">
-			<img class="pull-left" src="/ebank/img/excilys.jpeg" /> <br /> <img
-				class="pull-right" src="/ebank/img/ebi.png" /> <br />
+			<img class="pull-left" src="/ebank/resources/img/excilys.jpeg" /> <br /> <img
+				class="pull-right" src="/ebank/resources/img/ebi.png" /> <br />
 			<p class="shiftToRight">
 				&copy;
 				<spring:message code="footer.companyName" />

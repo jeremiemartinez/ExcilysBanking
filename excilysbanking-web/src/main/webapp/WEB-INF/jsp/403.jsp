@@ -12,9 +12,9 @@
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
 <!-- Le styles -->
-<link href="./css/bootstrap.css" rel="stylesheet">
+<link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
-	href="./img/favicon.ico">
+	href="/ebank/resources/img/favicon.ico">
 
 <title><spring:message code="error.title403" /></title>
 
@@ -35,10 +35,10 @@
 				<a class="btn btn-navbar" data-toggle="collapse"
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="index.html"><spring:message
+				</a> <a class="brand" href="/ebank/index"><spring:message
 						code="bank.name" /></a>
 				<div class="btn-group pull-right">
-					<a class="btn" href="/ebank/index.html"> <i class="icon-home"></i>
+					<a class="btn" href="/ebank/index"> <i class="icon-home"></i>
 						Index &nbsp;
 					</a>
 				</div>
@@ -62,7 +62,7 @@
 				</p>
 				<br />
 				<p>
-					<a class="btn btn-primary btn-large" href="/ebank/index.html"><spring:message
+					<a class="btn btn-primary btn-large" href="/ebank/index"><spring:message
 							code="error.return" /> &raquo;</a>
 				</p>
 			</div>
@@ -74,8 +74,8 @@
 
 
 	<!-- Javascript -->
-	<script src="/ebank/js/jquery-1.7.2.js"></script>
-	<script src="/ebank/js/bootstrap.js"></script>
+	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
+	<script src="/ebank/resources/js/bootstrap.js"></script>
 
 </body>
 </html>

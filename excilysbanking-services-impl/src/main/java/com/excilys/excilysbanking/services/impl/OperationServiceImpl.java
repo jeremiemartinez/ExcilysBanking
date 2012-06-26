@@ -12,43 +12,23 @@ import com.excilys.excilysbanking.services.OperationService;
 @Service("operationService")
 @Transactional
 public class OperationServiceImpl implements OperationService {
-
+	
 	@Autowired
 	private OperationDAO operationDAO;
-
-	@Override
-	public List<Operation> getAllOperations() {
-		return operationDAO.findAllOperations();
-	}
-
-	@Override
-	public Double getMontantOperationsCarteByCompteId(Integer compte_id) {
-		return operationDAO.findMontantOperationsCarteByCompteId(compte_id);
-	}
-
+	
 	@Override
 	public Double getMontantOperationsCarteByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month) {
 		return operationDAO.findMontantOperationsCarteByCompteIdAndYearMonth(compte_id, year, month);
 	}
-
-	@Override
-	public List<Operation> getOperationsVirementByCompteId(Integer compte_id) {
-		return operationDAO.findOperationsVirementByCompteId(compte_id);
-	}
-
-	@Override
-	public List<Operation> getOperationsCarteByCompteId(Integer compte_id) {
-		return operationDAO.findOperationsCarteByCompteId(compte_id);
-	}
-
+	
 	@Override
 	public List<Operation> getOperationsVirementByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month) {
 		return operationDAO.findOperationsVirementByCompteIdAndYearMonth(compte_id, year, month);
 	}
-
+	
 	@Override
 	public List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month) {
 		return operationDAO.findOperationsCarteByCompteIdAndYearMonth(compte_id, year, month);
 	}
-
+	
 }

@@ -21,4 +21,10 @@ public class CompteDAOImpl extends AbstractDAOQueryDSLHelper implements CompteDA
 		return query().from(compte).where(compte.user.username.eq(username)).list(compte);
 	}
 	
+	@Override
+	public List<Compte> findAllComptes() {
+		log.debug("Calling Method findAllComptes");
+		return query().from(compte).list(compte);
+	}
+	
 }

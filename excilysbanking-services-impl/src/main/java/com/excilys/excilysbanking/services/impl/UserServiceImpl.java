@@ -19,30 +19,30 @@ import com.excilys.excilysbanking.services.UserService;
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
-
+	
 	@Autowired
 	private UserDAO userDAO;
-
+	
 	@Override
 	public User getUserByUsername(String username) {
 		return userDAO.findUserByUsername(username);
 	}
-
+	
 	@Override
 	public List<User> getAllUsers() {
 		return userDAO.findAllUsers();
 	}
-
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return getUserByUsername(username);
 	}
-
+	
 	@Override
 	public boolean isConnected(Authentication auth) {
 		return auth.getPrincipal().equals("anonymousUser");
 	}
-
+	
 	@Override
 	public boolean isAdmin(Authentication auth) {
 		for (GrantedAuthority a : auth.getAuthorities()) {
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 		return false;
 	}
-
+	
 	@Override
 	public User getConnectedUser() {
 		return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

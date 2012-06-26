@@ -8,4 +8,6 @@ public interface CompteDAO {
 	
 	List<Compte> findComptesByUsername(String username);
 	
+	List<Compte> findAllComptes();
+	
 }

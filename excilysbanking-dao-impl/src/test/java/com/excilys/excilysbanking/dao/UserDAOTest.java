@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
@@ -20,16 +21,17 @@ import com.excilys.excilysbanking.entities.Compte;
 import com.excilys.excilysbanking.entities.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:context/appcontext-dao-test.xml")
+@ContextConfiguration("classpath:context/appcontext-dao-impl.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
 @DataSet(locations = { "classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml" }, dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
+@ActiveProfiles("testing")
 public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
-
+	
 	@Autowired
 	private UserDAO userDAOTest;
-
+	
 	@Test
 	public void findUserByUsernameTest() {
 		User userTest = userDAOTest.findUserByUsername("jmartinez");
@@ -46,7 +48,7 @@ public class UserDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 		assertEquals(userTest.getComptes().get(1).getSolde(), new Double(10000));
 		assertEquals(userTest.getComptes().get(0).getType(), Compte.CompteType.ESPECE);
 	}
-
+	
 	@Test
 	public void findAllUsersTest() {
 		List<User> users = userDAOTest.findAllUsers();

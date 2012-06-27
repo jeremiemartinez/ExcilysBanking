@@ -45,7 +45,7 @@ public class Operation {
 	@Column
 	private String libelle;
 	
-	public Operation() {}
+	public Operation() { }
 	
 	public Operation(Integer operation_id, Compte compte, OperationType type, Double montant, DateTime date) {
 		this.operation_id = operation_id;

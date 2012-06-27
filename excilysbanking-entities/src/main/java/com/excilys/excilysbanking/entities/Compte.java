@@ -33,7 +33,7 @@ public class Compte {
 	@JoinColumn(name = "username", nullable = false)
 	private User user;
 
-	public Compte() {}
+	public Compte() { }
 
 	public Compte(Integer compte_id, Double solde, CompteType type, User user) {
 		this.compte_id = compte_id;

@@ -30,7 +30,7 @@ public class Authority implements GrantedAuthority {
 	@Column
 	private AuthorityType authority;
 	
-	public Authority() {}
+	public Authority() { }
 	
 	public Authority(Integer authority_id, AuthorityType authority) {
 		this.authority_id = authority_id;

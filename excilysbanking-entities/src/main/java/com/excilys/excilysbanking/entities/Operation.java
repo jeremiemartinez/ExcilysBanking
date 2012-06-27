@@ -45,7 +45,7 @@ public class Operation {
 	@Column
 	private String libelle;
 	
-	public Operation() { }
+	public Operation() {}
 	
 	public Operation(Integer operation_id, Compte compte, OperationType type, Double montant, DateTime date) {
 		this.operation_id = operation_id;
@@ -101,31 +101,6 @@ public class Operation {
 	
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((operation_id == null) ? 0 : operation_id.hashCode());
-		return result;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Operation other = (Operation) obj;
-		if (operation_id == null) {
-			if (other.operation_id != null)
-				return false;
-		} else if (!operation_id.equals(other.operation_id))
-			return false;
-		return true;
 	}
 	
 	@Override

@@ -30,7 +30,7 @@ public class Authority implements GrantedAuthority {
 	@Column
 	private AuthorityType authority;
 	
-	public Authority() { }
+	public Authority() {}
 	
 	public Authority(Integer authority_id, AuthorityType authority) {
 		this.authority_id = authority_id;
@@ -52,25 +52,6 @@ public class Authority implements GrantedAuthority {
 	@Override
 	public String getAuthority() {
 		return authority.name();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Authority other = (Authority) obj;
-		if (authority == null) {
-			if (other.authority != null)
-				return false;
-		} else if (!authority.equals(other.authority))
-			return false;
-		if (authority_id != other.authority_id)
-			return false;
-		return true;
 	}
 	
 	@Override

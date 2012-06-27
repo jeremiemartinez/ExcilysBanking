@@ -106,7 +106,7 @@
 
 							<tr>
 								<td><button class="btn" data-toggle="collapse"
-										data-target="#operationsCarte">Details</button></td>
+										data-target="#operationsCarte"><spring:message code="operations.details"/></button></td>
 								<td><spring:message code="operations.carteDate" /></td>
 								<td><spring:message code="operations.carteType" /></td>
 								<td><spring:message code="operations.carteLibelle" /></td>

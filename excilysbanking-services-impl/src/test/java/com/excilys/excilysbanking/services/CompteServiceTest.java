@@ -51,6 +51,6 @@ public class CompteServiceTest {
 	
 	@Test
 	public void emptyTest() {
-		Assert.assertTrue(true);
+		Assert.assertTrue(false);
 	}
 }

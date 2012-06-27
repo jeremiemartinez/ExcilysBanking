@@ -53,19 +53,19 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, null);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void findMontantOperationsCarteByWrongCompteIdAndYearMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6);
+		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6));
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void findMontantOperationsCarteByCompteIdAndWrongYearMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, -987, 6);
+		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, -987, 6));
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void findMontantOperationsCarteByCompteIdAndYearWrongMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, -456);
+		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, -456));
 	}
 	
 	@Test

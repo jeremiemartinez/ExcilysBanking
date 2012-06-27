@@ -12,18 +12,18 @@ import com.excilys.excilysbanking.services.UserService;
 @Controller
 @RequestMapping("/secured/admin/")
 public class AdminController {
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@Autowired
 	private CompteService compteService;
-
+	
 	@RequestMapping("admin")
 	public String admin(Model m) {
 		User currentUser = userService.getConnectedUser();
-		String name = currentUser.getFirstname() + " " + currentUser.getLastname();
-		m.addAttribute("name", name);
+		m.addAttribute("firstname", currentUser.getFirstname());
+		m.addAttribute("lastname", currentUser.getLastname());
 		m.addAttribute("usersList", userService.getAllUsers());
 		m.addAttribute("comptesList", compteService.getAllComptes());
 		return "/secured/admin/admin";

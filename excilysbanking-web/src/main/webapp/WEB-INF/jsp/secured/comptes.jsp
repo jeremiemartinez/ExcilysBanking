@@ -42,7 +42,7 @@
 						class="flag flag-fr" alt="French" /></a> <a class="btn"
 						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
 						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"> <i class="icon-user"></i> ${name} <span
+						data-toggle="dropdown"> <i class="icon-user"></i> ${firstname} ${lastname} <span
 						class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">

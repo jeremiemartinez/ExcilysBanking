@@ -15,31 +15,34 @@ import com.excilys.excilysbanking.services.UserService;
 @Controller
 @RequestMapping("/secured")
 public class OperationsController {
-
+	
 	@Autowired
 	private OperationService operationService;
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@RequestMapping("/operations/{id}/{year}_{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		User currentUser = userService.getConnectedUser();
-		String name = currentUser.getFirstname() + " " + currentUser.getLastname();
+		
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-		m.addAttribute("name", name);
+		m.addAttribute("firstname", currentUser.getFirstname());
+		m.addAttribute("lastname", currentUser.getLastname());
+		
 		DateTime now = DateTime.now();
 		if (!(year.equals(now.getYear()) && month.equals(now.getMonthOfYear())))
 			m.addAttribute("laterDate", calculateLaterDate(year, month));
 		m.addAttribute("previousDate", calculatePreviousDate(year, month));
+		
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, year, month));
 		m.addAttribute("operationsList", operationService.getOperationsVirementByCompteIdAndYearMonth(id, year, month));
 		m.addAttribute("operationsCarteList", operationService.getOperationsCarteByCompteIdAndYearMonth(id, year, month));
 		return "/secured/operations";
 	}
-
+	
 	private String calculatePreviousDate(Integer year, Integer month) {
 		StringBuilder sb = new StringBuilder();
 		if (month.equals(new Integer(1)))
@@ -48,7 +51,7 @@ public class OperationsController {
 			sb.append(year).append("_").append(month - 1);
 		return sb.toString();
 	}
-
+	
 	private String calculateLaterDate(Integer year, Integer month) {
 		StringBuilder sb = new StringBuilder();
 		if (month.equals(new Integer(12)))

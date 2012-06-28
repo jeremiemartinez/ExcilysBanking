@@ -13,9 +13,9 @@ import com.excilys.excilysbanking.entities.User;
 
 @Repository("userDAO")
 public class UserDAOImpl extends AbstractDAOQueryDSLHelper implements UserDAO {
-
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserDAOImpl.class);
-
+	
 	@Override
 	public User findUserByUsername(String username) {
 		LOGGER.debug("Calling Method findUserByUsername");
@@ -23,11 +23,11 @@ public class UserDAOImpl extends AbstractDAOQueryDSLHelper implements UserDAO {
 		Assert.notNull(user, "Username does not exist");
 		return user;
 	}
-
+	
 	@Override
 	public List<User> findAllUsers() {
 		LOGGER.debug("Calling Method findAllUsers");
 		return query().from(user).list(user);
 	}
-
+	
 }

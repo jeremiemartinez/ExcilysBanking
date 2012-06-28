@@ -12,9 +12,9 @@ import com.excilys.excilysbanking.entities.Operation;
 
 @Repository("operationDAO")
 public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements OperationDAO {
-
-	private Logger log = LoggerFactory.getLogger(this.getClass());
-
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(OperationDAOImpl.class);
+	
 	@Override
 	public Double findMontantOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
 		log.debug("Calling Method findMontantOperationsCarteByCompteIdAndYearMonth");
@@ -27,7 +27,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 		else
 			return d;
 	}
-
+	
 	@Override
 	public List<Operation> findOperationsVirementByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
 		log.debug("Calling Method findOperationsVirementByCompteIdAndYearMonth");
@@ -36,7 +36,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 				.where(operation.type.ne(Operation.OperationType.CARTE), operation.compte.id.eq(id), operation.date.year().eq(year),
 						operation.date.month().eq(month)).groupBy(operation).orderBy(operation.date.dayOfMonth().asc()).list(operation);
 	}
-
+	
 	@Override
 	public List<Operation> findOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
 		log.debug("Calling Method findOperationsCarteByCompteIdAndYearMonth");

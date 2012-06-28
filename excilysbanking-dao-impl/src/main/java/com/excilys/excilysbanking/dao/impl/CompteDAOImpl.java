@@ -12,20 +12,19 @@ import com.excilys.excilysbanking.entities.Compte;
 
 @Repository("compteDAO")
 public class CompteDAOImpl extends AbstractDAOQueryDSLHelper implements CompteDAO {
-	
+
 	private Logger log = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Override
 	public List<Compte> findComptesByUsername(String username) {
 		log.debug("Calling Method findComptesByUsername");
 		return query().from(compte).where(compte.user.username.eq(username)).list(compte);
 	}
-	
+
 	@Override
 	public List<Compte> findAllComptes() {
 		log.debug("Calling Method findAllComptes");
 		return query().from(compte).list(compte);
 	}
-	
+
 }
-compte_id

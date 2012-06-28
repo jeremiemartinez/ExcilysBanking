@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,6 +28,10 @@
 
 </head>
 <body>
+
+	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
+	<security:authentication property="principal" var="user" scope="page"/>
+
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -40,7 +45,7 @@
 						class="flag flag-fr" alt="French" /></a> <a class="btn"
 						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
 						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"> <i class="icon-user"></i> ${firstname} ${lastname} <span
+						data-toggle="dropdown"> <i class="icon-user"></i> ${user.firstname} ${user.lastname} <span
 						class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -117,7 +122,7 @@
 						<tbody>
 							<c:forEach var="c" items="${comptesList}">
 								<tr>
-									<td>${c.compte_id}</td>
+									<td>${c.id}</td>
 									<td>${c.type}</td>
 									<td>${c.solde} $</td>
 									<td>${c.user.username}</td>

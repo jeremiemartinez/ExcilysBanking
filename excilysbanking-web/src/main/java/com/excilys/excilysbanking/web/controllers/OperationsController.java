@@ -11,31 +11,43 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.excilys.excilysbanking.entities.Operation;
 import com.excilys.excilysbanking.services.OperationService;
 import com.excilys.excilysbanking.services.UserService;
 
 @Controller
 @RequestMapping("/secured")
 public class OperationsController {
-	
+
 	@Autowired
 	private OperationService operationService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
+	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
+	public @ResponseBody
+	List<Operation> operationsCarteJSON() {
+		List<Operation> operations = operationService.get.shop.setName("caca");
+		shop.setStaffName(new String[] { "mkyong1", "mkyong2" });
+		log.debug(shop.toString());
+		return shop;
+
+	}
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
-		
+
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-		
+
 		YearMonth ym = new YearMonth(year, month);
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, ym));
 		m.addAttribute("operationsList", operationService.getOperationsVirementByCompteIdAndYearMonth(id, ym));
 		m.addAttribute("operationsCarteList", operationService.getOperationsCarteByCompteIdAndYearMonth(id, ym));
-		
+
 		DateTime now = DateTime.now();
 		YearMonth tmp = new YearMonth(now.year().get(), now.monthOfYear().get());
 		List<YearMonth> months = new ArrayList<YearMonth>(6);
@@ -46,7 +58,7 @@ public class OperationsController {
 		}
 		m.addAttribute("months", months);
 		m.addAttribute("requestedMonth", ym);
-		
+
 		return "/secured/operations";
 	}
 }

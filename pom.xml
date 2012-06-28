@@ -72,6 +72,9 @@
 		<jadira.version>3.0.0.CR1</jadira.version>
 		<joda.version>2.1</joda.version>
 		<joda.jsp.version>1.1.1</joda.jsp.version>
+		
+		<!-- Jackson for JSON -->
+		<jackson.version>1.9.7</jackson.version>
 
 	</properties>
 
@@ -294,6 +297,12 @@
 				<version>${joda.jsp.version}</version>
 			</dependency>
 
+			<!-- Jackson JSON Mapper -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

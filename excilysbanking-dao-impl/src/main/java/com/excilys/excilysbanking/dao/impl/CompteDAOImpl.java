@@ -22,9 +22,9 @@ public class CompteDAOImpl extends AbstractDAOQueryDSLHelper implements CompteDA
 	}
 	
 	@Override
-	public List<Compte> findAllComptes() {
-		LOGGER.debug("Calling Method findAllComptes");
-		return query().from(compte).list(compte);
+	public List<Compte> findComptes() {
+		LOGGER.debug("Calling Method findComptes");
+		return query().from(compte).groupBy(compte).orderBy(compte.id.asc()).list(compte);
 	}
 	
 }

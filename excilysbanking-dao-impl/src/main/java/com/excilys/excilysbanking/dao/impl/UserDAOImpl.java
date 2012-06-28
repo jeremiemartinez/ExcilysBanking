@@ -25,9 +25,9 @@ public class UserDAOImpl extends AbstractDAOQueryDSLHelper implements UserDAO {
 	}
 	
 	@Override
-	public List<User> findAllUsers() {
-		LOGGER.debug("Calling Method findAllUsers");
-		return query().from(user).list(user);
+	public List<User> findUsers() {
+		LOGGER.debug("Calling Method findUsers");
+		return query().from(user).groupBy(user).orderBy(user.username.asc()).list(user);
 	}
 	
 }

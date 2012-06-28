@@ -23,7 +23,7 @@ public class CompteServiceImpl implements CompteService {
 
 	@Override
 	public List<Compte> getAllComptes() {
-		return compteDAO.findAllComptes();
+		return compteDAO.findComptes();
 	}
 
 }

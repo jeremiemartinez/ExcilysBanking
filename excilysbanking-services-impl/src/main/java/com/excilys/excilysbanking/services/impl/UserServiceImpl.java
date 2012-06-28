@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public List<User> getAllUsers() {
-		return userDAO.findAllUsers();
+		return userDAO.findUsers();
 	}
 
 	@Override

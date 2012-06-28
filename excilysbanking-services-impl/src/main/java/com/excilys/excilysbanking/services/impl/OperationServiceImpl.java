@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.services.impl;
 
 import java.util.List;
+import org.joda.time.YearMonth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,18 +18,18 @@ public class OperationServiceImpl implements OperationService {
 	private OperationDAO operationDAO;
 
 	@Override
-	public Double getMontantOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		return operationDAO.findMontantOperationsCarteByCompteIdAndYearMonth(id, year, month);
+	public Double getMontantOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym) {
+		return operationDAO.findMontantOperationsCarteByCompteIdAndYearMonth(id, ym);
 	}
 
 	@Override
-	public List<Operation> getOperationsVirementByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		return operationDAO.findOperationsVirementByCompteIdAndYearMonth(id, year, month);
+	public List<Operation> getOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym) {
+		return operationDAO.findOperationsVirementByCompteIdAndYearMonth(id, ym);
 	}
 
 	@Override
-	public List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		return operationDAO.findOperationsCarteByCompteIdAndYearMonth(id, year, month);
+	public List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym) {
+		return operationDAO.findOperationsCarteByCompteIdAndYearMonth(id, ym);
 	}
 
 }

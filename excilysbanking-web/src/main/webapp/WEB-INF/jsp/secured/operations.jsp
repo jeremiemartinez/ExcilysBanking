@@ -23,7 +23,6 @@
 <title><spring:message code="operations.title" /></title>
 <spring:message var="pattern" code="operations.dateFormat" />
 
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +45,7 @@
 					<span class="icon-bar"></span>
 				</a>
 				
-				<a class="brand" href="../index">
+				<a class="brand" href="/ebank/index">
 					<spring:message code="bank.name" />
 				</a>
 				
@@ -86,15 +85,36 @@
 		</div>
 	</div>
 
-
 	<h3>
 		<spring:message code="operations.subtitle" />
-		${id}
+		${id} 
+		<spring:message code="operations.date"/>
+		<joda:format value="${requestedMonth}" pattern="MMMM yyyy" locale="${request.locale}"/>
 	</h3>
+	
 	<div class="row-fluid">
 		<div class="span2"></div>
 		<div class="span8">
 			<br />
+			
+			<div class="row">
+				<div class="span3"></div>
+					<div class="span8">				
+					<ul class="nav nav-pills">
+						<c:forEach var="m" items="${months}">
+							<c:choose>
+								<c:when test="${m == requestedMonth}">
+					  				<li class="active"><a href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format value="${m}" pattern="MMMM yyyy" locale="${request.locale}"/></a></li>
+								</c:when>
+								<c:otherwise>
+					  				<li><a href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format value="${m}" pattern="MMMM yyyy" locale="${request.locale}"/></a></li>
+								</c:otherwise>
+							</c:choose>
+					  	</c:forEach>
+					</ul>
+				</div>
+				<div class="span3"></div>
+			</div>
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab1">
 					<table class="table table-striped">

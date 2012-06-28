@@ -42,7 +42,7 @@
 					<span class="icon-bar"></span>
 				</a>
 				
-				<a class="brand" href="../index"><spring:message code="bank.name" /></a>
+				<a class="brand" href="/ebank/index"><spring:message code="bank.name" /></a>
 				
 				<div class="btn-group pull-right">
 				

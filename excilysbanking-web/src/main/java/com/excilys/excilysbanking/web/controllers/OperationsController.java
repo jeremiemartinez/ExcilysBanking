@@ -30,17 +30,22 @@ public class OperationsController {
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
 		
-		DateTime now = DateTime.now();
-		YearMonth ym = new YearMonth(now.getYear(), now.getMonthOfYear());
+		YearMonth ym = new YearMonth(year, month);
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, ym));
 		m.addAttribute("operationsList", operationService.getOperationsVirementByCompteIdAndYearMonth(id, ym));
 		m.addAttribute("operationsCarteList", operationService.getOperationsCarteByCompteIdAndYearMonth(id, ym));
 		
-		List<String> prevMonths = new ArrayList<String>(5);
-		for (int i = 0; i < 5; i++)
-			prevMonths.add("month" + (now = now.minusMonths(1)).getMonthOfYear());
-		m.addAttribute("previousMonths", prevMonths);
+		DateTime now = DateTime.now();
+		YearMonth tmp = new YearMonth(now.year().get(), now.monthOfYear().get());
+		List<YearMonth> months = new ArrayList<YearMonth>(6);
+		tmp = tmp.minusMonths(5);
+		for (int i = 0; i < 6; i++) {
+			months.add(tmp);
+			tmp = tmp.plusMonths(1);
+		}
+		m.addAttribute("months", months);
+		m.addAttribute("requestedMonth", ym);
 		
 		return "/secured/operations";
 	}

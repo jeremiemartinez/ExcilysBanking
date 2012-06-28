@@ -3042,11 +3042,13 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	color: #222222;
+	text-decoration: none;
 }
 
 .nav-pills>.active>a,.nav-pills>.active>a:hover {
 	color: #ffffff;
-	background-color: #0088cc;
+	background-color: #222222;
 }
 
 .nav-stacked>li {

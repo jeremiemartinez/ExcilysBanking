@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collections;
 import java.util.List;
 import org.joda.time.DateTime;
+import org.joda.time.IllegalFieldValueException;
+import org.joda.time.YearMonth;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,42 +37,37 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 
 	@Test
 	public void findMontantOperationsCarteByCompteIdAndYearMonthTest() {
-		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, 6));
+		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6)));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void findMontantOperationsCarteByNullCompteIdAndYearMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(null, 2012, 6);
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(null, new YearMonth(2012, 6));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = NullPointerException.class)
 	public void findMontantOperationsCarteByCompteIdAndNullYearMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, null, 6);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void findMontantOperationsCarteByCompteIdAndYearNullMonthTest() {
-		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, null);
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, null);
 	}
 
 	@Test
 	public void findMontantOperationsCarteByWrongCompteIdAndYearMonthTest() {
-		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6));
+		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(-9999, new YearMonth(2012, 6)));
 	}
 
 	@Test
 	public void findMontantOperationsCarteByCompteIdAndWrongYearMonthTest() {
-		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, -987, 6));
+		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(-987, 6)));
 	}
 
-	@Test
+	@Test(expected = IllegalFieldValueException.class)
 	public void findMontantOperationsCarteByCompteIdAndYearWrongMonthTest() {
-		assertEquals(Double.valueOf(0d), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, 2012, -456));
+		operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, -456));
 	}
 
 	@Test
 	public void findOperationsCarteByCompteIdAndYearMonth() {
-		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, 6);
+		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6));
 		assertEquals(2, ops.size());
 
 		Operation op = ops.get(0);
@@ -90,31 +87,26 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 
 	@Test(expected = IllegalArgumentException.class)
 	public void findOperationsCarteByNullCompteIdAndYearMonth() {
-		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(null, 2012, 6);
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(null, new YearMonth(2012, 6));
 	}
 
 	@Test
 	public void findOperationsCarteByWrongCompteIdAndYearMonth() {
-		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(-9999, 2012, 6));
+		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(-9999, new YearMonth(2012, 6)));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = NullPointerException.class)
 	public void findOperationsCarteByCompteIdAndNullYearMonth() {
-		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, null, 6);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void findOperationsCarteByCompteIdAndYearNullMonth() {
-		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, null);
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, null);
 	}
 
 	@Test
 	public void findOperationsCarteByCompteIdAndWrongYearMonth() {
-		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, -987, 6));
+		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(-987, 6)));
 	}
 
-	@Test
+	@Test(expected = IllegalFieldValueException.class)
 	public void findOperationsCarteByCompteIdAndYearWrongMonth() {
-		assertEquals(Collections.emptyList(), operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, 2012, -123));
+		operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, -456));
 	}
 }

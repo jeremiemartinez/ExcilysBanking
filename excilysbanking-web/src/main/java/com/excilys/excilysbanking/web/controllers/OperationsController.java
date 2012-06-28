@@ -30,10 +30,6 @@ public class OperationsController {
 			m.addAttribute("isAdmin", "true");
 		
 		DateTime now = DateTime.now();
-		if (!(year.equals(now.getYear()) && month.equals(now.getMonthOfYear())))
-			m.addAttribute("laterDate", calculateLaterDate(year, month));
-		m.addAttribute("previousDate", calculatePreviousDate(year, month));
-		
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, year, month));
 		m.addAttribute("operationsList", operationService.getOperationsVirementByCompteIdAndYearMonth(id, year, month));

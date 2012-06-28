@@ -109,7 +109,7 @@
 									<td>${c.id}</td>
 									<td>${c.type}</td>
 									<td>${c.solde} $</td>
-									<td><a href="./operations/${c.id}/${date}">
+									<td><a href="./operations/id/${c.id}/year/${year}/month/${month}">
 										<spring:message code="comptes.operations" /></a></td>
 								</tr>
 							</c:forEach>

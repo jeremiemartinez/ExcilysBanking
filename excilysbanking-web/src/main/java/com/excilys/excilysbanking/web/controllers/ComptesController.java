@@ -14,26 +14,22 @@ import com.excilys.excilysbanking.services.UserService;
 @Controller
 @RequestMapping("/secured")
 public class ComptesController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private CompteService compteService;
-	
+
 	@RequestMapping("/comptes")
 	public String comptes(Model m) {
 		User currentUser = userService.getConnectedUser();
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
 		m.addAttribute("comptesList", compteService.getComptesByUsername(currentUser.getUsername()));
-		m.addAttribute("date", buildDate());
-		return "/secured/comptes";
-	}
-	
-	private String buildDate() {
 		DateTime datetime = DateTime.now();
-		StringBuilder sb = new StringBuilder();
-		return sb.append(datetime.getYear()).append("_").append(datetime.getMonthOfYear()).toString();
+		m.addAttribute("year", datetime.getYear());
+		m.addAttribute("month", datetime.getMonthOfYear());
+		return "/secured/comptes";
 	}
 }

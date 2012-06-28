@@ -92,13 +92,7 @@
 		${id}
 	</h3>
 	<div class="row-fluid">
-		<div class="span1"></div>
-		<div class="span1">
-			<a class="btn btn-primary"
-				href="/ebank/secured/operations/${id}/${previousDate}/"><spring:message
-					code="operations.previousMonth" /></a>
-
-		</div>
+		<div class="span2"></div>
 		<div class="span8">
 			<br />
 			<div class="tab-content">
@@ -168,14 +162,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="span1">
-			<c:if test="${not empty laterDate }">
-				<a class="btn btn-primary"
-					href="/ebank/secured/operations/${id}/${laterDate}/"><spring:message
-						code="operations.laterMonth" /></a>
-			</c:if>
-		</div>
-		<div class="span1"></div>
+		<div class="span2"></div>
 	</div>
 
 	<c:import url="../included/footer.jsp"></c:import>

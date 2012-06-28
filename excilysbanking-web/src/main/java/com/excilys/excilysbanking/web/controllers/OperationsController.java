@@ -1,6 +1,8 @@
 
 package com.excilys.excilysbanking.web.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,31 +16,37 @@ import com.excilys.excilysbanking.services.UserService;
 @Controller
 @RequestMapping("/secured")
 public class OperationsController {
-
+	
 	@Autowired
 	private OperationService operationService;
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
-
+		
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-
+		
 		DateTime now = DateTime.now();
 		if (!(year.equals(now.getYear()) && month.equals(now.getMonthOfYear())))
 			m.addAttribute("laterDate", calculateLaterDate(year, month));
 		m.addAttribute("previousDate", calculatePreviousDate(year, month));
-
+		
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, year, month));
 		m.addAttribute("operationsList", operationService.getOperationsVirementByCompteIdAndYearMonth(id, year, month));
 		m.addAttribute("operationsCarteList", operationService.getOperationsCarteByCompteIdAndYearMonth(id, year, month));
+		
+		List<String> prevMonths = new ArrayList<String>(5);
+		for (int i = 0; i < 5; i++)
+			prevMonths.add("month" + (now = now.plusMonths(1)).getMonthOfYear());
+		m.addAttribute("previousMonths", prevMonths);
+		
 		return "/secured/operations";
 	}
-
+	
 	private String calculatePreviousDate(Integer year, Integer month) {
 		StringBuilder sb = new StringBuilder();
 		if (month.equals(new Integer(1)))
@@ -47,7 +55,7 @@ public class OperationsController {
 			sb.append(year).append("_").append(month - 1);
 		return sb.toString();
 	}
-
+	
 	private String calculateLaterDate(Integer year, Integer month) {
 		StringBuilder sb = new StringBuilder();
 		if (month.equals(new Integer(12)))

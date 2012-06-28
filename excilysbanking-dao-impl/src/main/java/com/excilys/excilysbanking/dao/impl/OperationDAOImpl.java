@@ -67,12 +67,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	}
 	
 	private List<Operation> findOperations(Integer id, OperationType type, YearMonth ym, Integer pageSize, Integer pageNumber) {
-		HibernateQuery hq = queryOperations(id, type, ym).groupBy(operation).orderBy(operation.date.dayOfMonth().asc());
-		if (pageNumber > 0 && pageSize > 0) {
-			hq = hq.offset((pageNumber - 1) * pageSize);
-			hq = hq.limit(pageSize);
-		}
-		return hq.list(operation);
+		return page(queryOperations(id, type, ym).groupBy(operation).orderBy(operation.date.dayOfMonth().asc()), pageSize, pageNumber).list(operation);
 	}
 	
 	@Override

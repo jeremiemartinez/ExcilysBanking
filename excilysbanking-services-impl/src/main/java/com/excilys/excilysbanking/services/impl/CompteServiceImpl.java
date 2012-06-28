@@ -10,20 +10,20 @@ import com.excilys.excilysbanking.entities.Compte;
 import com.excilys.excilysbanking.services.CompteService;
 
 @Service("compteService")
-@Transactional
+@Transactional(readOnly = true)
 public class CompteServiceImpl implements CompteService {
-	
+
 	@Autowired
 	private CompteDAO compteDAO;
-	
+
 	@Override
 	public List<Compte> getComptesByUsername(String username) {
 		return compteDAO.findComptesByUsername(username);
 	}
-	
+
 	@Override
 	public List<Compte> getAllComptes() {
 		return compteDAO.findAllComptes();
 	}
-	
+
 }

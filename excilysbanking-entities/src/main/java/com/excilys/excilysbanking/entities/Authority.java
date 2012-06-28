@@ -14,50 +14,62 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 @Table(name = "authorities")
 public class Authority implements GrantedAuthority {
-	
+
 	private static final long serialVersionUID = 2431697487487879447L;
-	
+
 	public enum AuthorityType {
 		ROLE_USER, ROLE_ADMIN;
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
-	private Integer authority_id;
-	
+	@Column(name = "authority_id")
+	private Integer id;
+
 	@Enumerated(EnumType.STRING)
 	@Column
 	private AuthorityType authority;
-	
-	public Authority() {}
-	
-	public Authority(Integer authority_id, AuthorityType authority) {
-		this.authority_id = authority_id;
-		this.authority = authority;
+
+	public Integer getId() {
+		return id;
 	}
-	
-	public Integer getAuthority_id() {
-		return authority_id;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
-	public void setauthority_id(Integer authority_id) {
-		this.authority_id = authority_id;
-	}
-	
+
 	public void setAuthority(String authorityType) {
 		this.authority = AuthorityType.valueOf(authorityType);
 	}
-	
+
 	@Override
 	public String getAuthority() {
 		return authority.name();
 	}
-	
+
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("Authority [authority_id=");
-		return sb.append(authority_id).append(", authority=").append(authority.toString()).append("]").toString();
+		StringBuilder sb = new StringBuilder("Authority [id=");
+		return sb.append(id).append(", authority=").append(authority.toString()).append("]").toString();
 	}
-	
+
+	public static class Builder {
+
+		private final Authority authority = new Authority();
+
+		public Builder id(Integer id) {
+			authority.id = id;
+			return this;
+		}
+
+		public Builder type(AuthorityType type) {
+			authority.authority = type;
+			return this;
+		}
+
+		public Authority build() {
+			return authority;
+		}
+	}
+
 }

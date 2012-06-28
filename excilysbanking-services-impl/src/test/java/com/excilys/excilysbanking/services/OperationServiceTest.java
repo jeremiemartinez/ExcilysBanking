@@ -21,41 +21,44 @@ import com.excilys.excilysbanking.services.impl.OperationServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OperationServiceTest {
-	
+
 	@Mock
 	private OperationDAO operationDAOTest;
-	
+
 	@InjectMocks
 	private OperationServiceImpl operationServiceTest;
-	
+
 	@Before
 	public void before() {
 		MockitoAnnotations.initMocks(this);
-		User userTest = new User("jmartinez", "password", "Jeremie", "Martinez");
-		
+		User userTest = new User.Builder().username("jmartinez").password("password").firstname("Jeremie").lastname("Martinez").build();
+
 		List<Authority> authorities = new ArrayList<Authority>();
-		authorities.add(new Authority(0, Authority.AuthorityType.ROLE_USER));
-		
-		Compte compteTest = new Compte(6464, 2000.0, Compte.CompteType.ESPECE, userTest);
-		
+		authorities.add(new Authority.Builder().id(0).type(Authority.AuthorityType.ROLE_USER).build());
+
+		Compte compte = new Compte.Builder().id(6464).solde(2000.0).type(Compte.CompteType.ESPECE).user(userTest).build();
+
 		List<Operation> operations = new ArrayList<Operation>();
 		List<Operation> operationsNonCarte = new ArrayList<Operation>();
-		Operation operation1 = new Operation(151, compteTest, Operation.OperationType.CARTE, 2000.0, new DateTime(2012, 6, 25, 0, 0));
-		Operation operation2 = new Operation(152, compteTest, Operation.OperationType.CARTE, 2000.0, new DateTime(2012, 6, 25, 0, 0));
-		Operation operation3 = new Operation(153, compteTest, Operation.OperationType.VIREMENT, -1000.0, new DateTime(2012, 6, 25, 0, 0));
+		Operation operation1 = new Operation.Builder().id(151).compte(compte).type(Operation.OperationType.CARTE).montant(2000.0)
+				.date(new DateTime(2012, 6, 25, 0, 0)).build();
+		Operation operation2 = new Operation.Builder().id(152).compte(compte).type(Operation.OperationType.CARTE).montant(2000.0)
+				.date(new DateTime(2012, 6, 25, 0, 0)).build();
+		Operation operation3 = new Operation.Builder().id(153).compte(compte).type(Operation.OperationType.CARTE).montant(-1000.0)
+				.date(new DateTime(2012, 6, 25, 0, 0)).build();
 		operations.add(operation1);
 		operations.add(operation2);
 		operations.add(operation3);
 		operationsNonCarte.add(operation3);
-		
+
 		userTest.setAuthorities(authorities);
 		// ...
-		
+
 	}
-	
+
 	// The service has no business logic !
 	// No need to test our mocks...
-	
+
 	@Test
 	public void emptyTest() {
 		Assert.assertTrue(true);

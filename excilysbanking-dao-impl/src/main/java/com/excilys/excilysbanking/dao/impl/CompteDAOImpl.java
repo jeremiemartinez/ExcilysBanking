@@ -28,3 +28,4 @@ public class CompteDAOImpl extends AbstractDAOQueryDSLHelper implements CompteDA
 	}
 	
 }
+compte_id

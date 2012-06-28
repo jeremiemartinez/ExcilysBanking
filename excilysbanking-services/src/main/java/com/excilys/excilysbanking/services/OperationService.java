@@ -6,10 +6,10 @@ import com.excilys.excilysbanking.entities.Operation;
 
 public interface OperationService {
 	
-	Double getMontantOperationsCarteByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month);
+	Double getMontantOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month);
 	
-	List<Operation> getOperationsVirementByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month);
+	List<Operation> getOperationsVirementByCompteIdAndYearMonth(Integer id, Integer year, Integer month);
 	
-	List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer compte_id, Integer year, Integer month);
+	List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month);
 	
 }

@@ -28,10 +28,10 @@ import com.excilys.excilysbanking.entities.Compte;
 @Transactional
 @ActiveProfiles("testing")
 public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
-	
+
 	@Autowired
 	private CompteDAO compteDAOTest;
-	
+
 	@Test
 	public void findComptesByUsernameTest() {
 		List<Compte> comptes = compteDAOTest.findComptesByUsername("jmartinez");
@@ -40,28 +40,28 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 		assertEquals(Compte.CompteType.ESPECE, comptes.get(0).getType());
 		assertEquals("jmartinez", comptes.get(0).getUser().getUsername());
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void findComptesByNullUsernameTest() {
 		compteDAOTest.findComptesByUsername(null);
 	}
-	
+
 	@Test
 	public void findComptesByEmptyUsernameTest() {
 		assertEquals(Collections.emptyList(), compteDAOTest.findComptesByUsername(""));
 	}
-	
+
 	@Test
 	public void findComptesByWrongUsernameTest() {
 		assertEquals(Collections.emptyList(), compteDAOTest.findComptesByUsername("tDurden"));
 	}
-	
+
 	@Test
 	public void findAllComptesTest() {
 		List<Compte> comptes = compteDAOTest.findAllComptes();
 		assertEquals(3, comptes.size());
 		Compte c = comptes.get(0);
-		assertEquals(2138962500, c.getCompte_id().intValue());
+		assertEquals(2138962500, c.getId().intValue());
 		assertEquals(Double.valueOf(2000), c.getSolde());
 		assertEquals(Compte.CompteType.ESPECE, c.getType());
 		assertEquals("jmartinez", c.getUser().getUsername());

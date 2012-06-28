@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.OperationService;
 import com.excilys.excilysbanking.services.UserService;
 
@@ -24,12 +23,9 @@ public class OperationsController {
 	
 	@RequestMapping("/operations/{id}/{year}_{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
-		User currentUser = userService.getConnectedUser();
 		
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-		m.addAttribute("firstname", currentUser.getFirstname());
-		m.addAttribute("lastname", currentUser.getLastname());
 		
 		DateTime now = DateTime.now();
 		if (!(year.equals(now.getYear()) && month.equals(now.getMonthOfYear())))

@@ -32,18 +32,18 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#"><spring:message code="bank.name" /></a>
+			
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#"><spring:message code="bank.name" /></a>
+				
 				<div class="btn-group pull-right">
-				<a class="btn" href="_change_locale_to_fr"><img
-						class="flag flag-fr" alt="French" /></a>
-					<a class="btn" href="_change_locale_to_en"><img
-						class="flag flag-gb" alt="English" /></a> <a class="btn"
-						href="#moduleConnection"> <i class="icon-user"></i> <spring:message
-							code="index.connect" /> &nbsp;
-					</a>
+					<a class="btn" href="_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
+					<a class="btn" href="_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
+					<a class="btn" href="#moduleConnection"> <i class="icon-user"></i> <spring:message code="index.connect" /> &nbsp; </a>
 				</div>
 
 			</div>

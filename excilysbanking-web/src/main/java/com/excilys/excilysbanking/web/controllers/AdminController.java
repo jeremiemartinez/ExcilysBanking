@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.CompteService;
 import com.excilys.excilysbanking.services.UserService;
 
@@ -21,9 +20,6 @@ public class AdminController {
 	
 	@RequestMapping("admin")
 	public String admin(Model m) {
-		User currentUser = userService.getConnectedUser();
-		m.addAttribute("firstname", currentUser.getFirstname());
-		m.addAttribute("lastname", currentUser.getLastname());
 		m.addAttribute("usersList", userService.getAllUsers());
 		m.addAttribute("comptesList", compteService.getAllComptes());
 		return "/secured/admin/admin";

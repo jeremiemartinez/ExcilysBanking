@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,44 +34,52 @@
 </head>
 <body>
 
+	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
+	<security:authentication property="principal" var="user" scope="page"/>
 
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="../index"><spring:message
-						code="bank.name" /></a>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				
+				<a class="brand" href="../index">
+					<spring:message code="bank.name" />
+				</a>
+				
 				<div class="btn-group pull-right">
-					<a class="btn" href="/ebank/_change_locale_to_fr"><img
-						class="flag flag-fr" alt="French" /></a> <a class="btn"
-						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
-						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"> <i class="icon-user"></i> ${firstname} ${lastname} <span
-						class="caret"></span>
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
+					<a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
+					<a class="btn dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-user"></i> ${user.firstname} ${user.lastname} <span class="caret"></span>
 					</a>
+					
 					<ul class="dropdown-menu">
-						<li><a href="../index"><i class="icon-home"></i>&nbsp;
-								&nbsp; <spring:message code="operations.return" /></a></li>
+						<li>
+							<a href="../index"><i class="icon-home"></i>&nbsp; &nbsp; <spring:message code="operations.return" /></a>
+						</li>
 						<li class="divider"></li>
-						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp;
-								&nbsp; <spring:message code="operations.comptes" /></a></li>
+						<li>
+							<a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp; &nbsp; <spring:message code="operations.comptes" /></a>
+						</li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
-							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp;
-									&nbsp; <spring:message code="operations.adminInterface" /></a></li>
+							<li>
+								<a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="operations.adminInterface" /></a>
+							</li>
 							<li class="divider"></li>
 						</c:if>
-						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; <spring:message
-									code="operations.disconnect" /></a></li>
+						<li>
+							<a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp; <spring:message code="operations.disconnect" /></a>
+						</li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message
-									code="operations.title" /></a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message code="operations.title" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -130,7 +141,7 @@
 											</thead>
 											<c:forEach var="oc" items="${operationsCarteList}">
 												<tr>
-													<td>${oc.operation_id}</td>
+													<td>${oc.id}</td>
 													<td><joda:format value="${oc.date}"
 															pattern="${pattern}" /></td>
 													<td>${oc.type}</td>
@@ -145,7 +156,7 @@
 
 							<c:forEach var="o" items="${operationsList}">
 								<tr>
-									<td>${o.operation_id}</td>
+									<td>${o.id}</td>
 									<td><joda:format value="${o.date}" pattern="${pattern}" /></td>
 									<td>${o.type}</td>
 									<td>${o.libelle }</td>

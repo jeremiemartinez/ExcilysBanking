@@ -26,8 +26,6 @@ public class ComptesController {
 		User currentUser = userService.getConnectedUser();
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-		m.addAttribute("firstname", currentUser.getFirstname());
-		m.addAttribute("lastname", currentUser.getLastname());
 		m.addAttribute("comptesList", compteService.getComptesByUsername(currentUser.getUsername()));
 		m.addAttribute("date", buildDate());
 		return "/secured/comptes";

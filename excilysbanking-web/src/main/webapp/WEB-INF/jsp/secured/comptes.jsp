@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,41 +29,55 @@
 </head>
 <body>
 
+	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
+	<security:authentication property="principal" var="user" scope="page"/>
 
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="../index"><spring:message
-						code="bank.name" /></a>
+
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				
+				<a class="brand" href="../index"><spring:message code="bank.name" /></a>
+				
 				<div class="btn-group pull-right">
-					<a class="btn" href="/ebank/_change_locale_to_fr"><img
-						class="flag flag-fr" alt="French" /></a> <a class="btn"
-						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
-						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"> <i class="icon-user"></i> ${firstname} ${lastname} <span
-						class="caret"></span>
-					</a>
+				
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
+					<a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
+					<a class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>${user.firstname} ${user.lastname}<span class="caret"></span></a>
+					
 					<ul class="dropdown-menu">
-						<li><a href="../index"><i class="icon-home"></i>&nbsp;
-								&nbsp; <spring:message code="comptes.return" /></a></li>
+						<li>
+							<a href="../index"><i class="icon-home"></i>&nbsp; &nbsp;<spring:message code="comptes.return" /></a>
+						</li>
+						
 						<li class="divider"></li>
+						
 						<c:if test="${not empty isAdmin}">
-							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp;
-									&nbsp; <spring:message code="comptes.adminInterface" /></a></li>
+							<li>
+								<a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="comptes.adminInterface" /></a>
+							</li>
 							<li class="divider"></li>
 						</c:if>
-						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; <spring:message
-									code="comptes.disconnect" /></a></li>
+						
+						<li>
+							<a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp;<spring:message code="comptes.disconnect" /></a>
+						</li>
+						
 					</ul>
 				</div>
+				
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message
-									code="comptes.title" /></a></li>
+						<li class="active">
+							<a href="#tab1" data-toggle="tab">
+								<spring:message code="comptes.title" />
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -85,16 +100,17 @@
 								<th><spring:message code="comptes.compteId" /></th>
 								<th><spring:message code="comptes.compteType" /></th>
 								<th><spring:message code="comptes.compteSolde" /></th>
-								<th><spring:message code="comptes.details"/></th>
+								<th><spring:message code="comptes.details" /></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="c" items="${comptesList}">
 								<tr>
-									<td>${c.compte_id}</td>
+									<td>${c.id}</td>
 									<td>${c.type}</td>
 									<td>${c.solde} $</td>
-									<td><a href="./operations/${c.compte_id}/${date}"><spring:message code="comptes.operations"/></a></td>
+									<td><a href="./operations/${c.id}/${date}">
+										<spring:message code="comptes.operations" /></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

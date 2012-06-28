@@ -17,7 +17,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	
 	@Override
 	public Double findMontantOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		log.debug("Calling Method findMontantOperationsCarteByCompteIdAndYearMonth");
+		LOGGER.debug("Calling Method findMontantOperationsCarteByCompteIdAndYearMonth");
 		Double d = query()
 				.from(operation)
 				.where(operation.compte.id.eq(id), operation.type.eq(Operation.OperationType.CARTE), operation.date.year().eq(year),
@@ -30,7 +30,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	
 	@Override
 	public List<Operation> findOperationsVirementByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		log.debug("Calling Method findOperationsVirementByCompteIdAndYearMonth");
+		LOGGER.debug("Calling Method findOperationsVirementByCompteIdAndYearMonth");
 		return query()
 				.from(operation)
 				.where(operation.type.ne(Operation.OperationType.CARTE), operation.compte.id.eq(id), operation.date.year().eq(year),
@@ -39,7 +39,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	
 	@Override
 	public List<Operation> findOperationsCarteByCompteIdAndYearMonth(Integer id, Integer year, Integer month) {
-		log.debug("Calling Method findOperationsCarteByCompteIdAndYearMonth");
+		LOGGER.debug("Calling Method findOperationsCarteByCompteIdAndYearMonth");
 		return query()
 				.from(operation)
 				.where(operation.type.eq(Operation.OperationType.CARTE), operation.compte.id.eq(id), operation.date.year().eq(year),

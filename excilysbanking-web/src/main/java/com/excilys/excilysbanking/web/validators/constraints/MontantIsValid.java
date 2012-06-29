@@ -10,13 +10,13 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import com.excilys.excilysbanking.web.validators.MontantValidator;
 
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MontantValidator.class)
 @Documented
 public @interface MontantIsValid {
 
-	String message() default "Montant is not valid";
+	String message() default "Montant is not valid: either Montant is not filled or is greater than solde available...";
 
 	Class<?>[] groups() default {};
 

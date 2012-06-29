@@ -8,15 +8,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import com.excilys.excilysbanking.web.validators.MontantSoldeValidator;
+import com.excilys.excilysbanking.web.validators.SameIdComptesValidator;
 
 @Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = MontantSoldeValidator.class)
+@Constraint(validatedBy = SameIdComptesValidator.class)
 @Documented
-public @interface MontantGreaterThanSolde {
+public @interface ComptesIdAreTheSame {
 
-	String message() default "Montant is greater than solde...";
+	String message() default "Comptes Id are the same...";
 
 	Class<?>[] groups() default {};
 

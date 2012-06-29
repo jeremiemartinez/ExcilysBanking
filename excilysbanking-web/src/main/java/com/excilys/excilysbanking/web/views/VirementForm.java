@@ -2,15 +2,20 @@
 package com.excilys.excilysbanking.web.views;
 
 import javax.validation.constraints.NotNull;
-import com.excilys.excilysbanking.web.validators.constraints.MontantGreaterThanSolde;
+import com.excilys.excilysbanking.web.validators.constraints.CompteIdIsValid;
+import com.excilys.excilysbanking.web.validators.constraints.ComptesIdAreTheSame;
+import com.excilys.excilysbanking.web.validators.constraints.MontantIsValid;
 
-@MontantGreaterThanSolde
+@MontantIsValid
+@ComptesIdAreTheSame
 public class VirementForm {
 
 	@NotNull
+	@CompteIdIsValid
 	public Integer compteDebit;
 
 	@NotNull
+	@CompteIdIsValid
 	public Integer compteCredit;
 
 	public Double montant;

@@ -6,8 +6,9 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.excilys.excilysbanking.services.CompteService;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsValid;
+import com.excilys.excilysbanking.web.views.VirementForm;
 
-public class MontantValidator implements ConstraintValidator<MontantIsValid, String> {
+public class MontantValidator implements ConstraintValidator<MontantIsValid, VirementForm> {
 
 	@Autowired
 	private CompteService compteService;
@@ -16,13 +17,19 @@ public class MontantValidator implements ConstraintValidator<MontantIsValid, Str
 	public void initialize(MontantIsValid constraintAnnotation) {}
 
 	@Override
-	public boolean isValid(String value, ConstraintValidatorContext context) {
-		try {
-			Double d = Double.valueOf(value);
-		} catch (NumberFormatException e) {
+	public boolean isValid(VirementForm value, ConstraintValidatorContext context) {
+		if (value == null)
 			return false;
-		}
-		return true;
-	}
+		else {
+			if (value.getMontant() != null) {
+				Double solde = compteService.getCompteById(value.getCompteDebit()).getSolde();
+				if (solde.compareTo(value.getMontant()) > 0)
+					return true;
+				else
+					return false;
+			} else
+				return false;
 
+		}
+	}
 }

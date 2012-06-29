@@ -195,16 +195,16 @@
 					<!-- Page navigation buttons -->
 					
 					<ul class="pager">
-						<c:if test="${currentPage != lastPage}">
+						<c:if test="${currentPage != firstPage}">
 							<li class="previous">
-								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${lastPage}">&larr; Oldest</a>
-								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${nextPage}">Older</a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${firstPage}">&larr;<spring:message code="paging.newest"/></a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${previousPage}"><spring:message code="paging.newer"/></a>
 							</li>
 						</c:if>
-						<c:if test="${currentPage != firstPage}">
+						<c:if test="${currentPage != lastPage}">
 							<li class="next">
-								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${firstPage}">Newest &rarr;</a>
-								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${previousPage}">Newer</a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${lastPage}"><spring:message code="paging.oldest"/>&rarr;</a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${nextPage}"><spring:message code="paging.older"/></a>
 							</li>
 						</c:if>
 						

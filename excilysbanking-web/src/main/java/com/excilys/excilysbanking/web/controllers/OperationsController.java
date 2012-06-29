@@ -26,20 +26,6 @@ public class OperationsController {
 	@Autowired
 	private UserService userService;
 
-	private class OperationsJSON {
-
-		private List<Operation> operations;
-
-		public List<Operation> getOperations() {
-			return operations;
-		}
-
-		public void setOperations(List<Operation> operations) {
-			this.operations = operations;
-		}
-
-	}
-
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
 	public @ResponseBody
 	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {

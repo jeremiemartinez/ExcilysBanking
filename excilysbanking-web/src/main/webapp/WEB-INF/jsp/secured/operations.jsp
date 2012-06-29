@@ -21,6 +21,8 @@
 <link href="/ebank/resources/css/flags.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
+
+
 <title><spring:message code="operations.title" /></title>
 <spring:message var="pattern" code="operations.dateFormat" />
 
@@ -33,7 +35,6 @@
 
 </head>
 <body>
-
 	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
 	<security:authentication property="principal" var="user" scope="page" />
 
@@ -89,7 +90,7 @@
 		${id}
 		<spring:message code="operations.currentDate" />
 		<joda:format value="${requestedMonth}" pattern="MMMM yyyy"
-			locale="${request.locale}" />
+			locale="${request.locale}" />${clientLocale }
 	</h3>
 
 	<div class="row-fluid">
@@ -111,7 +112,8 @@
 								<c:otherwise>
 									<li><a
 										href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format
-												value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a></li>
+												value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a>
+									</li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -160,7 +162,6 @@
 												</tr>
 											</thead>
 											<tbody id="operationsCarteArea">
-												<c:import url="../included/template.jsp"></c:import>
 											<tbody>
 										</table>
 
@@ -210,15 +211,23 @@
 	<!-- Javascript -->
 	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
 	<script src="/ebank/resources/js/bootstrap.js"></script>
-	<script src="/ebank/resources/js/mustache.js"></script>
+	<script src="/ebank/resources/js/handlebars.js"></script>
+	
 	<script type="text/javascript">
-		$.getJSON('/ebank/secured/operations/id/6464/year/2012/month/6/cartes',
-				function(data) {
-					
-					var template = $('#operationTpl').html();
-					var html = Mustache.to_html(template, data);
-					$('#operationsCarteArea').html(html);
-				});
+		$
+				.getJSON(
+						'/ebank/secured/operations/id/6464/year/2012/month/6/cartes',
+						function(data) {
+							var source = "{{#.}}<tr><td>{{id}}</td><td>{{dateFormater date}}</td><td>{{type}}</td><td>{{libelle}}</td><td> {{montant}}</td></tr>{{/.}}";
+							var template = Handlebars.compile(source);
+							var html = template(data);
+							$('#operationsCarteArea').html(html);
+						});
+	</script>
+	<script type="text/javascript">
+		Handlebars.registerHelper('dateFormater', function(date) {
+			return new Handlebars.SafeString(date);
+		});
 	</script>
 
 </body>

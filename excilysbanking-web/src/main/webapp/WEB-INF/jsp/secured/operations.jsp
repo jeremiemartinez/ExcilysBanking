@@ -134,6 +134,8 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+							<h3>Page ${currentPage}</h3>
 
 							<tr>
 								<td><button class="btn" data-toggle="collapse"
@@ -189,16 +191,26 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="pagination pagination-centered">
-						<ul>
-							<li class="disabled"><a href="#">&laquo;</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">&raquo;</a></li>
-						</ul>
-					</div>
+					
+					<!-- Page navigation buttons -->
+					
+					<ul class="pager">
+						<c:if test="${currentPage != lastPage}">
+							<li class="previous">
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${lastPage}">&larr; Oldest</a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${nextPage}">Older</a>
+							</li>
+						</c:if>
+						<c:if test="${currentPage != firstPage}">
+							<li class="next">
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${firstPage}">Newest &rarr;</a>
+								<a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${previousPage}">Newer</a>
+							</li>
+						</c:if>
+						
+						
+					</ul>
+					
 				</div>
 			</div>
 		</div>

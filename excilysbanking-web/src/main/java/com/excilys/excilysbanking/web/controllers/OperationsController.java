@@ -26,13 +26,25 @@ public class OperationsController {
 	@Autowired
 	private UserService userService;
 
+	private class OperationsJSON {
+
+		private List<Operation> operations;
+
+		public List<Operation> getOperations() {
+			return operations;
+		}
+
+		public void setOperations(List<Operation> operations) {
+			this.operations = operations;
+		}
+
+	}
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
 	public @ResponseBody
-	List<Operation> operationsCarteJSON() {
-		List<Operation> operations = operationService.get.shop.setName("caca");
-		shop.setStaffName(new String[] { "mkyong1", "mkyong2" });
-		log.debug(shop.toString());
-		return shop;
+	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+		List<Operation> operations = operationService.getOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month));
+		return operations;
 
 	}
 

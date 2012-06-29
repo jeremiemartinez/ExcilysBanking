@@ -87,7 +87,7 @@
 	<h3>
 		<spring:message code="operations.subtitle" />
 		${id}
-		<spring:message code="operations.date" />
+		<spring:message code="operations.currentDate" />
 		<joda:format value="${requestedMonth}" pattern="MMMM yyyy"
 			locale="${request.locale}" />
 	</h3>
@@ -159,17 +159,12 @@
 													<th><spring:message code="operations.montant" /></th>
 												</tr>
 											</thead>
-											<c:forEach var="oc" items="${operationsCarteList}">
-												<tr>
-													<td>${oc.id}</td>
-													<td><joda:format value="${oc.date}"
-															pattern="${pattern}" /></td>
-													<td>${oc.type}</td>
-													<td>${oc.libelle }</td>
-													<td>${oc.montant} $</td>
-												</tr>
-											</c:forEach>
+											<tbody id="operationsCarteArea">
+												<c:import url="../included/template.jsp"></c:import>
+											<tbody>
 										</table>
+
+
 										<div class="pagination pagination-centered">
 											<ul>
 												<li class="disabled"><a href="#">&laquo;</a></li>
@@ -215,10 +210,14 @@
 	<!-- Javascript -->
 	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
 	<script src="/ebank/resources/js/bootstrap.js"></script>
+	<script src="/ebank/resources/js/mustache.js"></script>
 	<script type="text/javascript">
-		$.getJSON("/ebank/secured/operations/caca",
-				function(message) {
-					alert("it worked.");
+		$.getJSON('/ebank/secured/operations/id/6464/year/2012/month/6/cartes',
+				function(data) {
+					
+					var template = $('#operationTpl').html();
+					var html = Mustache.to_html(template, data);
+					$('#operationsCarteArea').html(html);
 				});
 	</script>
 

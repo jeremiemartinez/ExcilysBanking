@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -27,6 +28,7 @@ public class Operation {
 	@Column(name = "operation_id")
 	private Integer id;
 
+	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "compte_id", nullable = false, updatable = false)
 	private Compte compte;

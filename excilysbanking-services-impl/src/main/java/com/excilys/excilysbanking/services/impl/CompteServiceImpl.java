@@ -26,4 +26,10 @@ public class CompteServiceImpl implements CompteService {
 		return compteDAO.findComptes();
 	}
 
+	@Override
+	public Compte getCompteById(Integer id) {
+		return compteDAO.findCompteById(id);
+
+	}
+
 }

@@ -13,16 +13,15 @@ public class MontantSoldeValidator implements ConstraintValidator<MontantGreater
 	@Autowired
 	private CompteService compteService;
 
-	private MontantGreaterThanSolde mgts;
-
 	@Override
-	public void initialize(MontantGreaterThanSolde constraintAnnotation) {
-
-	}
+	public void initialize(MontantGreaterThanSolde constraintAnnotation) {}
 
 	@Override
 	public boolean isValid(VirementForm value, ConstraintValidatorContext context) {
-		Double solde = compteService.getComptesById(value.getCompteDebit()).getSolde();
-		if (solde.compareTo((value.getMontant()));
+		Double solde = compteService.getCompteById(value.getCompteDebit()).getSolde();
+		if (solde.compareTo(value.getMontant()) > 0)
+			return true;
+		else
+			return false;
 	}
 }

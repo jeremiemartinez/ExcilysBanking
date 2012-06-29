@@ -10,7 +10,7 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import com.excilys.excilysbanking.web.validators.MontantSoldeValidator;
 
-@Target({ ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MontantSoldeValidator.class)
 @Documented

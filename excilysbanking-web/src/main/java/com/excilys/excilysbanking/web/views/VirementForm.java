@@ -2,7 +2,6 @@
 package com.excilys.excilysbanking.web.views;
 
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotBlank;
 import com.excilys.excilysbanking.web.validators.constraints.MontantGreaterThanSolde;
 
 @MontantGreaterThanSolde
@@ -14,7 +13,6 @@ public class VirementForm {
 	@NotNull
 	public Integer compteCredit;
 
-	@NotBlank
 	public Double montant;
 
 	public String libelle;

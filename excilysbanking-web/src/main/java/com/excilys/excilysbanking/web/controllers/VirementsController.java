@@ -42,7 +42,6 @@ public class VirementsController {
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
 		if (result.hasErrors()) {
-			m.addAttribute("error", "true");
 			m.addAttribute("comptesList", compteService.getComptesByUsername(currentUser.getUsername()));
 			m.addAttribute("virementForm", virementForm);
 			return "/secured/virement";

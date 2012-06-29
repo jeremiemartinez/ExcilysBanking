@@ -67,7 +67,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	}
 	
 	private List<Operation> findOperations(Integer id, OperationType type, YearMonth ym, Integer pageSize, Integer pageNumber) {
-		return page(queryOperations(id, type, ym).groupBy(operation).orderBy(operation.date.dayOfMonth().asc()), pageSize, pageNumber).list(operation);
+		return page(queryOperations(id, type, ym).groupBy(operation).orderBy(operation.date.dayOfMonth().desc()), pageSize, pageNumber).list(operation);
 	}
 	
 	@Override

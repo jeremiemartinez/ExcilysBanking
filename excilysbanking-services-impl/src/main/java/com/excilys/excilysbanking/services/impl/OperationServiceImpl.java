@@ -42,4 +42,14 @@ public class OperationServiceImpl implements OperationService {
 		return operationDAO.findPagedOperationsCarteByCompteIdAndYearMonth(id, ym, pageSize, pageNumber);
 	}
 	
+	@Override
+	public Long getNumberOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym) {
+		return operationDAO.findNumberOperationsVirementByCompteIdByYearMonth(id, ym);
+	}
+	
+	@Override
+	public Long getNumberOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym) {
+		return operationDAO.findNumberOperationsCarteByCompteIdByYearMonth(id, ym);
+	}
+	
 }

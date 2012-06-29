@@ -72,18 +72,18 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		assertEquals(4, ops.size());
 		
 		Operation op = ops.get(0);
-		assertEquals(Double.valueOf(589.68), op.getMontant());
+		assertEquals(Double.valueOf(673.77), op.getMontant());
 		assertEquals(6464, op.getCompte().getId().intValue());
-		assertEquals("Some operation #18262862", op.getLibelle());
+		assertEquals("Some operation #21539363", op.getLibelle());
 		assertEquals(Operation.OperationType.CARTE, op.getType());
-		assertEquals(157, op.getId().intValue());
+		assertEquals(158, op.getId().intValue());
 		
 		DateTime d = op.getDate();
 		assertEquals(2012, d.getYear());
 		assertEquals(6, d.getMonthOfYear());
-		assertEquals(2, d.getDayOfMonth());
-		assertEquals(3, d.getHourOfDay());
-		assertEquals(57, d.getMinuteOfHour());
+		assertEquals(28, d.getDayOfMonth());
+		assertEquals(7, d.getHourOfDay());
+		assertEquals(29, d.getMinuteOfHour());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -145,19 +145,19 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	public void findPagedOperationsCarteByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findPagedOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 1);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #18262862", ops.get(0).getLibelle());
+		assertEquals("Some operation #21539363", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #28420709", ops.get(0).getLibelle());
+		assertEquals("Some operation #26867996", ops.get(0).getLibelle());
 	}
 	
 	@Test
 	public void findPagedOperationsVirementByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 1);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #8984226", ops.get(0).getLibelle());
+		assertEquals("Some operation #2943240", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #2570525", ops.get(0).getLibelle());
+		assertEquals("Some operation #7804298", ops.get(0).getLibelle());
 	}
 }

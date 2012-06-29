@@ -1,7 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<operations operation_id="151" compte_id="6464" type="CARTE" montant="-2000" date="2012-06-25 00:00:00" libelle="SNCF Pau-Montreal"/>
-	<operations operation_id="152" compte_id="6464" type="CARTE" montant="-500" date="2012-06-25 00:00:00" libelle="Abonnement FHM"/>
-	<operations operation_id="153" compte_id="6464" type="VIREMENT" montant="1000" date="2012-06-25 00:00:00" libelle="Virement Mamie"/>
-	<operations operation_id="154" compte_id="6464" type="VIREMENT" montant="1000" date="2012-06-25 00:00:00" libelle="Paye juin"/>
+
+	<!--                                   -->
+	<!-- Operation for account number 6464 -->
+	<!--                                   -->
+
+	<!-- Operations in June 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="153" compte_id="6464" type="VIREMENT" montant="633.72" date="2012-6-1 4:4:2" libelle="Some operation #8984226"/>
+	<operations operation_id="154" compte_id="6464" type="VIREMENT" montant="-326.68" date="2012-6-15 6:11:12" libelle="Some operation #2943240"/>
+	<operations operation_id="155" compte_id="6464" type="VIREMENT" montant="1070.93" date="2012-6-13 5:25:6" libelle="Some operation #7804298"/>
+	<operations operation_id="156" compte_id="6464" type="VIREMENT" montant="-585.9" date="2012-6-12 1:12:18" libelle="Some operation #2570525"/>
+
+	<!-- Carte -->
+	<operations operation_id="157" compte_id="6464" type="CARTE" montant="589.68" date="2012-6-2 1:57:43" libelle="Some operation #18262862"/>
+	<operations operation_id="158" compte_id="6464" type="CARTE" montant="673.77" date="2012-6-28 5:29:29" libelle="Some operation #21539363"/>
+	<operations operation_id="159" compte_id="6464" type="CARTE" montant="744.7" date="2012-6-16 3:8:26" libelle="Some operation #26867996"/>
+	<operations operation_id="160" compte_id="6464" type="CARTE" montant="1677.19" date="2012-6-6 1:50:4" libelle="Some operation #28420709"/>
+
+	<!-- Operations in May 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="161" compte_id="6464" type="VIREMENT" montant="1252.57" date="2012-5-24 9:8:51" libelle="Some operation #19526581"/>
+
+	<!-- Carte -->
+	<operations operation_id="162" compte_id="6464" type="CARTE" montant="1185.11" date="2012-5-11 9:35:30" libelle="Some operation #20918341"/>
+	<operations operation_id="163" compte_id="6464" type="CARTE" montant="1154.46" date="2012-5-11 12:56:59" libelle="Some operation #24783265"/>
+	<operations operation_id="164" compte_id="6464" type="CARTE" montant="868.58" date="2012-5-21 3:28:52" libelle="Some operation #21185076"/>
+	<operations operation_id="165" compte_id="6464" type="CARTE" montant="1402.18" date="2012-5-20 1:44:18" libelle="Some operation #11502424"/>
+	<operations operation_id="166" compte_id="6464" type="CARTE" montant="-11.41" date="2012-5-3 2:33:7" libelle="Some operation #14158819"/>
+	<operations operation_id="167" compte_id="6464" type="CARTE" montant="508.7" date="2012-5-24 8:11:28" libelle="Some operation #32794782"/>
+
+	<!-- Operations in April 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="168" compte_id="6464" type="VIREMENT" montant="138.91" date="2012-4-2 7:40:14" libelle="Some operation #16805237"/>
+	<operations operation_id="169" compte_id="6464" type="VIREMENT" montant="502.98" date="2012-4-16 12:25:18" libelle="Some operation #17977639"/>
+	<operations operation_id="170" compte_id="6464" type="VIREMENT" montant="27.53" date="2012-4-12 12:47:2" libelle="Some operation #26083064"/>
+
+	<!-- Carte -->
+	<operations operation_id="171" compte_id="6464" type="CARTE" montant="-5.3" date="2012-4-18 9:26:10" libelle="Some operation #22971385"/>
+	<operations operation_id="172" compte_id="6464" type="CARTE" montant="1111.18" date="2012-4-11 2:22:27" libelle="Some operation #2773808"/>
+	<operations operation_id="173" compte_id="6464" type="CARTE" montant="-440.18" date="2012-4-20 10:1:43" libelle="Some operation #12285029"/>
+
+	<!-- Operations in March 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="174" compte_id="6464" type="VIREMENT" montant="251.41" date="2012-3-14 9:24:33" libelle="Some operation #14074220"/>
+	<operations operation_id="175" compte_id="6464" type="VIREMENT" montant="-50.3" date="2012-3-28 12:39:46" libelle="Some operation #20233936"/>
+	<operations operation_id="176" compte_id="6464" type="VIREMENT" montant="551.66" date="2012-3-5 9:25:3" libelle="Some operation #31149935"/>
+	<operations operation_id="177" compte_id="6464" type="VIREMENT" montant="1170.59" date="2012-3-21 12:37:11" libelle="Some operation #20716290"/>
+	<operations operation_id="178" compte_id="6464" type="VIREMENT" montant="1014.86" date="2012-3-28 11:19:2" libelle="Some operation #17900022"/>
+	<operations operation_id="179" compte_id="6464" type="VIREMENT" montant="-208.8" date="2012-3-4 9:40:57" libelle="Some operation #30199356"/>
+	<operations operation_id="180" compte_id="6464" type="VIREMENT" montant="1615.26" date="2012-3-9 11:5:43" libelle="Some operation #16250176"/>
+
+	<!-- Carte -->
+	<operations operation_id="181" compte_id="6464" type="CARTE" montant="1877.16" date="2012-3-11 1:48:21" libelle="Some operation #17192413"/>
+	<operations operation_id="182" compte_id="6464" type="CARTE" montant="19.39" date="2012-3-2 1:54:28" libelle="Some operation #15684866"/>
+	<operations operation_id="183" compte_id="6464" type="CARTE" montant="72.63" date="2012-3-24 7:34:53" libelle="Some operation #11935697"/>
+	<operations operation_id="184" compte_id="6464" type="CARTE" montant="39.52" date="2012-3-14 10:22:41" libelle="Some operation #14867177"/>
+	<operations operation_id="185" compte_id="6464" type="CARTE" montant="366.76" date="2012-3-15 3:39:44" libelle="Some operation #26348010"/>
+	<operations operation_id="186" compte_id="6464" type="CARTE" montant="-93.9" date="2012-3-25 3:55:58" libelle="Some operation #13170424"/>
+	<operations operation_id="187" compte_id="6464" type="CARTE" montant="-609.46" date="2012-3-5 4:57:35" libelle="Some operation #30289364"/>
+	<operations operation_id="188" compte_id="6464" type="CARTE" montant="-77.34" date="2012-3-5 3:3:45" libelle="Some operation #19058102"/>
+	<operations operation_id="189" compte_id="6464" type="CARTE" montant="812.1" date="2012-3-27 9:6:40" libelle="Some operation #32477527"/>
+	<operations operation_id="190" compte_id="6464" type="CARTE" montant="47.96" date="2012-3-25 4:12:56" libelle="Some operation #19859865"/>
+
+	<!-- Operations in February 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="191" compte_id="6464" type="VIREMENT" montant="-85.19" date="2012-2-24 4:38:8" libelle="Some operation #18820833"/>
+	<operations operation_id="192" compte_id="6464" type="VIREMENT" montant="706.5" date="2012-2-11 12:9:28" libelle="Some operation #4116479"/>
+	<operations operation_id="193" compte_id="6464" type="VIREMENT" montant="-410.46" date="2012-2-7 6:30:13" libelle="Some operation #29987161"/>
+	<operations operation_id="194" compte_id="6464" type="VIREMENT" montant="622.84" date="2012-2-23 3:53:35" libelle="Some operation #6662015"/>
+	<operations operation_id="195" compte_id="6464" type="VIREMENT" montant="1101.32" date="2012-2-19 6:11:55" libelle="Some operation #30911772"/>
+
+	<!-- Carte -->
+	<operations operation_id="196" compte_id="6464" type="CARTE" montant="-146.7" date="2012-2-2 10:10:50" libelle="Some operation #10883428"/>
+	<operations operation_id="197" compte_id="6464" type="CARTE" montant="1070.91" date="2012-2-21 6:44:37" libelle="Some operation #12568800"/>
+	<operations operation_id="198" compte_id="6464" type="CARTE" montant="564.5" date="2012-2-6 11:54:9" libelle="Some operation #18680399"/>
+	<operations operation_id="199" compte_id="6464" type="CARTE" montant="1949.9" date="2012-2-7 6:47:47" libelle="Some operation #26204548"/>
+	<operations operation_id="200" compte_id="6464" type="CARTE" montant="142.8" date="2012-2-1 6:23:3" libelle="Some operation #17934197"/>
+	<operations operation_id="201" compte_id="6464" type="CARTE" montant="305.15" date="2012-2-9 11:22:15" libelle="Some operation #597230"/>
+	<operations operation_id="202" compte_id="6464" type="CARTE" montant="-452.35" date="2012-2-18 2:12:23" libelle="Some operation #4875224"/>
+
+	<!-- Operations in January 2012 -->
+
+	<!-- Virements -->
+	<operations operation_id="203" compte_id="6464" type="VIREMENT" montant="518.71" date="2012-1-6 11:24:48" libelle="Some operation #31522607"/>
+	<operations operation_id="204" compte_id="6464" type="VIREMENT" montant="767.74" date="2012-1-13 1:26:35" libelle="Some operation #9532399"/>
+	<operations operation_id="205" compte_id="6464" type="VIREMENT" montant="248.46" date="2012-1-13 3:0:33" libelle="Some operation #22171962"/>
+	<operations operation_id="206" compte_id="6464" type="VIREMENT" montant="-483.54" date="2012-1-4 1:20:31" libelle="Some operation #22201561"/>
+	<operations operation_id="207" compte_id="6464" type="VIREMENT" montant="1120.71" date="2012-1-4 11:12:47" libelle="Some operation #16359413"/>
+	<operations operation_id="208" compte_id="6464" type="VIREMENT" montant="-242.0" date="2012-1-12 4:47:23" libelle="Some operation #7652266"/>
+	<operations operation_id="209" compte_id="6464" type="VIREMENT" montant="-269.83" date="2012-1-10 6:16:29" libelle="Some operation #31063377"/>
+	<operations operation_id="210" compte_id="6464" type="VIREMENT" montant="683.77" date="2012-1-9 1:3:18" libelle="Some operation #8785225"/>
+	<operations operation_id="211" compte_id="6464" type="VIREMENT" montant="1088.53" date="2012-1-8 7:11:7" libelle="Some operation #13783459"/>
+
+	<!-- Carte -->
+	<operations operation_id="212" compte_id="6464" type="CARTE" montant="1460.14" date="2012-1-7 9:39:1" libelle="Some operation #32358515"/>
+	<operations operation_id="213" compte_id="6464" type="CARTE" montant="-188.67" date="2012-1-16 2:26:41" libelle="Some operation #32887686"/>
+	<operations operation_id="214" compte_id="6464" type="CARTE" montant="900.7" date="2012-1-19 8:42:29" libelle="Some operation #1187613"/>
+	<operations operation_id="215" compte_id="6464" type="CARTE" montant="282.96" date="2012-1-16 1:43:36" libelle="Some operation #28893273"/>
+	<operations operation_id="216" compte_id="6464" type="CARTE" montant="1019.26" date="2012-1-3 6:8:2" libelle="Some operation #9502784"/>
+	<operations operation_id="217" compte_id="6464" type="CARTE" montant="1503.88" date="2012-1-24 9:10:24" libelle="Some operation #27756227"/>
+	<operations operation_id="218" compte_id="6464" type="CARTE" montant="-444.46" date="2012-1-15 4:15:42" libelle="Some operation #25200832"/>
+
+	<!-- Operations in December 2011 -->
+
+	<!-- Virements -->
+	<operations operation_id="219" compte_id="6464" type="VIREMENT" montant="1421.74" date="2011-12-13 2:2:50" libelle="Some operation #26354209"/>
+
+	<!-- Carte -->
+	<operations operation_id="220" compte_id="6464" type="CARTE" montant="726.62" date="2011-12-16 2:12:5" libelle="Some operation #16695559"/>
+	<operations operation_id="221" compte_id="6464" type="CARTE" montant="749.2" date="2011-12-2 9:16:16" libelle="Some operation #20111677"/>
+	<operations operation_id="222" compte_id="6464" type="CARTE" montant="282.77" date="2011-12-18 11:9:24" libelle="Some operation #23163273"/>
+	<operations operation_id="223" compte_id="6464" type="CARTE" montant="366.73" date="2011-12-28 1:14:28" libelle="Some operation #6616781"/>
+	<operations operation_id="224" compte_id="6464" type="CARTE" montant="-284.69" date="2011-12-11 11:45:26" libelle="Some operation #8856448"/>
+	<operations operation_id="225" compte_id="6464" type="CARTE" montant="1050.9" date="2011-12-25 5:20:52" libelle="Some operation #2864404"/>
+	<operations operation_id="226" compte_id="6464" type="CARTE" montant="1537.74" date="2011-12-26 2:18:24" libelle="Some operation #24993066"/>
+	<operations operation_id="227" compte_id="6464" type="CARTE" montant="-405.64" date="2011-12-27 10:48:40" libelle="Some operation #24093812"/>
+
+	<!-- Operations in November 2011 -->
+
+	<!-- Virements -->
+	<operations operation_id="228" compte_id="6464" type="VIREMENT" montant="1377.21" date="2011-11-9 6:22:11" libelle="Some operation #9814147"/>
+	<operations operation_id="229" compte_id="6464" type="VIREMENT" montant="677.14" date="2011-11-6 3:15:5" libelle="Some operation #26335425"/>
+	<operations operation_id="230" compte_id="6464" type="VIREMENT" montant="456.66" date="2011-11-27 7:4:1" libelle="Some operation #2989062"/>
+	<operations operation_id="231" compte_id="6464" type="VIREMENT" montant="559.65" date="2011-11-5 4:9:12" libelle="Some operation #6183504"/>
+	<operations operation_id="232" compte_id="6464" type="VIREMENT" montant="402.41" date="2011-11-18 5:11:31" libelle="Some operation #8087689"/>
+	<operations operation_id="233" compte_id="6464" type="VIREMENT" montant="-741.46" date="2011-11-22 7:2:26" libelle="Some operation #798709"/>
+	<operations operation_id="234" compte_id="6464" type="VIREMENT" montant="1191.25" date="2011-11-20 6:34:45" libelle="Some operation #2145913"/>
+	<operations operation_id="235" compte_id="6464" type="VIREMENT" montant="727.37" date="2011-11-16 8:39:22" libelle="Some operation #28910606"/>
+	<operations operation_id="236" compte_id="6464" type="VIREMENT" montant="-461.4" date="2011-11-10 6:51:30" libelle="Some operation #32392776"/>
+	<operations operation_id="237" compte_id="6464" type="VIREMENT" montant="751.43" date="2011-11-9 1:19:9" libelle="Some operation #4729123"/>
+
+	<!-- Carte -->
+	<operations operation_id="238" compte_id="6464" type="CARTE" montant="-186.59" date="2011-11-24 2:53:32" libelle="Some operation #25488452"/>
+	<operations operation_id="239" compte_id="6464" type="CARTE" montant="319.38" date="2011-11-15 7:57:33" libelle="Some operation #28541929"/>
+	<operations operation_id="240" compte_id="6464" type="CARTE" montant="1826.65" date="2011-11-11 2:23:53" libelle="Some operation #10053659"/>
 </dataset>

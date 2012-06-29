@@ -26,7 +26,8 @@ import com.excilys.excilysbanking.entities.Operation;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:context/appcontext-dao-impl.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
-@DataSet(locations = "classpath:/datasets/dataset*.xml", dbType = DBType.H2)
+@DataSet(locations = { "classpath:/datasets/datasetUsers.xml", "classpath:/datasets/datasetAuthorities.xml",
+		"classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml", "classpath:/datasets/datasetOperations.xml" }, dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
 @ActiveProfiles("testing")
@@ -37,7 +38,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	
 	@Test
 	public void findMontantOperationsCarteByCompteIdAndYearMonthTest() {
-		assertEquals(Double.valueOf(-2500), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Double.valueOf(3685.34), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6)));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -68,21 +69,21 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	@Test
 	public void findOperationsCarteByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6));
-		assertEquals(2, ops.size());
+		assertEquals(4, ops.size());
 		
 		Operation op = ops.get(0);
-		assertEquals(Double.valueOf(-2000), op.getMontant());
+		assertEquals(Double.valueOf(589.68), op.getMontant());
 		assertEquals(6464, op.getCompte().getId().intValue());
-		assertEquals("SNCF Pau-Montreal", op.getLibelle());
+		assertEquals("Some operation #18262862", op.getLibelle());
 		assertEquals(Operation.OperationType.CARTE, op.getType());
-		assertEquals(151, op.getId().intValue());
+		assertEquals(157, op.getId().intValue());
 		
 		DateTime d = op.getDate();
 		assertEquals(2012, d.getYear());
 		assertEquals(6, d.getMonthOfYear());
-		assertEquals(25, d.getDayOfMonth());
-		assertEquals(2, d.getHourOfDay());
-		assertEquals(0, d.getMinuteOfHour());
+		assertEquals(2, d.getDayOfMonth());
+		assertEquals(3, d.getHourOfDay());
+		assertEquals(57, d.getMinuteOfHour());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -112,7 +113,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	
 	@Test
 	public void findNumberOperationsCarteByCompteIdByYearMonthTest() {
-		assertEquals(Long.valueOf(2), operationDAOTest.findNumberOperationsCarteByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Long.valueOf(4), operationDAOTest.findNumberOperationsCarteByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
 	}
 	
 	@Test(expected = NullPointerException.class)
@@ -127,7 +128,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	
 	@Test
 	public void findNumberOperationsVirementByCompteIdByYearMonthTest() {
-		assertEquals(Long.valueOf(2), operationDAOTest.findNumberOperationsVirementByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Long.valueOf(4), operationDAOTest.findNumberOperationsVirementByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
 	}
 	
 	@Test(expected = NullPointerException.class)
@@ -144,19 +145,19 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	public void findPagedOperationsCarteByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findPagedOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 1);
 		assertEquals(1, ops.size());
-		assertEquals("SNCF Pau-Montreal", ops.get(0).getLibelle());
+		assertEquals("Some operation #18262862", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
-		assertEquals("Abonnement FHM", ops.get(0).getLibelle());
+		assertEquals("Some operation #28420709", ops.get(0).getLibelle());
 	}
 	
 	@Test
 	public void findPagedOperationsVirementByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 1);
 		assertEquals(1, ops.size());
-		assertEquals("Virement Mamie", ops.get(0).getLibelle());
+		assertEquals("Some operation #8984226", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
-		assertEquals("Paye juin", ops.get(0).getLibelle());
+		assertEquals("Some operation #2570525", ops.get(0).getLibelle());
 	}
 }

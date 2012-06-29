@@ -23,7 +23,8 @@ import com.excilys.excilysbanking.entities.User;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:context/appcontext-dao-impl.xml")
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DataSetTestExecutionListener.class })
-@DataSet(locations = { "classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml" }, dbType = DBType.H2)
+@DataSet(locations = { "classpath:/datasets/datasetUsers.xml", "classpath:/datasets/datasetAuthorities.xml",
+		"classpath:/datasets/datasetUsersAndAuthorities.xml", "classpath:/datasets/datasetComptes.xml", "classpath:/datasets/datasetOperations.xml" }, dbType = DBType.H2)
 @TransactionConfiguration
 @Transactional
 @ActiveProfiles("testing")

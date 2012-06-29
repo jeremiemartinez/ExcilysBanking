@@ -17,4 +17,7 @@ public interface OperationService {
 	
 	List<Operation> getPagedOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer pageNumber);
 	
+	Long getNumberOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym);
+	
+	Long getNumberOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym);
 }

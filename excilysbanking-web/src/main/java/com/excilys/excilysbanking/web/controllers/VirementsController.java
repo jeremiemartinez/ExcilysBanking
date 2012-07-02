@@ -19,16 +19,16 @@ import com.excilys.excilysbanking.web.views.VirementForm;
 @Controller
 @RequestMapping("/secured/virement")
 public class VirementsController {
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@Autowired
 	private CompteService compteService;
-
+	
 	@Autowired
 	private OperationService operationService;
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayVirementForm(Model m) {
 		User currentUser = userService.getConnectedUser();
@@ -39,7 +39,7 @@ public class VirementsController {
 		m.addAttribute("virementForm", virementForm);
 		return "/secured/virement";
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public String validateVirementForm(@Valid @ModelAttribute("virementForm") VirementForm virementForm, BindingResult result, Model m) {
 		User currentUser = userService.getConnectedUser();
@@ -52,11 +52,11 @@ public class VirementsController {
 		}
 		processVirement(virementForm, m);
 		return "redirect:/secured/comptes";
-
+		
 	}
-
+	
 	private void processVirement(VirementForm virementForm, Model m) {
-
+		
 		boolean result = operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
 				virementForm.libelle);
 		if (result)

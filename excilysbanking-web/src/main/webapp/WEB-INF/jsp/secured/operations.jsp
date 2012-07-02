@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,6 +35,10 @@
 
 </head>
 <body>
+
+	<!-- Set locale to format currencies -->
+	<fmt:setLocale value="${request.locale}"/>
+								
 	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
 	<security:authentication property="principal" var="user" scope="page" />
 
@@ -142,7 +147,9 @@
 								<td><spring:message code="operations.carteDate" /></td>
 								<td><spring:message code="operations.carteType" /></td>
 								<td><spring:message code="operations.carteLibelle" /></td>
-								<td>${carteSum} $</td>
+								<td>
+								<fmt:formatNumber value="${carteSum}"/> $
+								</td>
 							</tr>
 
 							<tr>
@@ -188,7 +195,7 @@
 									<td><joda:format value="${o.date}" pattern="${pattern}" /></td>
 									<td>${o.type}</td>
 									<td>${o.libelle }</td>
-									<td>${o.montant} $</td>
+									<td><fmt:formatNumber value="${o.montant}"/> $</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -307,7 +314,7 @@
 				<td>{{date}}</td>
 				<td>{{type}}</td>
 				<td>{{libelle}}</td>
-				<td>{{montant}}</td>
+				<td>{{montant}} $</td>
 			</tr>
 		{{/.}}
 	</script>

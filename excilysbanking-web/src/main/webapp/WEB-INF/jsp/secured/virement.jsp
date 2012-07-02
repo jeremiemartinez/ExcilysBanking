@@ -5,6 +5,8 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,6 +32,9 @@
 
 </head>
 <body>
+
+	<!-- Set locale to format currencies -->
+	<fmt:setLocale value="${request.locale}"/>
 
 	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
 	<security:authentication property="principal" var="user" scope="page" />
@@ -106,8 +111,7 @@
 							<div class="controls">
 								<form:select class="span10" id="compteDebit" path="compteDebit">
 									<c:forEach var="c" items="${comptesList}">
-										<form:option value="${c.id}"><spring:message code="virements.compte"/> <strong>${c.id}</strong> &nbsp; &nbsp; <spring:message code="virements.solde"/> <strong>${c.solde
-												}$</strong>
+										<form:option value="${c.id}"><spring:message code="virements.compte"/> <strong>${c.id}</strong> &nbsp; &nbsp; <spring:message code="virements.solde"/> <strong><fmt:formatNumber value="${c.solde}"/> $</strong>
 										</form:option>
 									</c:forEach>
 								</form:select>
@@ -119,8 +123,7 @@
 								<form:select class="span10" id="compteCredit"
 									path="compteCredit">
 									<c:forEach var="c" items="${comptesList}">
-										<form:option value="${c.id}"><spring:message code="virements.compte"/><strong>${c.id}</strong> ;&nbsp; &nbsp; <spring:message code="virements.solde"/> <strong>${c.solde
-												}$</strong>
+										<form:option value="${c.id}"><spring:message code="virements.compte"/><strong>${c.id}</strong> ;&nbsp; &nbsp; <spring:message code="virements.solde"/> <strong><fmt:formatNumber value="${c.solde}"/> $</strong>
 										</form:option>
 									</c:forEach>
 								</form:select>

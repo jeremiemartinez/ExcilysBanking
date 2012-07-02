@@ -3,6 +3,7 @@ package com.excilys.excilysbanking.web.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import org.joda.time.DateTime;
 import org.joda.time.YearMonth;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.excilys.excilysbanking.entities.Operation;
+import com.excilys.excilysbanking.entities.util.CustomDateSerializer;
 import com.excilys.excilysbanking.services.OperationService;
 import com.excilys.excilysbanking.services.UserService;
 
@@ -32,13 +34,15 @@ public class OperationsController {
 	
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/pages")
 	public @ResponseBody
-	Long numberOperationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+	Long numberOperationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+		CustomDateSerializer.setLocale(l);
 		return operationService.getNumberOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month));
 	}
 	
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
 	public @ResponseBody
-	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+	List<Operation> operationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+		CustomDateSerializer.setLocale(l);
 		return operationsCarteJSON(id, year, month, 1);
 	}
 	

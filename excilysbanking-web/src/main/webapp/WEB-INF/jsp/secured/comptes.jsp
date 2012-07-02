@@ -5,6 +5,8 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,6 +32,9 @@
 
 </head>
 <body>
+
+	<!-- Set locale to format currencies -->
+	<fmt:setLocale value="${request.locale}"/>
 
 	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
 	<security:authentication property="principal" var="user" scope="page" />
@@ -136,7 +141,7 @@
 								<tr>
 									<td>${c.id}</td>
 									<td>${c.type}</td>
-									<td>${c.solde} $</td>
+									<td><fmt:formatNumber value="${c.solde}"/> $</td>
 									<td><a
 										href="./operations/id/${c.id}/year/${year}/month/${month}">
 											<spring:message code="comptes.operations" />

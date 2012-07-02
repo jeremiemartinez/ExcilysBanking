@@ -20,7 +20,7 @@ public class Populator {
 	private final static DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM yyyy").withLocale(Locale.ENGLISH);
 
 	public static void main(String[] args) {
-		DataSetRenderer r = new PostgresDataSetRenderer();
+		DataSetRenderer r = new DbUnitDataSetRenderer();
 		r.openDataSet();
 
 		DateTime now = DateTime.now();

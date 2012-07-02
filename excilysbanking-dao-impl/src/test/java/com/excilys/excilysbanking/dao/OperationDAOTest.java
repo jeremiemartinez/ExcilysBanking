@@ -39,7 +39,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 
 	@Test
 	public void findMontantOperationsCarteByCompteIdAndYearMonthTest() {
-		assertEquals(Double.valueOf(2095.77), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Double.valueOf(1766.43), operationDAOTest.findMontantOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6)));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -70,10 +70,10 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	@Test
 	public void findOperationsCarteByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6));
-		assertEquals(3, ops.size());
+		assertEquals(4, ops.size());
 
 		Operation op = ops.get(0);
-		assertEquals(Double.valueOf(1269.96), op.getMontant());
+		assertEquals(Double.valueOf(500.68), op.getMontant());
 		assertEquals(6464, op.getCompte().getId().intValue());
 		assertEquals("Some operation #26867996", op.getLibelle());
 		assertEquals(Operation.OperationType.CARTE, op.getType());
@@ -81,9 +81,9 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		DateTime d = op.getDate();
 		assertEquals(2012, d.getYear());
 		assertEquals(6, d.getMonthOfYear());
-		assertEquals(16, d.getDayOfMonth());
-		assertEquals(9, d.getHourOfDay());
-		assertEquals(3, d.getMinuteOfHour());
+		assertEquals(24, d.getDayOfMonth());
+		assertEquals(7, d.getHourOfDay());
+		assertEquals(0, d.getMinuteOfHour());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -113,7 +113,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 
 	@Test
 	public void findNumberOperationsCarteByCompteIdByYearMonthTest() {
-		assertEquals(Long.valueOf(3), operationDAOTest.findNumberOperationsCarteByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Long.valueOf(4), operationDAOTest.findNumberOperationsCarteByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -128,7 +128,7 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 
 	@Test
 	public void findNumberOperationsVirementByCompteIdByYearMonthTest() {
-		assertEquals(Long.valueOf(4), operationDAOTest.findNumberOperationsVirementByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
+		assertEquals(Long.valueOf(2), operationDAOTest.findNumberOperationsVirementByCompteIdByYearMonth(6464, new YearMonth(2012, 6)));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -148,14 +148,14 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 		assertEquals("Some operation #26867996", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #18262862", ops.get(0).getLibelle());
+		assertEquals("Some operation #28420709", ops.get(0).getLibelle());
 	}
 
 	@Test
 	public void findPagedOperationsVirementByCompteIdAndYearMonth() {
 		List<Operation> ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 1);
 		assertEquals(1, ops.size());
-		assertEquals("Some operation #7804298", ops.get(0).getLibelle());
+		assertEquals("Some operation #18262862", ops.get(0).getLibelle());
 		ops = operationDAOTest.findPagedOperationsVirementByCompteIdAndYearMonth(6464, new YearMonth(2012, 6), 1, 2);
 		assertEquals(1, ops.size());
 		assertEquals("Some operation #2570525", ops.get(0).getLibelle());
@@ -164,17 +164,17 @@ public class OperationDAOTest extends AbstractTransactionalJUnit4SpringContextTe
 	@Test
 	public void saveTest() {
 		List<Operation> ops = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6));
-		assertEquals(3, ops.size());
+		assertEquals(4, ops.size());
 
 		Compte compte = ops.get(0).getCompte();
 
 		Operation newOperation = new Operation.Builder().compte(compte).date(new DateTime(2012, 6, 5, 0, 0)).libelle("libelleInsert").montant(1000.0)
-				.type(Operation.OperationType.CARTE).build();
+				.type(Operation.OperationType.CARTE).compteDestination(compte).build();
 
 		operationDAOTest.save(newOperation);
 
 		List<Operation> opsPost = operationDAOTest.findOperationsCarteByCompteIdAndYearMonth(6464, new YearMonth(2012, 6));
-		assertEquals(4, opsPost.size());
+		assertEquals(5, opsPost.size());
 
 	}
 }

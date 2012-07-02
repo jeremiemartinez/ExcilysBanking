@@ -71,8 +71,7 @@ public class DbUnitDataSetRenderer implements DataSetRenderer {
 		s.append(dataSetOperationAttribute("montant", o.getMontant()));
 		s.append(dataSetOperationAttribute("date", o.getDate()));
 		s.append(dataSetOperationAttribute("libelle", o.getLibelle()));
-		if (o.getType().equals(Operation.OperationType.VIREMENT))
-			s.append(dataSetOperationAttribute("compte_destination", o.getCompteDestination().getId()));
+		s.append(dataSetOperationAttribute("compte_destination", o.getCompteDestination().getId()));
 		s.append("/>");
 
 		return s.toString();

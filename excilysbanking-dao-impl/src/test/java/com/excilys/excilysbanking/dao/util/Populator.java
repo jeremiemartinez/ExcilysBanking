@@ -24,7 +24,7 @@ public class Populator {
 		r.openDataSet();
 
 		DateTime now = DateTime.now();
-		DateTime date = new DateTime(now.year().get(), now.monthOfYear().get(), 1, 0, 0);
+		DateTime date = new DateTime(now.year().get(), now.minusMonths(1).monthOfYear().get(), 1, 0, 0);
 		int compteId = 6464;
 
 		r.newHugeSection("Operation for account number " + compteId);

@@ -34,6 +34,11 @@ public class OperationServiceImpl implements OperationService {
 	}
 
 	@Override
+	public List<Operation> getPagedOperationsVirementNegatifByCompteIdAndLast6Months(Integer id, Integer pageSize, Integer PageNumber) {
+		return operationDAO.findPagedOperationsVirementNegatifByCompteIdAndLast6Months(id, pageSize, PageNumber);
+	}
+
+	@Override
 	public List<Operation> getOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym) {
 		return operationDAO.findOperationsCarteByCompteIdAndYearMonth(id, ym);
 	}
@@ -79,5 +84,10 @@ public class OperationServiceImpl implements OperationService {
 		compteDAO.update(compteC);
 
 		return true;
+	}
+
+	@Override
+	public Long getNumberOperationsVirementNegatifByCompteIdAndLast6Months(Integer id) {
+		return operationDAO.findNumberOperationsCarteByCompteIdAndLast6Months(id);
 	}
 }

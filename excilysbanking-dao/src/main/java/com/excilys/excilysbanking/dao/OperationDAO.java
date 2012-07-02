@@ -29,4 +29,8 @@ public interface OperationDAO {
 
 	void save(Operation operation);
 
+	List<Operation> findPagedOperationsVirementNegatifByCompteIdAndLast6Months(Integer id, Integer pageSize, Integer pageNumber);
+
+	Long findNumberOperationsCarteByCompteIdAndLast6Months(Integer id);
+
 }

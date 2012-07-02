@@ -22,4 +22,8 @@ public interface OperationService {
 	Long getNumberOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym);
 
 	boolean createVirementOperations(Integer compteDebit, Integer compteCredit, Double montant, String libelle);
+
+	List<Operation> getPagedOperationsVirementNegatifByCompteIdAndLast6Months(Integer id, Integer pageSize, Integer PageNumber);
+
+	Long getNumberOperationsVirementNegatifByCompteIdAndLast6Months(Integer id);
 }

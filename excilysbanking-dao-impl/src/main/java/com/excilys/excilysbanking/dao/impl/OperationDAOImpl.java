@@ -5,6 +5,7 @@ import static com.excilys.excilysbanking.entities.Operation.OperationType.CARTE;
 import static com.excilys.excilysbanking.entities.Operation.OperationType.VIREMENT;
 import static com.excilys.excilysbanking.entities.QOperation.operation;
 import java.util.List;
+import org.joda.time.DateTime;
 import org.joda.time.YearMonth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,15 +56,15 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 	 * Applies paging only if pageNumber > 0 and pageSize > 0, else fetch all operations.
 	 * First page is page number 1.
 	 */
-	public List<Operation> findPagedOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer PageNumber) {
+	public List<Operation> findPagedOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer pageNumber) {
 		LOGGER.debug("Calling Method findPagedOperationsVirementByCompteIdAndYearMonth");
-		return findOperations(id, VIREMENT, ym, pageSize, PageNumber);
+		return findOperations(id, VIREMENT, ym, pageSize, pageNumber);
 	}
 
 	@Override
-	public List<Operation> findPagedOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer PageNumber) {
+	public List<Operation> findPagedOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer pageNumber) {
 		LOGGER.debug("Calling Method findPagedOperationsCarteByCompteIdAndYearMonth");
-		return findOperations(id, CARTE, ym, pageSize, PageNumber);
+		return findOperations(id, CARTE, ym, pageSize, pageNumber);
 	}
 
 	private List<Operation> findOperations(Integer id, OperationType type, YearMonth ym, Integer pageSize, Integer pageNumber) {
@@ -91,4 +92,20 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 		sessions.getCurrentSession().persist(operation);
 	}
 
+	@Override
+	public List<Operation> findPagedOperationsVirementNegatifByCompteIdAndLast6Months(Integer id, Integer pageSize, Integer pageNumber) {
+		DateTime last6Months = DateTime.now().minusMonths(6);
+		return page(
+				query().from(operation).where(operation.compte.id.eq(id), operation.type.eq(VIREMENT), operation.montant.loe(0),
+						operation.date.after(last6Months)), pageSize, pageNumber).list(operation);
+
+	}
+
+	@Override
+	public Long findNumberOperationsCarteByCompteIdAndLast6Months(Integer id) {
+		DateTime last6Months = DateTime.now().minusMonths(6);
+		return query().from(operation)
+				.where(operation.compte.id.eq(id), operation.type.eq(VIREMENT), operation.montant.loe(0), operation.date.after(last6Months))
+				.uniqueResult(operation.count());
+	}
 }

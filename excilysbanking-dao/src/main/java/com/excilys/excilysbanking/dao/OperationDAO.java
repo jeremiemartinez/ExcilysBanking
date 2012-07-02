@@ -4,33 +4,23 @@ package com.excilys.excilysbanking.dao;
 import java.util.List;
 import org.joda.time.YearMonth;
 import com.excilys.excilysbanking.entities.Operation;
+import com.excilys.excilysbanking.entities.Operation.OperationType;
 
 public interface OperationDAO {
 
-	Double findMontantOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym);
+	Double findMontantOperationsCarte(Integer id, YearMonth ym);
 
-	Long findNumberOperationsCarteByCompteIdByYearMonth(Integer id, YearMonth ym);
-
-	Long findNumberOperationsVirementByCompteIdByYearMonth(Integer id, YearMonth ym);
-
-	List<Operation> findOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym);
-
-	List<Operation> findOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym);
+	Long findNumberOperations(Integer id, OperationType type, YearMonth ym);
 
 	/**
 	 * Applies paging only if pageNumber > 0 and pageSize > 0, else fetch all operations. First page is page number 1.
 	 */
-	List<Operation> findPagedOperationsVirementByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer PageNumber);
-
-	/**
-	 * Applies paging only if pageNumber > 0 and pageSize > 0, else fetch all operations. First page is page number 1.
-	 */
-	List<Operation> findPagedOperationsCarteByCompteIdAndYearMonth(Integer id, YearMonth ym, Integer pageSize, Integer PageNumber);
+	List<Operation> findOperations(Integer id, OperationType type, YearMonth ym, Integer pageSize, Integer PageNumber);
 
 	void save(Operation operation);
 
-	List<Operation> findPagedOperationsVirementNegatifByCompteIdAndLast6Months(Integer id, Integer pageSize, Integer pageNumber);
+	List<Operation> findOperationsVirementNegatifLast6Months(Integer id, Integer pageSize, Integer pageNumber);
 
-	Long findNumberOperationsCarteByCompteIdAndLast6Months(Integer id);
+	Long findNumberOperationsVirementNegatifLast6Months(Integer id);
 
 }

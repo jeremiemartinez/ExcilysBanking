@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.excilys.excilysbanking.entities.Operation;
+import com.excilys.excilysbanking.entities.Operation.OperationType;
 import com.excilys.excilysbanking.entities.util.CustomDateSerializer;
 import com.excilys.excilysbanking.services.OperationService;
 import com.excilys.excilysbanking.services.UserService;
@@ -36,7 +37,7 @@ public class OperationsController {
 	public @ResponseBody
 	Long numberOperationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		CustomDateSerializer.setLocale(l);
-		return operationService.getNumberOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month));
+		return operationService.getNumberOperations(id, OperationType.CARTE, new YearMonth(year, month));
 	}
 
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
@@ -49,7 +50,7 @@ public class OperationsController {
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/page/{page}")
 	public @ResponseBody
 	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month, @PathVariable Integer page) {
-		return operationService.getPagedOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month), CARTES_PER_PAGE, page);
+		return operationService.getOperations(id, OperationType.CARTE, new YearMonth(year, month), CARTES_PER_PAGE, page);
 	}
 
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")
@@ -77,15 +78,15 @@ public class OperationsController {
 
 		// Infos
 		m.addAttribute("id", id);
-		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, ym));
+		m.addAttribute("carteSum", operationService.getMontantOperationsCarte(id, ym));
 
 		// Pages navigation
-		Long totalOperations = operationService.getNumberOperationsVirementByCompteIdAndYearMonth(id, ym);
+		Long totalOperations = operationService.getNumberOperations(id, Operation.OperationType.VIREMENT, ym);
 		long lastPage = totalOperations / VIREMENTS_PER_PAGE;
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
 
-		m.addAttribute("operationsList", operationService.getPagedOperationsVirementByCompteIdAndYearMonth(id, ym, VIREMENTS_PER_PAGE, page));
+		m.addAttribute("operationsList", operationService.getOperations(id, OperationType.VIREMENT, ym, VIREMENTS_PER_PAGE, page));
 		m.addAttribute("currentPage", page);
 		m.addAttribute("nextPage", page + 1);
 		m.addAttribute("previousPage", page - 1);

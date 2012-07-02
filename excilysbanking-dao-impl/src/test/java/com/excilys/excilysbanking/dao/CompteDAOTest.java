@@ -37,7 +37,7 @@ public class CompteDAOTest extends AbstractTransactionalJUnit4SpringContextTests
 	public void findComptesByUsernameTest() {
 		List<Compte> comptes = compteDAOTest.findComptesByUsername("jmartinez");
 		assertEquals(2, comptes.size());
-		assertEquals(Double.valueOf(2000), comptes.get(0).getSolde());
+		assertEquals(Double.valueOf(10000), comptes.get(0).getSolde());
 		assertEquals(Compte.CompteType.ESPECE, comptes.get(0).getType());
 		assertEquals("jmartinez", comptes.get(0).getUser().getUsername());
 	}

@@ -60,13 +60,9 @@ public class VirementsController {
 	}
 
 	private void processVirement(VirementForm virementForm, Model m) {
-
-		boolean result = operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
+		operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
 				virementForm.libelle);
-		if (result)
-			m.addAttribute("virementSucceed", true);
-		else
-			m.addAttribute("virementSucceed", false);
+		m.addAttribute("virementSucceed", true);
 	}
 
 	@RequestMapping("/historiqueVirements/id/{id}")
@@ -84,12 +80,12 @@ public class VirementsController {
 		m.addAttribute("id", id);
 
 		// Pages navigation
-		Long totalOperations = operationService.getNumberOperationsVirementNegatifByCompteIdAndLast6Months(id);
+		Long totalOperations = operationService.getNumberOperationsVirementNegatifLast6Months(id);
 		long lastPage = totalOperations / VIREMENTS_PER_PAGE;
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
 
-		m.addAttribute("operationsList", operationService.getPagedOperationsVirementNegatifByCompteIdAndLast6Months(id, VIREMENTS_PER_PAGE, page));
+		m.addAttribute("operationsList", operationService.getOperationsVirementNegatifLast6Months(id, VIREMENTS_PER_PAGE, page));
 		m.addAttribute("currentPage", page);
 		m.addAttribute("nextPage", page + 1);
 		m.addAttribute("previousPage", page - 1);

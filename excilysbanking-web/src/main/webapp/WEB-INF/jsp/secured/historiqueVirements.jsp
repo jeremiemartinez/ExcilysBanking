@@ -59,9 +59,10 @@
 					<ul class="dropdown-menu">
 						<li><a href="../index"><i class="icon-home"></i>&nbsp;
 								&nbsp;<spring:message code="comptes.return" /></a></li>
-
 						<li class="divider"></li>
-
+						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp;
+								&nbsp; <spring:message code="operations.comptes" /></a></li>
+						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
 							<li><a href="/ebank/secured/admin/admin"><i
 									class="icon-wrench"></i>&nbsp; &nbsp; <spring:message

@@ -61,27 +61,23 @@ public class OperationServiceImpl implements OperationService {
 	@Override
 	@Transactional(readOnly = false)
 	public boolean createVirementOperations(Integer compteDebit, Integer compteCredit, Double montant, String libelle) {
-		try {
-			Compte compteD = compteDAO.findCompteById(compteDebit);
-			Compte compteC = compteDAO.findCompteById(compteCredit);
+		Compte compteD = compteDAO.findCompteById(compteDebit);
+		Compte compteC = compteDAO.findCompteById(compteCredit);
 
-			Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
-					.date(DateTime.now()).build();
-			Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
-					.date(DateTime.now()).build();
+		Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
+				.date(DateTime.now()).build();
+		Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
+				.date(DateTime.now()).build();
 
-			operationDAO.save(operationD);
-			operationDAO.save(operationC);
+		operationDAO.save(operationD);
+		operationDAO.save(operationC);
 
-			compteD.setSolde(compteD.getSolde() - montant);
-			compteC.setSolde(compteC.getSolde() + montant);
+		compteD.setSolde(compteD.getSolde() - montant);
+		compteC.setSolde(compteC.getSolde() + montant);
 
-			compteDAO.update(compteD);
-			compteDAO.update(compteC);
+		compteDAO.update(compteD);
+		compteDAO.update(compteC);
 
-		} catch (Exception e) {
-			return false;
-		}
 		return true;
 	}
 }

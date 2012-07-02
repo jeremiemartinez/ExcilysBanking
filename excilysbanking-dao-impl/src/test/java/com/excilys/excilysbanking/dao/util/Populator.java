@@ -12,15 +12,15 @@ import com.excilys.excilysbanking.entities.Operation.OperationType;
 
 public class Populator {
 
-	private final static int VIREMENTS_MAX_PER_MONTH = 10;
-	private final static int CARTES_MAX_PER_MONTH = 10;
-	private final static int NB_MOIS = 8;
+	private final static int VIREMENTS_MAX_PER_MONTH = 5;
+	private final static int CARTES_MAX_PER_MONTH = 5;
+	private final static int NB_MOIS = 6;
 
 	private final static Random rand = new Random();
 	private final static DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM yyyy").withLocale(Locale.ENGLISH);
 
 	public static void main(String[] args) {
-		DataSetRenderer r = new PostgresDataSetRenderer();
+		DataSetRenderer r = new DbUnitDataSetRenderer();
 		r.openDataSet();
 
 		DateTime now = DateTime.now();

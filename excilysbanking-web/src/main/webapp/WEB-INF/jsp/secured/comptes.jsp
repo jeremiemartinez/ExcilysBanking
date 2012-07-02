@@ -78,7 +78,8 @@
 						<li class="active"><a href="#tab1" data-toggle="tab"> <spring:message
 									code="comptes.title" />
 						</a></li>
-						<li><a href="/ebank/secured/virement"> Virements </a></li>
+						<li><a href="/ebank/secured/virement"> <spring:message
+									code="comptes.virement" /> </a></li>
 					</ul>
 				</div>
 			</div>

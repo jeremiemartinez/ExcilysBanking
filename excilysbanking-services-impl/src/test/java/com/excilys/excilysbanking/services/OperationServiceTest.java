@@ -40,11 +40,11 @@ public class OperationServiceTest {
 
 		List<Operation> operations = new ArrayList<Operation>();
 		List<Operation> operationsNonCarte = new ArrayList<Operation>();
-		Operation operation1 = new Operation.Builder().id(151).compte(compte).type(Operation.OperationType.CARTE).montant(2000.0)
-				.date(new DateTime(2012, 6, 25, 0, 0)).build();
-		Operation operation2 = new Operation.Builder().id(152).compte(compte).type(Operation.OperationType.CARTE).montant(2000.0)
-				.date(new DateTime(2012, 6, 25, 0, 0)).build();
-		Operation operation3 = new Operation.Builder().id(153).compte(compte).type(Operation.OperationType.CARTE).montant(-1000.0)
+		Operation operation1 = new Operation.Builder().compte(compte).type(Operation.OperationType.CARTE).montant(2000.0).date(new DateTime(2012, 6, 25, 0, 0))
+				.build();
+		Operation operation2 = new Operation.Builder().compte(compte).type(Operation.OperationType.CARTE).montant(2000.0).date(new DateTime(2012, 6, 25, 0, 0))
+				.build();
+		Operation operation3 = new Operation.Builder().compte(compte).type(Operation.OperationType.CARTE).montant(-1000.0)
 				.date(new DateTime(2012, 6, 25, 0, 0)).build();
 		operations.add(operation1);
 		operations.add(operation2);

@@ -21,6 +21,8 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
 <title><spring:message code="historique.title" /></title>
+<spring:message var="pattern" code="operations.dateFormat" />
+
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -76,7 +78,7 @@
 
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li><a href="/ebank/secured/historiqueVirements" ><spring:message
+						<li><a href="/ebank/secured/operations"><spring:message
 									code="operations.title" /></a></li>
 						<li class="active"><a href="#tab2" data-toggle="tab"> <spring:message
 									code="historique.title" />
@@ -90,7 +92,7 @@
 
 
 	<div class="row-fluid">
-		<div class="span3"></div>
+		<div class="span2"></div>
 		<div class="span8">
 			<br />
 			<div class="tab-content">
@@ -100,24 +102,28 @@
 					</h3>
 					<br />
 
+					<h3>Page ${currentPage}/${lastPage}</h3>
+
+
 					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th><spring:message code="operations.operationId" /></th>
 								<th><spring:message code="operations.date" /></th>
 								<th><spring:message code="operations.type" /></th>
+								<th><spring:message code="operations.compteDestination" /></th>
 								<th><spring:message code="operations.libelle" /></th>
 								<th><spring:message code="operations.montant" /></th>
 							</tr>
 						</thead>
 						<tbody>
 
-							<h3>Page ${currentPage}/${lastPage}</h3>
-							
+
 							<c:forEach var="o" items="${operationsList}">
 								<tr>
 									<td>${o.id}</td>
 									<td><joda:format value="${o.date}" pattern="${pattern}" /></td>
+									<td>${o.compteDestination.id}</td>
 									<td>${o.type}</td>
 									<td>${o.libelle }</td>
 									<td>${o.montant} $</td>
@@ -150,7 +156,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="span3"></div>
+		<div class="span2"></div>
 	</div>
 
 	<c:import url="../included/footer.jsp"></c:import>

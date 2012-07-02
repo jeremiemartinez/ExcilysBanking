@@ -70,9 +70,9 @@ public class OperationServiceImpl implements OperationService {
 		Compte compteC = compteDAO.findCompteById(compteCredit);
 
 		Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
-				.date(DateTime.now()).build();
+				.date(DateTime.now()).compteDestination(compteC).build();
 		Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
-				.date(DateTime.now()).build();
+				.date(DateTime.now()).compteDestination(compteD).build();
 
 		operationDAO.save(operationD);
 		operationDAO.save(operationC);

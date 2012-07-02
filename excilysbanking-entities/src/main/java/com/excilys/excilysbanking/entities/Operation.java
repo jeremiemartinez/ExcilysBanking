@@ -20,80 +20,93 @@ import com.excilys.excilysbanking.entities.util.CustomDateSerializer;
 @Entity
 @Table(name = "operations")
 public class Operation {
-	
+
 	public enum OperationType {
 		CARTE, VIREMENT
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "operation_id")
 	private Integer id;
-	
+
 	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "compte_id", nullable = false, updatable = false)
 	private Compte compte;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column
 	private OperationType type;
-	
+
 	@Column
 	private Double montant;
-	
+
 	@Column
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	@JsonSerialize(using = CustomDateSerializer.class)
 	private DateTime date;
-	
+
 	@Column
 	private String libelle;
-	
+
+	@JsonIgnore
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "compte_destination", nullable = true, updatable = false)
+	private Compte compteDestination;
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public Compte getCompte() {
 		return compte;
 	}
-	
+
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-	
+
 	public OperationType getType() {
 		return type;
 	}
-	
+
 	public String getLibelle() {
 		return libelle;
 	}
-	
+
 	public void setType(OperationType type) {
 		this.type = type;
 	}
-	
+
 	public Double getMontant() {
 		return montant;
 	}
-	
+
 	public void setMontant(Double montant) {
 		this.montant = montant;
 	}
-	
+
 	public DateTime getDate() {
 		return date;
 	}
-	
+
 	public void setDate(DateTime date) {
 		this.date = date;
 	}
-	
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	
+
+	public Compte getCompteDestination() {
+		return compteDestination;
+	}
+
+	public void setCompteDestination(Compte compteDestination) {
+		this.compteDestination = compteDestination;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -101,39 +114,44 @@ public class Operation {
 				.append(", libelle=").append(libelle).append(", date=").append(date).append("]");
 		return builder.toString();
 	}
-	
+
 	public static class Builder {
-		
+
 		private final Operation operation = new Operation();
-		
+
 		public Builder montant(Double montant) {
 			operation.montant = montant;
 			return this;
 		}
-		
+
 		public Builder type(OperationType type) {
 			operation.type = type;
 			return this;
 		}
-		
+
 		public Builder libelle(String libelle) {
 			operation.libelle = libelle;
 			return this;
 		}
-		
+
 		public Builder date(DateTime date) {
 			operation.date = date;
 			return this;
 		}
-		
+
 		public Builder compte(Compte compte) {
 			operation.compte = compte;
 			return this;
 		}
-		
+
+		public Builder compteDestination(Compte compteDestination) {
+			operation.compteDestination = compteDestination;
+			return this;
+		}
+
 		public Operation build() {
 			return operation;
 		}
 	}
-	
+
 }

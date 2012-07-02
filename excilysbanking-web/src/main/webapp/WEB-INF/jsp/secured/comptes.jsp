@@ -145,6 +145,9 @@
 									<td><a
 										href="./operations/id/${c.id}/year/${year}/month/${month}">
 											<spring:message code="comptes.operations" />
+									</a>&nbsp; &nbsp;<a
+										href="./historiqueVirements/id/${c.id}">
+											<spring:message code="comptes.historique" />
 									</a></td>
 								</tr>
 							</c:forEach>

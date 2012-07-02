@@ -69,8 +69,13 @@ public class VirementsController {
 			m.addAttribute("virementSucceed", false);
 	}
 
-	@RequestMapping(value = "/historiqueVirement/id/{id}/page/{page}")
-	public String historiqueVirement(Model m, @PathVariable Integer id, @PathVariable Integer page) {
+	@RequestMapping("/historiqueVirements/id/{id}")
+	public String historiqueVirement(Model m, @PathVariable Integer id) {
+		return historiqueVirementPaged(m, id, 1);
+	}
+
+	@RequestMapping("/historiqueVirements/id/{id}/page/{page}")
+	public String historiqueVirementPaged(Model m, @PathVariable Integer id, @PathVariable Integer page) {
 
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
@@ -93,7 +98,7 @@ public class VirementsController {
 		m.addAttribute("isLastPage", page == lastPage);
 		m.addAttribute("isFirstPage", page == 1);
 
-		return "/secured/operations";
+		return "/secured/historiqueVirements";
 
 	}
 }

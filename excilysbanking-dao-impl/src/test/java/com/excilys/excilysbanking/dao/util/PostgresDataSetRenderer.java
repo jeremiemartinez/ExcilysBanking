@@ -46,7 +46,13 @@ public class PostgresDataSetRenderer implements DataSetRenderer {
 
 	@Override
 	public void populateDataSet(Operation o) {
-		s.append("INSERT INTO operations (compte_id, type, montant, date, libelle) VALUES (");
+		s.append("INSERT INTO operations (compte_id, type, montant, date, libelle");
+		if (o.getType().equals(Operation.OperationType.VIREMENT)) {
+			s.append(", compte_destination) VALUES (");
+		} else {
+			s.append(") VALUES (");
+		}
+
 		s.append(o.getCompte().getId());
 		s.append(", ");
 		s.append("'").append(o.getType()).append("'");
@@ -56,6 +62,10 @@ public class PostgresDataSetRenderer implements DataSetRenderer {
 		s.append("'").append(fmt.print(o.getDate())).append("'");
 		s.append(", ");
 		s.append("'").append(o.getLibelle()).append("'");
+		if (o.getType().equals(Operation.OperationType.VIREMENT)) {
+			s.append(", ");
+			s.append("'").append(o.getCompteDestination().getId()).append("'");
+		}
 		s.append(");\n");
 	}
 

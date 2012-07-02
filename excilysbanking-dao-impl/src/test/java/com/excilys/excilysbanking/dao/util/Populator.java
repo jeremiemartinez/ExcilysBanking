@@ -20,7 +20,7 @@ public class Populator {
 	private final static DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM yyyy").withLocale(Locale.ENGLISH);
 
 	public static void main(String[] args) {
-		DataSetRenderer r = new DbUnitDataSetRenderer();
+		DataSetRenderer r = new PostgresDataSetRenderer();
 		r.openDataSet();
 
 		DateTime now = DateTime.now();
@@ -57,6 +57,8 @@ public class Populator {
 		opDate = opDate.plusSeconds(rand.nextInt(60));
 		ob.libelle("Some operation #" + new Random().hashCode());
 		ob.date(opDate);
+		if (type.equals(Operation.OperationType.VIREMENT))
+			ob.compteDestination(new Compte.Builder().id(2138962500).build());
 		return ob.build();
 	}
 

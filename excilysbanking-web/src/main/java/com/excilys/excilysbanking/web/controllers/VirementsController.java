@@ -46,7 +46,13 @@ public class VirementsController {
 			m.addAttribute("virementForm", virementForm);
 			return "/secured/virement";
 		}
-		return "/secured/comptes";
+		processVirement(virementForm, m);
+		return "redirect:/secured/comptes";
+
+	}
+
+	private void processVirement(VirementForm virementForm, Model m) {
+		m.addAttribute("virementSucceed", "true");
 
 	}
 }

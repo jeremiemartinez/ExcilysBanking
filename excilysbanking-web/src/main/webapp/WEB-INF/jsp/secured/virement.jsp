@@ -79,7 +79,7 @@
 									code="comptes.title" />
 						</a></li>
 						<li class="active"><a href="#tab2" data-toggle="tab">
-								Virements </a>
+								<spring:message code="virements.title"/></a>
 					</ul>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 			<br />
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab2">
-					<h3>Faire un virement</h3>
+					<h3><spring:message code="virements.title"/></h3>
 					<br />
 					<h3><form:errors class="label label-important" path="virementForm" /></h3>
 					<br/>
@@ -102,11 +102,11 @@
 						method='POST'>
 
 						<div class="control-group">
-							<label class="control-label span6" for="compteDebit">Compte à débiter: &nbsp; &nbsp;<form:errors class="label label-important" path="compteDebit" /></label>
+							<label class="control-label span6" for="compteDebit"><spring:message code="virements.compteDebit"/> &nbsp; &nbsp;<form:errors class="label label-important" path="compteDebit" /></label>
 							<div class="controls">
 								<form:select class="span10" id="compteDebit" path="compteDebit">
 									<c:forEach var="c" items="${comptesList}">
-										<form:option value="${c.id}">Compte <strong>${c.id}</strong>;&nbsp; &nbsp; solde disponible: <strong>${c.solde
+										<form:option value="${c.id}"><spring:message code="virements.compte"/> <strong>${c.id}</strong> &nbsp; &nbsp; <spring:message code="virements.solde"/> <strong>${c.solde
 												}$</strong>
 										</form:option>
 									</c:forEach>
@@ -114,13 +114,12 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label span6">Compte à
-								créditer: &nbsp; &nbsp;<form:errors class="label label-important" path="compteCredit" /></label>
+							<label class="control-label span6"><spring:message code="virements.compteCredit"/> &nbsp; &nbsp;<form:errors class="label label-important" path="compteCredit" /></label>
 							<div class="controls">
 								<form:select class="span10" id="compteCredit"
 									path="compteCredit">
 									<c:forEach var="c" items="${comptesList}">
-										<form:option value="${c.id}">Compte <strong>${c.id}</strong>;&nbsp; &nbsp; solde disponible: <strong>${c.solde
+										<form:option value="${c.id}"><spring:message code="virements.compte"/><strong>${c.id}</strong> ;&nbsp; &nbsp; <spring:message code="virements.solde"/> <strong>${c.solde
 												}$</strong>
 										</form:option>
 									</c:forEach>
@@ -128,7 +127,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label span6">Libellé: &nbsp; &nbsp;<form:errors class="label label-important" path="libelle" /></label>
+							<label class="control-label span6"><spring:message code="virements.libelle"/> &nbsp; &nbsp;<form:errors class="label label-important" path="libelle" /></label>
 							<div class="controls">
 								<form:input type='text' class="span10" name='libelle'
 									placeholder="Ecris ton libelle ducon" path="libelle" />
@@ -136,7 +135,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label span6">Montant: &nbsp; &nbsp;<form:errors class="label label-important" path="montant" /></label>
+							<label class="control-label span6"><spring:message code="virements.montant"/> &nbsp; &nbsp;<form:errors class="label label-important" path="montant" /></label>
 							<div class="controls">
 								<form:input type='text' class="span10" name='montant'
 									path="montant" />
@@ -148,8 +147,7 @@
 
 						<div class="control-group">
 							<div class="controls">
-								<form:button type="submit" class="btn btn-primary">Vires
-											ma tune biatch !</form:button>
+								<form:button type="submit" class="btn btn-primary"><spring:message code="virements.process"/></form:button>
 							</div>
 						</div>
 

@@ -21,14 +21,15 @@ public class MontantSoldeValidator implements ConstraintValidator<MontantIsValid
 		if (value == null)
 			return false;
 		else {
-			if (value.getMontant() != null) {
+			try {
 				Double solde = compteService.getCompteById(value.getCompteDebit()).getSolde();
-				if (solde.compareTo(value.getMontant()) > 0)
+				if (solde.compareTo(Double.valueOf(value.getMontant())) > 0)
 					return true;
 				else
 					return false;
-			} else
+			} catch (NumberFormatException e) {
 				return true;
+			}
 
 		}
 	}

@@ -4,7 +4,8 @@ package com.excilys.excilysbanking.web.views;
 import javax.validation.constraints.NotNull;
 import com.excilys.excilysbanking.web.validators.constraints.CompteIdIsValid;
 import com.excilys.excilysbanking.web.validators.constraints.ComptesIdAreNotTheSame;
-import com.excilys.excilysbanking.web.validators.constraints.MontantIsBlank;
+import com.excilys.excilysbanking.web.validators.constraints.MontantIsDouble;
+import com.excilys.excilysbanking.web.validators.constraints.MontantIsNotBlank;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsValid;
 
 @MontantIsValid
@@ -19,8 +20,9 @@ public class VirementForm {
 	@CompteIdIsValid
 	public Integer compteCredit;
 
-	@MontantIsBlank
-	public Double montant;
+	@MontantIsNotBlank
+	@MontantIsDouble
+	public String montant;
 
 	public String libelle;
 
@@ -40,11 +42,11 @@ public class VirementForm {
 		this.compteCredit = compteCredit;
 	}
 
-	public Double getMontant() {
+	public String getMontant() {
 		return montant;
 	}
 
-	public void setMontant(Double montant) {
+	public void setMontant(String montant) {
 		this.montant = montant;
 	}
 

@@ -96,6 +96,20 @@
 					<h3>
 						<spring:message code="comptes.title" />
 					</h3>
+					<c:if test="${not empty param.virementSucceed}">
+						<div class="row">
+							<div class="span4"></div>
+							<div class="span4">
+
+								<div class="alert alert-success">
+									<strong><spring:message code="comptes.successTitle" /></strong>
+									<spring:message code="comptes.success" />
+								</div>
+
+							</div>
+							<div class="span4"></div>
+						</div>
+					</c:if>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -120,7 +134,7 @@
 						</tbody>
 					</table>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="span2"></div>

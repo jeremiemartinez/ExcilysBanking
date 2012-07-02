@@ -78,7 +78,7 @@
 
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li><a href="/ebank/secured/operations"><spring:message
+						<li><a href="/ebank/secured/operations/id/${id }"><spring:message
 									code="operations.title" /></a></li>
 						<li class="active"><a href="#tab2" data-toggle="tab"> <spring:message
 									code="historique.title" />
@@ -110,8 +110,8 @@
 							<tr>
 								<th><spring:message code="operations.operationId" /></th>
 								<th><spring:message code="operations.date" /></th>
-								<th><spring:message code="operations.type" /></th>
 								<th><spring:message code="operations.compteDestination" /></th>
+								<th><spring:message code="operations.type" /></th>
 								<th><spring:message code="operations.libelle" /></th>
 								<th><spring:message code="operations.montant" /></th>
 							</tr>
@@ -137,16 +137,16 @@
 					<ul class="pager">
 						<c:if test="${currentPage != firstPage}">
 							<li class="next"><a
-								href="/ebank/secured/historiqueVirement/id/${id}/page/${firstPage}"><spring:message
+								href="/ebank/secured/historiqueVirements/id/${id}/page/${firstPage}"><spring:message
 										code="paging.newest" />&rarr;</a> <a
-								href="/ebank/secured/historiqueVirement/id/${id}/page/${previousPage}"><spring:message
+								href="/ebank/secured/historiqueVirements/id/${id}/page/${previousPage}"><spring:message
 										code="paging.newer" /></a></li>
 						</c:if>
 						<c:if test="${currentPage != lastPage}">
 							<li class="previous"><a
-								href="/ebank/secured/historiqueVirement/id/${id}/page/${lastPage}">&larr;<spring:message
+								href="/ebank/secured/historiqueVirements/id/${id}/page/${lastPage}">&larr;<spring:message
 										code="paging.oldest" /></a> <a
-								href="/ebank/secured/historiqueVirement/id/${id}/page/${nextPage}"><spring:message
+								href="/ebank/secured/historiqueVirements/id/${id}/page/${nextPage}"><spring:message
 										code="paging.older" /></a></li>
 						</c:if>
 					</ul>

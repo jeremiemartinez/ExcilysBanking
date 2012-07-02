@@ -21,65 +21,70 @@ import com.excilys.excilysbanking.services.UserService;
 @Controller
 @RequestMapping("/secured")
 public class OperationsController {
-	
+
 	public static final int CARTES_PER_PAGE = 5;
 	public static final int VIREMENTS_PER_PAGE = 20;
 	public static final int NUMBER_DISPLAYED_MONTHS = 6;
-	
+
 	@Autowired
 	private OperationService operationService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/pages")
 	public @ResponseBody
 	Long numberOperationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		CustomDateSerializer.setLocale(l);
 		return operationService.getNumberOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month));
 	}
-	
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
 	public @ResponseBody
 	List<Operation> operationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		CustomDateSerializer.setLocale(l);
 		return operationsCarteJSON(id, year, month, 1);
 	}
-	
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/page/{page}")
 	public @ResponseBody
 	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month, @PathVariable Integer page) {
 		return operationService.getPagedOperationsCarteByCompteIdAndYearMonth(id, new YearMonth(year, month), CARTES_PER_PAGE, page);
 	}
-	
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		return operations(m, id, year, month, 1);
 	}
-	
+
+	@RequestMapping("/operations/id/{id}")
+	public String operations(Model m, @PathVariable Integer id) {
+		return operations(m, id, DateTime.now().getYear(), DateTime.now().getMonthOfYear(), 1);
+	}
+
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/page/{page}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month, @PathVariable Integer page) {
-		
+
 		if (userService.isAdmin(SecurityContextHolder.getContext().getAuthentication()))
 			m.addAttribute("isAdmin", "true");
-		
+
 		// Months navigation
 		YearMonth ym = new YearMonth(year, month);
 		m.addAttribute("requestedMonth", ym);
 		m.addAttribute("months", getPreviousMonths());
 		m.addAttribute("month", month);
 		m.addAttribute("year", year);
-		
+
 		// Infos
 		m.addAttribute("id", id);
 		m.addAttribute("carteSum", operationService.getMontantOperationsCarteByCompteIdAndYearMonth(id, ym));
-		
+
 		// Pages navigation
 		Long totalOperations = operationService.getNumberOperationsVirementByCompteIdAndYearMonth(id, ym);
 		long lastPage = totalOperations / VIREMENTS_PER_PAGE;
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
-		
+
 		m.addAttribute("operationsList", operationService.getPagedOperationsVirementByCompteIdAndYearMonth(id, ym, VIREMENTS_PER_PAGE, page));
 		m.addAttribute("currentPage", page);
 		m.addAttribute("nextPage", page + 1);
@@ -88,10 +93,10 @@ public class OperationsController {
 		m.addAttribute("lastPage", lastPage);
 		m.addAttribute("isLastPage", page == lastPage);
 		m.addAttribute("isFirstPage", page == 1);
-		
+
 		return "/secured/operations";
 	}
-	
+
 	private List<YearMonth> getPreviousMonths() {
 		DateTime now = DateTime.now();
 		YearMonth tmp = new YearMonth(now.year().get(), now.monthOfYear().get());

@@ -36,4 +36,9 @@ public class CompteDAOImpl extends AbstractDAOQueryDSLHelper implements CompteDA
 		return compte;
 	}
 
+	@Override
+	public void update(Compte compte) {
+		sessions.getCurrentSession().update(compte);
+	}
+
 }

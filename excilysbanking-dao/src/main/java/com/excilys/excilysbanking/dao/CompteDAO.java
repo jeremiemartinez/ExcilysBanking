@@ -12,4 +12,6 @@ public interface CompteDAO {
 
 	Compte findCompteById(Integer id);
 
+	void update(Compte compte);
+
 }

@@ -99,13 +99,24 @@
 					<c:if test="${not empty param.virementSucceed}">
 						<div class="row">
 							<div class="span4"></div>
+
 							<div class="span4">
+								<c:choose>
+									<c:when test='${param.virementSucceed}'>
 
-								<div class="alert alert-success">
-									<strong><spring:message code="comptes.successTitle" /></strong>
-									<spring:message code="comptes.success" />
-								</div>
+										<div class="alert alert-success">
+											<strong><spring:message code="comptes.successTitle" /></strong>
+											<spring:message code="comptes.success" />
+										</div>
 
+									</c:when>
+									<c:otherwise>
+										<div class="alert alert-error">
+											<strong><spring:message code="comptes.errorTitle" /></strong>
+											<spring:message code="comptes.error" />
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="span4"></div>
 						</div>

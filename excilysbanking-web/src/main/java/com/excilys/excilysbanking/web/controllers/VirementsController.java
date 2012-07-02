@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.CompteService;
+import com.excilys.excilysbanking.services.OperationService;
 import com.excilys.excilysbanking.services.UserService;
 import com.excilys.excilysbanking.web.views.VirementForm;
 
@@ -24,6 +25,9 @@ public class VirementsController {
 
 	@Autowired
 	private CompteService compteService;
+
+	@Autowired
+	private OperationService operationService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String displayVirementForm(Model m) {
@@ -52,7 +56,12 @@ public class VirementsController {
 	}
 
 	private void processVirement(VirementForm virementForm, Model m) {
-		m.addAttribute("virementSucceed", "true");
 
+		boolean result = operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
+				virementForm.libelle);
+		if (result)
+			m.addAttribute("virementSucceed", true);
+		else
+			m.addAttribute("virementSucceed", false);
 	}
 }

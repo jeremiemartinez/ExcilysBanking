@@ -75,4 +75,9 @@ public class LoginController {
 	public String error403() {
 		return "/403";
 	}
+	
+	@RequestMapping("/500")
+	public String error500() {
+		return "/500";
+	}
 }

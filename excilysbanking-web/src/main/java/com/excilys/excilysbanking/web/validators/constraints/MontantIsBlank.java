@@ -8,15 +8,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import com.excilys.excilysbanking.web.validators.MontantSoldeValidator;
+import com.excilys.excilysbanking.web.validators.MontantNotBlankValidator;
 
-@Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = MontantSoldeValidator.class)
+@Constraint(validatedBy = MontantNotBlankValidator.class)
 @Documented
-public @interface MontantIsValid {
+public @interface MontantIsBlank {
 
-	String message() default "Montant is greater than solde available...";
+	String message() default "Montant is not filled";
 
 	Class<?>[] groups() default {};
 

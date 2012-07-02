@@ -14,7 +14,7 @@ import com.excilys.excilysbanking.web.validators.SameIdComptesValidator;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = SameIdComptesValidator.class)
 @Documented
-public @interface ComptesIdAreTheSame {
+public @interface ComptesIdAreNotTheSame {
 
 	String message() default "Comptes Id are the same...";
 

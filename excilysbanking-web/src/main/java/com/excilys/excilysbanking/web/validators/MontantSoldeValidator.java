@@ -8,7 +8,7 @@ import com.excilys.excilysbanking.services.CompteService;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsValid;
 import com.excilys.excilysbanking.web.views.VirementForm;
 
-public class MontantValidator implements ConstraintValidator<MontantIsValid, VirementForm> {
+public class MontantSoldeValidator implements ConstraintValidator<MontantIsValid, VirementForm> {
 
 	@Autowired
 	private CompteService compteService;
@@ -28,7 +28,7 @@ public class MontantValidator implements ConstraintValidator<MontantIsValid, Vir
 				else
 					return false;
 			} else
-				return false;
+				return true;
 
 		}
 	}

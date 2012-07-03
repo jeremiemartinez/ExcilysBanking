@@ -76,7 +76,7 @@
 					<h3>
 						<spring:message code="admin.usersList" />
 					</h3>
-					<table class="table table-striped">
+					<table id="tableUsers" class="table table-striped">
 						<thead>
 							<tr>
 								<th><spring:message code="admin.username" /></th>
@@ -103,7 +103,7 @@
 					<h3>
 						<spring:message code="admin.comptesList" />
 					</h3>
-					<table class="table table-striped">
+					<table id="tableComptes" class="table table-striped">
 						<thead>
 							<tr>
 								<th><spring:message code="admin.compteId" /></th>

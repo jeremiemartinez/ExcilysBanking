@@ -1,10 +1,7 @@
 
 package com.excilys.excilysbanking.web.controllers;
 
-import static com.excilys.excilysbanking.web.controllers.ControllerUtil.CARTES_PER_PAGE;
-import static com.excilys.excilysbanking.web.controllers.ControllerUtil.VIREMENTS_PER_PAGE;
-import static com.excilys.excilysbanking.web.controllers.ControllerUtil.addPagingInformation;
-import static com.excilys.excilysbanking.web.controllers.ControllerUtil.getPreviousMonths;
+import static com.excilys.excilysbanking.web.controllers.ControllerUtil.*;
 import java.util.List;
 import java.util.Locale;
 import org.joda.time.DateTime;

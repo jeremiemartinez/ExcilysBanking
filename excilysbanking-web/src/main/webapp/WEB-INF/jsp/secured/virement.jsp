@@ -57,7 +57,7 @@
 
 						<li class="divider"></li>
 
-						<security:authorize access="hasRole('ROLE_ADMIN')">
+						<security:authorize url="/ebank/secured/admin/admin">
 							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="comptes.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</security:authorize>

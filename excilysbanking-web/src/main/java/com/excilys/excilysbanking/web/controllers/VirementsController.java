@@ -33,6 +33,8 @@ public class VirementsController {
 	@Autowired
 	private OperationService operationService;
 
+	// Virement Processor
+
 	@RequestMapping(value = "/virement", method = RequestMethod.GET)
 	public String displayVirementForm(Model m) {
 		User currentUser = userService.getConnectedUser();
@@ -65,6 +67,8 @@ public class VirementsController {
 		m.addAttribute("virementSucceed", true);
 	}
 
+	// Manager of Historique Virement
+
 	@RequestMapping("/historiqueVirements/id/{id}")
 	public String historiqueVirement(Model m, @PathVariable Integer id) {
 		return historiqueVirementPaged(m, id, 1);
@@ -85,6 +89,7 @@ public class VirementsController {
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
 
+		// Creating Model
 		m.addAttribute("operationsList", operationService.getOperationsVirementNegatifLast6Months(id, VIREMENTS_PER_PAGE, page));
 		m.addAttribute("currentPage", page);
 		m.addAttribute("nextPage", page + 1);

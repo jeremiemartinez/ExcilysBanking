@@ -8,15 +8,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import com.excilys.excilysbanking.web.validators.MontantNotBlankValidator;
+import com.excilys.excilysbanking.web.validators.MontantValidator;
 
 @Target({ ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = MontantNotBlankValidator.class)
+@Constraint(validatedBy = MontantValidator.class)
 @Documented
 public @interface MontantIsNotBlank {
 
-	String message() default "Montant is not filled";
+	String message() default "{com.excilys.excilysbanking.web.validators.constraints.montantisnotblank}";
 
 	Class<?>[] groups() default {};
 

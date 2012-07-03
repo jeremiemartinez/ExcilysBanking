@@ -24,43 +24,60 @@
 		</repository>
 	</repositories>
 
+	<description>eBanking Project</description>
+	<url>https://github.com/lponnau/ExcilysBanking</url>
+	<organization>
+		<name>EBusiness Information - Group Excilys</name>
+		<url>http://www.ebusinessinformation.fr/</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Jeremie Martinez</name>
+			<email>jmartinez@excilys.com</email>
+		</developer>
+		<developer>
+			<name>Luc Ponnau</name>
+			<email>lponnau@excilys.com</email>
+		</developer>
+	</developers>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.6</java.version>
 
-		<!-- web -->
+		<!-- Web -->
 		<javax-servlet.version>2.5</javax-servlet.version>
 		<jstl.version>1.2</jstl.version>
 
-		<!-- test -->
+		<!-- Test -->
 		<junit.version>4.10</junit.version>
 		<mockito.version>1.9.0</mockito.version>
 
-		<!-- logging -->
+		<!-- Logging -->
 		<commons-logging.version>99.0-does-not-exist</commons-logging.version>
 		<jcl-over-slf4j.version>1.6.4</jcl-over-slf4j.version>
 		<logback.version>1.0.3</logback.version>
 		<slf4j.version>1.6.6</slf4j.version>
 
-		<!-- spring -->
+		<!-- Spring -->
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<spring-dbunit.version>1.1.8</spring-dbunit.version>
 		<spring-jdbc.version>3.1.1.RELEASE</spring-jdbc.version>
 		<spring-security.version>3.1.0.RELEASE</spring-security.version>
 
-		<!-- hibernate -->
+		<!-- Hibernate -->
 		<hibernate-core.version>4.1.3.Final</hibernate-core.version>
 		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
 		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
 
-		<!-- database -->
+		<!-- Database -->
 		<dbcp.version>1.4</dbcp.version>
 		<flyway.version>1.6.1</flyway.version>
 		<h2.version>1.3.167</h2.version>
 		<posgresql.version>9.1-902.jdbc4</posgresql.version>
 		<querydsl.version>1.8.2</querydsl.version>
 
-		<!-- plugins -->
+		<!-- Plugins -->
 		<cobertura-plugin.version>2.5.1</cobertura-plugin.version>
 		<javadoc-plugin>2.8.1</javadoc-plugin>
 		<jxr-plugin.version>2.3</jxr-plugin.version>
@@ -75,7 +92,7 @@
 
 		<!-- Jackson for JSON -->
 		<jackson.version>1.9.7</jackson.version>
-		
+
 		<!-- Hibernate Validator -->
 		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
 
@@ -184,7 +201,6 @@
 				<artifactId>spring-tx</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-expression</artifactId>

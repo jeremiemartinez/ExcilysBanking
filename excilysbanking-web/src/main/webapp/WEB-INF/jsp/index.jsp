@@ -5,17 +5,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Excilys-Banking est un service de banque en ligne développé pour et par EBusinessInformation - Groupe Exclys">
+<meta name="description" content="Excilys-Banking est un service de banque en ligne développé pour et par EBusinessInformation - Groupe Exclys">
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
-<!-- Le styles -->
+
+<!-- CSS -->
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/ebank/resources/css/flags.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon"
 	href="/ebank/resources/img/favicon.ico">
+	
 <title><spring:message code="bank.name" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -59,8 +61,7 @@
 					<spring:message code="index.title" />
 				</h3>
 				<hr>
-				<form class="form-horizontal"
-					action="<c:url value='j_spring_security_check' />" method='POST'>
+				<form class="form-horizontal" action="<c:url value='j_spring_security_check' />" method='POST'>
 					<c:if test="${not empty errorLogin}">
 						<div class="alert alert-error">
 							<strong><spring:message code="index.error" /></strong>
@@ -82,27 +83,19 @@
 					</c:if>
 
 					<div class="control-group">
-						<label class="control-label" class="span6" for="j_username">
-							<spring:message code="index.username" />
-						</label>
+						<label class="control-label" class="span6" for="j_username"><spring:message code="index.username" /></label>
 						<div class="controls">
-							<input type="text" class="span8" name='j_username'
-								placeholder="Nom d'utilisateur">
+							<input type="text" class="span8" name='j_username' placeholder="Nom d'utilisateur">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" class="span6" for="j_password">
-							<spring:message code="index.password" />
-						</label>
+						<label class="control-label" class="span6" for="j_password"><spring:message code="index.password" /></label>
 						<div class="controls">
-							<input type="password" class="span8" name='j_password'
-								placeholder="Mot de passe">
+							<input type="password" class="span8" name='j_password' placeholder="Mot de passe">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label"> <spring:message
-								code="index.rememberMe" />
-						</label>
+						<label class="control-label"> <spring:message code="index.rememberMe" /></label>
 						<div class="controls">
 							<input type='checkbox' name='_spring_security_remember_me' />
 						</div>
@@ -124,6 +117,7 @@
 		<div class="span4"></div>
 	</div>
 
+	<!-- Footer -->
 	<c:import url="./included/footer.jsp"></c:import>
 
 	<!-- Javascript -->

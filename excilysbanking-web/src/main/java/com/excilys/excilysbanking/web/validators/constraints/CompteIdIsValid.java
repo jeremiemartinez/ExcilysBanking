@@ -16,7 +16,7 @@ import com.excilys.excilysbanking.web.validators.CompteIdValidator;
 @Documented
 public @interface CompteIdIsValid {
 
-	String message() default "Compte Id does not exist...";
+	String message() default "{com.excilys.excilysbanking.web.validators.constraints.compteidisvalid}";
 
 	Class<?>[] groups() default {};
 

@@ -16,7 +16,7 @@ import com.excilys.excilysbanking.web.validators.MontantSoldeValidator;
 @Documented
 public @interface MontantIsValid {
 
-	String message() default "Montant is greater than solde available...";
+	String message() default "{com.excilys.excilysbanking.web.validators.constraints.montantisvalid}";
 
 	Class<?>[] groups() default {};
 

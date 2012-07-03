@@ -33,34 +33,16 @@ public class OperationsController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/pages")
-	public @ResponseBody
-	Long numberOperationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
-		CustomDateSerializer.setLocale(l);
-		return operationService.getNumberOperations(id, OperationType.CARTE, new YearMonth(year, month));
-	}
+	// Operations Virement Paging used by JSP
 
-	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
-	public @ResponseBody
-	List<Operation> operationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
-		CustomDateSerializer.setLocale(l);
-		return operationsCarteJSON(id, year, month, 1);
-	}
-
-	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/page/{page}")
-	public @ResponseBody
-	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month, @PathVariable Integer page) {
-		return operationService.getOperations(id, OperationType.CARTE, new YearMonth(year, month), CARTES_PER_PAGE, page);
+	@RequestMapping("/operations/id/{id}")
+	public String operations(Model m, @PathVariable Integer id) {
+		return operations(m, id, DateTime.now().getYear(), DateTime.now().getMonthOfYear(), 1);
 	}
 
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")
 	public String operations(Model m, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
 		return operations(m, id, year, month, 1);
-	}
-
-	@RequestMapping("/operations/id/{id}")
-	public String operations(Model m, @PathVariable Integer id) {
-		return operations(m, id, DateTime.now().getYear(), DateTime.now().getMonthOfYear(), 1);
 	}
 
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/page/{page}")
@@ -86,6 +68,7 @@ public class OperationsController {
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
 
+		// Creating Model
 		m.addAttribute("operationsList", operationService.getOperations(id, OperationType.VIREMENT, ym, VIREMENTS_PER_PAGE, page));
 		m.addAttribute("currentPage", page);
 		m.addAttribute("nextPage", page + 1);
@@ -97,6 +80,30 @@ public class OperationsController {
 
 		return "/secured/operations";
 	}
+
+	// Operations Carte Paging used by AJAX
+
+	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes")
+	public @ResponseBody
+	List<Operation> operationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+		CustomDateSerializer.setLocale(l);
+		return operationsCarteJSON(id, year, month, 1);
+	}
+
+	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/pages")
+	public @ResponseBody
+	Long numberOperationsCarteJSON(Locale l, @PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month) {
+		CustomDateSerializer.setLocale(l);
+		return operationService.getNumberOperations(id, OperationType.CARTE, new YearMonth(year, month));
+	}
+
+	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}/cartes/page/{page}")
+	public @ResponseBody
+	List<Operation> operationsCarteJSON(@PathVariable Integer id, @PathVariable Integer year, @PathVariable Integer month, @PathVariable Integer page) {
+		return operationService.getOperations(id, OperationType.CARTE, new YearMonth(year, month), CARTES_PER_PAGE, page);
+	}
+
+	// Util method
 
 	private List<YearMonth> getPreviousMonths() {
 		DateTime now = DateTime.now();

@@ -6,18 +6,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.excilys.excilysbanking.web" />
-	
-	
+
 	<mvc:annotation-driven validator="validator" />
-	
+
 	<bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" id="validator">
-                <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
-        </bean>
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+	</bean>
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
@@ -25,13 +23,6 @@
 
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
 
-
-
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
-
-
-
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 
 </beans>

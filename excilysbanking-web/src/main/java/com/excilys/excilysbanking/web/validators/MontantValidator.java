@@ -5,17 +5,17 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsNotBlank;
 
-public class MontantNotBlankValidator implements ConstraintValidator<MontantIsNotBlank, String> {
+public class MontantValidator implements ConstraintValidator<MontantIsNotBlank, Double> {
 
 	@Override
 	public void initialize(MontantIsNotBlank constraintAnnotation) {}
 
 	@Override
-	public boolean isValid(String value, ConstraintValidatorContext context) {
-		if (value.isEmpty())
+	public boolean isValid(Double value, ConstraintValidatorContext context) {
+		if (value == null)
 			return false;
 		else
 			return true;
-	}
 
+	}
 }

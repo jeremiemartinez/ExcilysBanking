@@ -16,7 +16,7 @@ import com.excilys.excilysbanking.web.validators.SameIdComptesValidator;
 @Documented
 public @interface ComptesIdAreNotTheSame {
 
-	String message() default "Comptes Id are the same...";
+	String message() default "{com.excilys.excilysbanking.web.validators.constraints.comptesidarenotthesame}";
 
 	Class<?>[] groups() default {};
 

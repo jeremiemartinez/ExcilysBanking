@@ -57,26 +57,26 @@
 		<div class="span4">
 			<br />
 			<div class="well">
-				<h3 id="moduleConnetion" class="center">
+				<h3 id="moduleConnection" class="center">
 					<spring:message code="index.title" />
 				</h3>
 				<hr>
 				<form class="form-horizontal" action="<c:url value='j_spring_security_check' />" method='POST'>
 					<c:if test="${not empty errorLogin}">
-						<div class="alert alert-error">
+						<div class="alert alert-error" id="errorLogin">
 							<strong><spring:message code="index.error" /></strong>
 							<spring:message code="index.errorLogin" />
 						</div>
 					</c:if>
 					<c:if test="${not empty errorTooManySessions}">
-						<div class="alert alert-error">
+						<div class="alert alert-error" id="errorTooManySessions">
 							<strong><spring:message code="index.error" /></strong>
 							<spring:message code="index.errorTooManySessions" />
 							.
 						</div>
 					</c:if>
 					<c:if test="${not empty errorSessionTimeOut}">
-						<div class="alert alert-error">
+						<div class="alert alert-error" id="errorSessionTimeOut">
 							<strong><spring:message code="index.error" /></strong>
 							<spring:message code="index.errorTimedOut" />
 						</div>
@@ -85,13 +85,13 @@
 					<div class="control-group">
 						<label class="control-label" class="span6" for="j_username"><spring:message code="index.username" /></label>
 						<div class="controls">
-							<input type="text" class="span8" name='j_username' placeholder="Nom d'utilisateur">
+							<input type="text" class="span8" id="j_username" name='j_username' placeholder="Nom d'utilisateur">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" class="span6" for="j_password"><spring:message code="index.password" /></label>
 						<div class="controls">
-							<input type="password" class="span8" name='j_password' placeholder="Mot de passe">
+							<input type="password" class="span8" id="j_password" name='j_password' placeholder="Mot de passe">
 						</div>
 					</div>
 					<div class="control-group">
@@ -102,7 +102,7 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<button type="submit" class="btn btn-primary">
+							<button id="submit" type="submit" class="btn btn-primary">
 								<spring:message code="index.connect" />
 							</button>
 						</div>

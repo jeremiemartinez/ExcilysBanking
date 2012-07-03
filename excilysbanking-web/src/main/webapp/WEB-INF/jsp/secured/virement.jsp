@@ -121,7 +121,7 @@
 						<div class="control-group">
 							<label class="control-label span6"><spring:message code="virements.libelle"/> &nbsp; &nbsp;<form:errors class="label label-important" path="libelle" /></label>
 							<div class="controls">
-								<form:input type='text' class="span10" name='libelle' placeholder="Ecris ton libelle ducon" path="libelle" />
+								<form:input type='text' class="span10" name='libelle' path="libelle" />
 
 							</div>
 						</div>

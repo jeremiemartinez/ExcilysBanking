@@ -120,7 +120,7 @@
 							<h3>Page ${currentPage}/${lastPage}</h3>
 
 							<tr>
-								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes();">
+								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes(${year},${month });">
 										<spring:message code="operations.details" />
 									</button></td>
 								<td><spring:message code="operations.carteDate" /></td>
@@ -199,81 +199,9 @@
 	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
 	<script src="/ebank/resources/js/bootstrap.js"></script>
 	<script src="/ebank/resources/js/handlebars.js"></script>
+	<script src="/ebank/resources/js/operationsCarte.js"></script>
 
-	<script type="text/javascript">
-	var cartesCurrentPage = 1;
-	var cartesLastPage = 1;
-	var showCartes = false;
-	
-	function revealCartes(){
-		showCartes = !showCartes;
-		if (showCartes) {
-			getNumberCartes();
-		}
-	}
-	
-	function refreshCartes() {
-		getAndPrintCartes(cartesCurrentPage);		
-		$('#cartesPageNumber').html(cartesCurrentPage + '/' + cartesLastPage);
-		if (cartesCurrentPage == 1)
-			$('#cartePagerNext').hide();
-		else 
-			$('#cartePagerNext').show();
-		if (cartesCurrentPage == cartesLastPage)
-			$('#cartePagerPrevious').hide();
-		else 
-			$('#cartePagerPrevious').show();
-	}
-	
-	$("#cartesNewer").click(function() {
-		cartesCurrentPage--;
-		refreshCartes();
-	});
-	
-	$("#cartesNewest").click(function() {
-		cartesCurrentPage = 1;
-		refreshCartes();
-	});
-	
-	$("#cartesOlder").click(function() {
-		cartesCurrentPage++;
-		refreshCartes();
-	});
-	
-	$("#cartesOldest").click(function() {
-		cartesCurrentPage = cartesLastPage;
-		refreshCartes();
-	});
-	
-	function getAndPrintCartes(page){
-		$.getJSON(
-				"/ebank/secured/operations/id/6464/year/${year}/month/${month}/cartes/page/" + page,
-				function(data) {
-					var source = $('#operationTpl').html();
-					var template = Handlebars.compile(source);
-					var html = template(data);
-					$('#operationsCarteArea').html(html);
-				});
-	}
-	
-	function getNumberCartes() {
-		$.getJSON(
-				"/ebank/secured/operations/id/6464/year/${year}/month/${month}/cartes/pages",
-				updateCartesLastPage);
-	}
-	
-	function updateCartesLastPage(data) {
-		cartesLastPage = parseInt(data / 5);
-		if (data % 5 > 0)
-			cartesLastPage++;
-		refreshCartes();
-	}
-	
-	Handlebars.registerHelper('dateFormater', function(date) {
-		return new Handlebars.SafeString(date);
-	});
-	</script>
-
+	<!-- Template Handlebars/Moustache -->
 	<script id="operationTpl" type="text/template">
 		{{#.}}
 			<tr>

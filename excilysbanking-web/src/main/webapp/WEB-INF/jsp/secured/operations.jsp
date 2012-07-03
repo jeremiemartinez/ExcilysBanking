@@ -120,7 +120,7 @@
 							<h3>Page ${currentPage}/${lastPage}</h3>
 
 							<tr>
-								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes(${year},${month });">
+								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes(${year},${month},${id});">
 										<spring:message code="operations.details" />
 									</button></td>
 								<td><spring:message code="operations.carteDate" /></td>

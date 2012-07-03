@@ -14,12 +14,13 @@ public class ControllerUtil {
 	static final int NUMBER_DISPLAYED_MONTHS = 6;
 	
 	static void addPagingInformation(Model m, Integer currentPage, long lastPage) {
+		long lp = (lastPage == 0) ? 1 : lastPage;
 		m.addAttribute("currentPage", currentPage);
 		m.addAttribute("nextPage", currentPage + 1);
 		m.addAttribute("previousPage", currentPage - 1);
 		m.addAttribute("firstPage", 1);
-		m.addAttribute("lastPage", lastPage);
-		m.addAttribute("isLastPage", currentPage == lastPage);
+		m.addAttribute("lastPage", lp);
+		m.addAttribute("isLastPage", currentPage == lp);
 		m.addAttribute("isFirstPage", currentPage == 1);
 	}
 	

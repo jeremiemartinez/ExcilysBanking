@@ -3,18 +3,20 @@ var cartesLastPage = 1;
 var showCartes = false;
 var cYear;
 var cMonth;
+var cCompte;
 
-function revealCartes(year, month){
+function revealCartes(year, month, compte){
 	cYear = year;
 	cMonth = month;
+	cCompte = compte;
 	showCartes = !showCartes;
 	if (showCartes) {
-		getNumberCartes(cYear, cMonth);
+		getNumberCartes(cYear, cMonth, cCompte);
 	}
 }
 
-function refreshCartes(year, month) {
-	getAndPrintCartes(year, month, cartesCurrentPage);		
+function refreshCartes(year, month, compte) {
+	getAndPrintCartes(year, month, cartesCurrentPage, compte);		
 	$('#cartesPageNumber').html(cartesCurrentPage + '/' + cartesLastPage);
 	if (cartesCurrentPage == 1)
 		$('#cartePagerNext').hide();
@@ -28,27 +30,27 @@ function refreshCartes(year, month) {
 
 $("#cartesNewer").click(function() {
 	cartesCurrentPage--;
-	refreshCartes(cYear, cMonth);
+	refreshCartes(cYear, cMonth, cCompte);
 });
 
 $("#cartesNewest").click(function() {
 	cartesCurrentPage = 1;
-	refreshCartes(cYear, cMonth);
+	refreshCartes(cYear, cMonth, cCompte);
 });
 
 $("#cartesOlder").click(function() {
 	cartesCurrentPage++;
-	refreshCartes(cYear, cMonth);
+	refreshCartes(cYear, cMonth, cCompte);
 });
 
 $("#cartesOldest").click(function() {
 	cartesCurrentPage = cartesLastPage;
-	refreshCartes(cYear, cMonth);
+	refreshCartes(cYear, cMonth, cCompte);
 });
 
-function getAndPrintCartes(year, month, page){
+function getAndPrintCartes(year, month, page, compte){
 	$.getJSON(
-			"/ebank/secured/operations/id/6464/year/"+year+"/month/"+month+"/cartes/page/" + page,
+			"/ebank/secured/operations/id/" + compte + "/year/" + year + "/month/" + month + "/cartes/page/" + page,
 			function(data) {
 				var source = $('#operationTpl').html();
 				var template = Handlebars.compile(source);
@@ -57,13 +59,14 @@ function getAndPrintCartes(year, month, page){
 			});
 }
 
-function getNumberCartes(year, month) {
+function getNumberCartes(year, month, compte) {
 	$.getJSON(
-			"/ebank/secured/operations/id/6464/year/"+year+"/month/"+month+"/cartes/pages",
+			"/ebank/secured/operations/id/" + compte + "/year/" + year + "/month/" + month + "/cartes/pages",
 			function(data) {
 				cartesLastPage = parseInt(data / 5);
-				if (data % 5 > 0)
+				if (data % 5 > 0 || cartesLastPage == 0)
 					cartesLastPage++;
-				refreshCartes(year, month);
+					
+				refreshCartes(year, month, compte);
 			});
 }

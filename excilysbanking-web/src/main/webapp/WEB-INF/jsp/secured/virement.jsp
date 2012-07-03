@@ -92,8 +92,7 @@
 					<h3><form:errors class="label label-important" path="virementForm" /></h3>
 					<br/>
 					
-					<form:form class="form-horizontal" commandName="virementForm"
-						method='POST'>
+					<form:form class="form-horizontal" commandName="virementForm" method='POST'>
 
 						<div class="control-group">
 							<label class="control-label span6" for="compteDebit"><spring:message code="virements.compteDebit"/> &nbsp; &nbsp;<form:errors class="label label-important" path="compteDebit" /></label>

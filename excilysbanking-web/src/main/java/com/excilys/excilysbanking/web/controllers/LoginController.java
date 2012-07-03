@@ -15,10 +15,10 @@ import com.excilys.excilysbanking.services.UserService;
 
 @Controller
 public class LoginController {
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@RequestMapping(value = { "/", "/index" })
 	public String index() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -31,9 +31,9 @@ public class LoginController {
 				return "redirect:/secured/comptes";
 		}
 	}
-
+	
 	// Changing lang
-
+	
 	@RequestMapping("/_change_locale_to_{lang}")
 	public String changeLocale(@PathVariable String lang, HttpSession session) {
 		Locale l = null;
@@ -44,39 +44,39 @@ public class LoginController {
 		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, l);
 		return "redirect:/index";
 	}
-
+	
 	// Login errors mappings
-
+	
 	@RequestMapping("/loginFail")
 	public String loginFail(Model m) {
 		m.addAttribute("errorLogin", true);
 		return "/index";
 	}
-
+	
 	@RequestMapping("/sessionTimeOut")
 	public String sessionTimeOut(Model m) {
 		m.addAttribute("errorSessionTimeOut", true);
 		return "/index";
 	}
-
+	
 	@RequestMapping("/tooManySession")
 	public String tooManySessions(Model m) {
 		m.addAttribute("errorTooManySessions", true);
 		return "/index";
 	}
-
+	
 	// Errors mapping
-
+	
 	@RequestMapping("/404")
 	public String error404() {
 		return "/404";
 	}
-
+	
 	@RequestMapping("/403")
 	public String error403() {
 		return "/403";
 	}
-
+	
 	@RequestMapping("/500")
 	public String error500() {
 		return "/500";

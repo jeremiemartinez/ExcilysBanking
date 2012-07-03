@@ -53,10 +53,10 @@
 						<li class="divider"></li>
 						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp; &nbsp; <spring:message code="operations.comptes" /></a></li>
 						<li class="divider"></li>
-						<c:if test="${not empty isAdmin}">
+						<security:authorize access="hasRole('ROLE_ADMIN')">
 							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="operations.adminInterface" /></a></li>
 							<li class="divider"></li>
-						</c:if>
+						</security:authorize>
 						<li><a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp; <spring:message code="operations.disconnect" /></a></li>
 					</ul>
 				</div>

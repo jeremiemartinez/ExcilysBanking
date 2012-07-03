@@ -8,9 +8,39 @@ public class VirementPage extends AbstractPage {
 		return BASE_URL + "/index";
 	}
 	
-	public void fillAndSubmitForm(String... paramsOrdered) {
-		fill(".form-horizontal").with(paramsOrdered);
-		click(".btn");
+	public void fillAndSubmitForm(String compteDebit, String compteCredit, String montant) {
+		fill("#compteDebit").with(compteDebit);
+		fill("#compteCredit").with(compteCredit);
+		fill("#montant").with(montant);
+		click("#submit");
+	}
+	
+	public void hasErrorCompteIdAreTheSame() {
+		// find("#errorVirement");...
+	}
+	
+	public void hasErrorCompteCreditIsNull() {
+		
+	}
+	
+	public void hasErrorCompteCreditIsNotValid() {
+		
+	}
+	
+	public void hasErrorCompteDebitIsNull() {
+		
+	}
+	
+	public void hasErrorCompteDebitIsNotValid() {
+		
+	}
+	
+	public void hasErrorMontantisBlank() {
+		
+	}
+	
+	public void hasErrorMontantisValid() {
+		
 	}
 	
 }

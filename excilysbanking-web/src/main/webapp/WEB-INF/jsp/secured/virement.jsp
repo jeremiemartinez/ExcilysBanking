@@ -89,13 +89,13 @@
 					<h3><spring:message code="virements.title"/></h3>
 					<br />
 					
-					<h3><form:errors class="label label-important" path="virementForm" /></h3>
+					<h3><form:errors id="errorVirement" class="label label-important" path="virementForm" /></h3>
 					<br/>
 					
 					<form:form class="form-horizontal" commandName="virementForm" method='POST'>
 
 						<div class="control-group">
-							<label class="control-label span6" for="compteDebit"><spring:message code="virements.compteDebit"/> &nbsp; &nbsp;<form:errors class="label label-important" path="compteDebit" /></label>
+							<label class="control-label span6" for="compteDebit"><spring:message code="virements.compteDebit"/> &nbsp; &nbsp;<form:errors id="errorCompteDebit" class="label label-important" path="compteDebit" /></label>
 							<div class="controls">
 								<form:select class="span10" id="compteDebit" path="compteDebit">
 									<c:forEach var="c" items="${comptesList}">
@@ -106,7 +106,7 @@
 						</div>
 						
 						<div class="control-group">
-							<label class="control-label span6"><spring:message code="virements.compteCredit"/> &nbsp; &nbsp;<form:errors class="label label-important" path="compteCredit" /></label>
+							<label class="control-label span6"><spring:message code="virements.compteCredit"/> &nbsp; &nbsp;<form:errors id="errorCompteCredit" class="label label-important" path="compteCredit" /></label>
 							<div class="controls">
 								<form:select class="span10" id="compteCredit"
 									path="compteCredit">
@@ -118,24 +118,24 @@
 						</div>
 						
 						<div class="control-group">
-							<label class="control-label span6"><spring:message code="virements.libelle"/> &nbsp; &nbsp;<form:errors class="label label-important" path="libelle" /></label>
+							<label class="control-label span6"><spring:message code="virements.libelle"/> &nbsp; &nbsp;<form:errors id="errorLibelle" class="label label-important" path="libelle" /></label>
 							<div class="controls">
-								<form:input type='text' class="span10" name='libelle' path="libelle" />
+								<form:input id="libelle" type='text' class="span10" name='libelle' path="libelle" />
 
 							</div>
 						</div>
 						
 						<div class="control-group">
-							<label class="control-label span6"><spring:message code="virements.montant"/> &nbsp; &nbsp;<form:errors class="label label-important" path="montant" /></label>
+							<label class="control-label span6"><spring:message code="virements.montant"/> &nbsp; &nbsp;<form:errors id="errorMontant" class="label label-important" path="montant" /></label>
 							<div class="controls">
-								<form:input type='text' class="span10" name='montant' path="montant" />
+								<form:input id="montant" type='text' class="span10" name='montant' path="montant" />
 							</div>
 						</div>
 						
 
 						<div class="control-group">
 							<div class="controls">
-								<form:button type="submit" class="btn btn-primary"><spring:message code="virements.process"/></form:button>
+								<form:button id="submit" type="submit" class="btn btn-primary"><spring:message code="virements.process"/></form:button>
 							</div>
 						</div>
 

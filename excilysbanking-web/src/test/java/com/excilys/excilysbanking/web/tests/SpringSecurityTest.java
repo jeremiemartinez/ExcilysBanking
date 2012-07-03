@@ -2,19 +2,14 @@
 package com.excilys.excilysbanking.web.tests;
 
 import static org.fest.assertions.fluentlenium.FluentLeniumAssertions.assertThat;
-import org.fluentlenium.adapter.FluentTest;
 import org.fluentlenium.core.annotation.Page;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import com.excilys.excilysbanking.web.pages.AdminPage;
 import com.excilys.excilysbanking.web.pages.ComptesPage;
 import com.excilys.excilysbanking.web.pages.LoginPage;
 import com.excilys.excilysbanking.web.pages.LogoutPage;
 
-public class SpringSecurityTest extends FluentTest {
-
-	public WebDriver webDriver = new HtmlUnitDriver();
+public class SpringSecurityTest extends AbstractTest {
 
 	@Page
 	public LoginPage loginPage;
@@ -67,11 +62,6 @@ public class SpringSecurityTest extends FluentTest {
 	public void TestAnonymousAccessAccount() {
 		goTo(comptesPage);
 		assertThat(loginPage).isAt();
-	}
-
-	@Override
-	public WebDriver getDefaultDriver() {
-		return webDriver;
 	}
 
 }

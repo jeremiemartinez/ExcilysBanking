@@ -75,6 +75,7 @@
 					<ul class="nav nav-tabs">
 						<li><a href="/ebank/secured/operations/id/${id }"><spring:message code="operations.title" /></a></li>
 						<li class="active"><a href="#tab2" data-toggle="tab"> <spring:message code="historique.title" /></a></li>
+						<li><a href="/ebank/secured/comptes"> <spring:message code="comptes.return" /></a></li>
 					</ul>
 				</div>
 			</div>

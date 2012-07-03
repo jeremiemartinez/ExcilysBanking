@@ -64,8 +64,7 @@ public class OperationDAOImpl extends AbstractDAOQueryDSLHelper implements Opera
 		DateTime last6Months = DateTime.now().minusMonths(6);
 		return page(
 				query().from(operation).where(operation.compte.id.eq(id), operation.type.eq(VIREMENT), operation.montant.loe(0),
-						operation.date.after(last6Months)), pageSize, pageNumber).groupBy(operation).orderBy(operation.date.dayOfMonth().desc())
-				.list(operation);
+						operation.date.after(last6Months)), pageSize, pageNumber).groupBy(operation).orderBy(operation.date.desc()).list(operation);
 
 	}
 

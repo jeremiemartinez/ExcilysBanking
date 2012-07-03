@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -13,18 +11,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="Excilys-Banking est un service de banque en ligne développé pour et par EBusinessInformation - Groupe Exclys">
+<meta name="description" content="Excilys-Banking est un service de banque en ligne développé pour et par EBusinessInformation - Groupe Exclys">
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
-<!-- Le styles -->
+
+<!-- CSS -->
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/ebank/resources/css/flags.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon"
-	href="/ebank/resources/img/favicon.ico">
-
+<link rel="shortcut icon" type="image/x-icon" href="/ebank/resources/img/favicon.ico">
 
 <title><spring:message code="operations.title" /></title>
+
 <spring:message var="pattern" code="operations.dateFormat" />
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -46,46 +43,28 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/ebank/index"> <spring:message
-						code="bank.name" />
-				</a>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a> <a class="brand" href="/ebank/index"> <spring:message code="bank.name" /></a>
 
 				<div class="btn-group pull-right">
-					<a class="btn" href="/ebank/_change_locale_to_fr"><img
-						class="flag flag-fr" alt="French" /></a> <a class="btn"
-						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
-						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"> <i class="icon-user"></i>
-						${user.firstname} ${user.lastname} <span class="caret"></span>
-					</a>
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a> <a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a> <a class="btn dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> ${user.firstname} ${user.lastname} <span class="caret"></span></a>
 
 					<ul class="dropdown-menu">
-						<li><a href="../index"><i class="icon-home"></i>&nbsp;
-								&nbsp; <spring:message code="operations.return" /></a></li>
+						<li><a href="../index"><i class="icon-home"></i>&nbsp; &nbsp; <spring:message code="operations.return" /></a></li>
 						<li class="divider"></li>
-						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp;
-								&nbsp; <spring:message code="operations.comptes" /></a></li>
+						<li><a href="/ebank/secured/comptes"><i class="icon-book"></i>&nbsp; &nbsp; <spring:message code="operations.comptes" /></a></li>
 						<li class="divider"></li>
 						<c:if test="${not empty isAdmin}">
-							<li><a href="/ebank/secured/admin/admin"><i
-									class="icon-wrench"></i>&nbsp; &nbsp; <spring:message
-										code="operations.adminInterface" /></a></li>
+							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="operations.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</c:if>
-						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp; <spring:message
-									code="operations.disconnect" /></a></li>
+						<li><a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp; <spring:message code="operations.disconnect" /></a></li>
 					</ul>
 				</div>
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message
-									code="operations.title" /></a></li>
-						<li><a href="/ebank/secured/historiqueVirements/id/${id}"><spring:message
-									code="historique.title" /></a></li>
+						<li class="active"><a href="#tab1" data-toggle="tab"><spring:message code="operations.title" /></a></li>
+						<li><a href="/ebank/secured/historiqueVirements/id/${id}"><spring:message code="historique.title" /></a></li>
+						<li><a href="/ebank/secured/comptes"> <spring:message code="comptes.return" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -96,8 +75,7 @@
 		<spring:message code="operations.subtitle" />
 		${id}
 		<spring:message code="operations.currentDate" />
-		<joda:format value="${requestedMonth}" pattern="MMMM yyyy"
-			locale="${request.locale}" />
+		<joda:format value="${requestedMonth}" pattern="MMMM yyyy" locale="${request.locale}" />
 		${clientLocale }
 	</h3>
 
@@ -113,14 +91,10 @@
 						<c:forEach var="m" items="${months}">
 							<c:choose>
 								<c:when test="${m == requestedMonth}">
-									<li class="active"><a
-										href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format
-												value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a></li>
+									<li class="active"><a href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a
-										href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format
-												value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a></li>
+									<li><a href="/ebank/secured/operations/id/${id}/year/${m.year}/month/${m.monthOfYear}"><joda:format value="${m}" pattern="MMMM yyyy" locale="${request.locale}" /></a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -146,8 +120,7 @@
 							<h3>Page ${currentPage}/${lastPage}</h3>
 
 							<tr>
-								<td><button class="btn" data-toggle="collapse"
-										data-target="#operationsCarte" onclick="revealCartes();">
+								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes();">
 										<spring:message code="operations.details" />
 									</button></td>
 								<td><spring:message code="operations.carteDate" /></td>
@@ -183,14 +156,8 @@
 										<!-- Page navigation buttons -->
 
 										<ul class="pager">
-											<li id="cartePagerNext" class="next"><a href="#"
-												id="cartesNewest"><spring:message code="paging.newest" />&rarr;</a>
-												<a href="#" id="cartesNewer"><spring:message
-														code="paging.newer" /></a></li>
-											<li id="cartePagerPrevious" class="previous"><a href="#"
-												id="cartesOldest">&larr;<spring:message
-														code="paging.oldest" /></a> <a href="#" id="cartesOlder"><spring:message
-														code="paging.older" /></a></li>
+											<li id="cartePagerNext" class="next"><a href="#" id="cartesNewest"><spring:message code="paging.newest" />&rarr;</a> <a href="#" id="cartesNewer"><spring:message code="paging.newer" /></a></li>
+											<li id="cartePagerPrevious" class="previous"><a href="#" id="cartesOldest">&larr;<spring:message code="paging.oldest" /></a> <a href="#" id="cartesOlder"><spring:message code="paging.older" /></a></li>
 										</ul>
 
 									</div></td>
@@ -213,18 +180,10 @@
 
 					<ul class="pager">
 						<c:if test="${currentPage != firstPage}">
-							<li class="next"><a
-								href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${firstPage}"><spring:message
-										code="paging.newest" />&rarr;</a> <a
-								href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${previousPage}"><spring:message
-										code="paging.newer" /></a></li>
+							<li class="next"><a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${firstPage}"><spring:message code="paging.newest" />&rarr;</a> <a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${previousPage}"><spring:message code="paging.newer" /></a></li>
 						</c:if>
 						<c:if test="${currentPage != lastPage}">
-							<li class="previous"><a
-								href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${lastPage}">&larr;<spring:message
-										code="paging.oldest" /></a> <a
-								href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${nextPage}"><spring:message
-										code="paging.older" /></a></li>
+							<li class="previous"><a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${lastPage}">&larr;<spring:message code="paging.oldest" /></a> <a href="/ebank/secured/operations/id/${id}/year/${year}/month/${month}/page/${nextPage}"><spring:message code="paging.older" /></a></li>
 						</c:if>
 					</ul>
 

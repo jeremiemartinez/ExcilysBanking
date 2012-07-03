@@ -19,36 +19,36 @@ import com.excilys.excilysbanking.services.impl.CompteServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CompteServiceTest {
-
+	
 	@Mock
 	private CompteDAO compteDAOTest;
-
+	
 	@InjectMocks
 	private CompteServiceImpl compteServiceTest;
-
+	
 	@Before
 	public void before() {
 		MockitoAnnotations.initMocks(this);
 		User userTest = new User.Builder().username("jmartinez").password("password").firstname("Jeremie").lastname("Martinez").build();
-
+		
 		List<Authority> authorities = new ArrayList<Authority>();
 		authorities.add(new Authority.Builder().id(0).type(Authority.AuthorityType.ROLE_USER).build());
-
+		
 		List<Compte> comptes = new ArrayList<Compte>();
 		Compte compte1 = new Compte.Builder().id(42).solde(2000.0).type(Compte.CompteType.ESPECE).user(userTest).build();
 		Compte compte2 = new Compte.Builder().id(64).solde(10000.0).type(Compte.CompteType.ESPECE).user(userTest).build();
 		comptes.add(compte1);
 		comptes.add(compte2);
-
+		
 		userTest.setComptes(comptes);
 		userTest.setAuthorities(authorities);
 		// ...
-
+		
 	}
-
+	
 	// The service has no business logic !
 	// No need to test our mocks...
-
+	
 	@Test
 	public void emptyTest() {
 		Assert.assertTrue(true);

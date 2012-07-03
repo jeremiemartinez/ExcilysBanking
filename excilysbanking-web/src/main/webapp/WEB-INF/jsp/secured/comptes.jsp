@@ -10,17 +10,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Excilys-Banking est un service de banque en ligne développé pour et par EBusinessInformation - Groupe Exclys">
 <meta name="author" content="Jeremie Martinez">
 <meta name="author" content="Luc Ponnau">
-<!-- Le styles -->
+
+<!-- CSS -->
 <link href="/ebank/resources/css/bootstrap.css" rel="stylesheet">
 <link href="/ebank/resources/css/flags.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon"
-	href="/ebank/resources/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/ebank/resources/img/favicon.ico">
+	
 <title><spring:message code="comptes.title" /></title>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -43,48 +45,35 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="/ebank/index"><spring:message
-						code="bank.name" /></a>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span></a>
+					<a class="brand" href="/ebank/index"><spring:message code="bank.name" /></a>
 
 				<div class="btn-group pull-right">
 
-					<a class="btn" href="/ebank/_change_locale_to_fr"><img
-						class="flag flag-fr" alt="French" /></a> <a class="btn"
-						href="/ebank/_change_locale_to_en"><img class="flag flag-gb"
-						alt="English" /></a> <a class="btn dropdown-toggle"
-						data-toggle="dropdown"><i class="icon-user"></i>${user.firstname}
-						${user.lastname}<span class="caret"></span></a>
+					<a class="btn" href="/ebank/_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
+					<a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
+					<a class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>${user.firstname} ${user.lastname}<span class="caret"></span></a>
 
 					<ul class="dropdown-menu">
-						<li><a href="../index"><i class="icon-home"></i>&nbsp;
-								&nbsp;<spring:message code="comptes.return" /></a></li>
+						<li><a href="../index"><i class="icon-home"></i>&nbsp; &nbsp;<spring:message code="comptes.return" /></a></li>
 
 						<li class="divider"></li>
 
 						<c:if test="${not empty isAdmin}">
-							<li><a href="/ebank/secured/admin/admin"><i
-									class="icon-wrench"></i>&nbsp; &nbsp; <spring:message
-										code="comptes.adminInterface" /></a></li>
+							<li><a href="/ebank/secured/admin/admin"><i class="icon-wrench"></i>&nbsp; &nbsp; <spring:message code="comptes.adminInterface" /></a></li>
 							<li class="divider"></li>
 						</c:if>
 
-						<li><a href="<c:url value="/j_spring_security_logout"/>"><i
-								class="icon-off"></i>&nbsp; &nbsp;<spring:message
-									code="comptes.disconnect" /></a></li>
-
+						<li><a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp;<spring:message code="comptes.disconnect" /></a></li>
 					</ul>
 				</div>
 
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab1" data-toggle="tab"> <spring:message
-									code="comptes.title" />
+						<li class="active"><a href="#tab1" data-toggle="tab"> <spring:message code="comptes.title" />
 						</a></li>
-						<li><a href="/ebank/secured/virement"> <spring:message
-									code="comptes.virement" /> </a></li>
+						<li><a href="/ebank/secured/virement"> <spring:message code="comptes.virement" /> </a></li>
 					</ul>
 				</div>
 			</div>
@@ -142,13 +131,11 @@
 									<td>${c.id}</td>
 									<td>${c.type}</td>
 									<td><fmt:formatNumber value="${c.solde}"/> $</td>
-									<td><a
-										href="./operations/id/${c.id}/year/${year}/month/${month}">
-											<spring:message code="comptes.operations" />
-									</a>&nbsp; &nbsp;<a
-										href="./historiqueVirements/id/${c.id}">
-											<spring:message code="comptes.historique" />
-									</a></td>
+									<td>
+										<a href="./operations/id/${c.id}/year/${year}/month/${month}"><spring:message code="comptes.operations" /></a>
+										&nbsp; &nbsp;
+										<a href="./historiqueVirements/id/${c.id}"> <spring:message code="comptes.historique" /></a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -160,6 +147,7 @@
 		<div class="span2"></div>
 	</div>
 
+	<!-- ooter -->
 	<c:import url="../included/footer.jsp"></c:import>
 
 	<!-- Javascript -->

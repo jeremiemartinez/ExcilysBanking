@@ -62,14 +62,14 @@
 							<li class="divider"></li>
 						</c:if>
 
-						<li><a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp;<spring:messagecode="comptes.disconnect" /></a></li>
+						<li><a href="<c:url value="/j_spring_security_logout"/>"><i class="icon-off"></i>&nbsp; &nbsp;<spring:message code="comptes.disconnect" /></a></li>
 
 					</ul>
 				</div>
 
 				<div class="tabbable">
 					<ul class="nav nav-tabs">
-						<li><a href="/ebank/secured/comptes"> <spring:messagen code="comptes.title" /></a></li>
+						<li><a href="/ebank/secured/comptes"> <spring:message  code="comptes.title" /></a></li>
 						<li class="active"><a href="#tab2" data-toggle="tab"><spring:message code="virements.title"/></a>
 					</ul>
 				</div>

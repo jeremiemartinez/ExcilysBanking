@@ -33,7 +33,7 @@ public class VirementTest extends AbstractTest {
 	
 	@Test
 	public void normalCase() {
-		virementPage.fillAndSubmitForm("6464", "2138962500", "2.5");
+		virementPage.fillAndSubmitForm("6464", "2138962500", "2");
 		comptesPage.isAt();
 	}
 	
@@ -58,8 +58,8 @@ public class VirementTest extends AbstractTest {
 	
 	@Test
 	public void montantIsTooBig() {
-		virementPage.fillAndSubmitForm("6464", "2138962500", "99999");
-		virementPage.hasErrorMontantisValid();
+		virementPage.fillAndSubmitForm("6464", "2138962500", "999999");
+		virementPage.hasErrorMontantIsTooBig();
 	}
 	
 	@Test
@@ -72,42 +72,6 @@ public class VirementTest extends AbstractTest {
 	public void comptesAreTheSame() {
 		virementPage.fillAndSubmitForm("6464", "6464", "1");
 		virementPage.hasErrorCompteIdAreTheSame();
-	}
-	
-	@Test
-	public void noCompteCredit() {
-		virementPage.fillAndSubmitForm("6464", "", "1");
-		virementPage.hasErrorCompteCreditIsNull();
-	}
-	
-	@Test
-	public void compteCreditIsNotANumber() {
-		virementPage.fillAndSubmitForm("6464", "qsdf", "1");
-		virementPage.hasErrorCompteCreditIsNotValid();
-	}
-	
-	@Test
-	public void compteCreditNotExist() {
-		virementPage.fillAndSubmitForm("6464", "12", "1");
-		virementPage.hasErrorCompteCreditIsNotValid();
-	}
-	
-	@Test
-	public void noCompteDebit() {
-		virementPage.fillAndSubmitForm("", "2138962500", "-1");
-		virementPage.hasErrorCompteDebitIsNull();
-	}
-	
-	@Test
-	public void compteDebitIsNotANumber() {
-		virementPage.fillAndSubmitForm("qsdf", "2138962500", "-1");
-		virementPage.hasErrorCompteDebitIsNotValid();
-	}
-	
-	@Test
-	public void compteDebitNotExist() {
-		virementPage.fillAndSubmitForm("12", "2138962500", "-1");
-		virementPage.hasErrorCompteDebitIsNotValid();
 	}
 	
 }

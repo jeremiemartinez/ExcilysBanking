@@ -25,4 +25,11 @@ public class LoginPage extends AbstractPage {
 	public void containsLoginFailError() {
 		assertThat(find("#errorLogin")).hasSize(1);
 	}
+
+	public void isEnglish() {
+		
+	}
+	
+	public void isFrench(){
+
 }

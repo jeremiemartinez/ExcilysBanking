@@ -15,8 +15,4 @@ public class OperationsPage extends AbstractPage {
 		assertThat(title()).isEqualTo("Your Operations");
 		assertThat(find(".table")).hasSize(2);
 	}
-
-	public void ajaxWorking() {
-		click("#detailsCarte");
-	}
 }

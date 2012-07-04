@@ -120,7 +120,7 @@
 							<h3>Page ${currentPage}/${lastPage}</h3>
 
 							<tr>
-								<td><button class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes(${year},${month},${id});">
+								<td><button id="detailsCarte" class="btn" data-toggle="collapse" data-target="#operationsCarte" onclick="revealCartes(${year},${month},${id});">
 										<spring:message code="operations.details" />
 									</button></td>
 								<td><spring:message code="operations.carteDate" /></td>
@@ -204,7 +204,7 @@
 	<!-- Template Handlebars/Moustache -->
 	<script id="operationTpl" type="text/template">
 		{{#.}}
-			<tr>
+			<tr id="{{id}}">
 				<td>{{id}}</td>
 				<td>{{date}}</td>
 				<td>{{type}}</td>

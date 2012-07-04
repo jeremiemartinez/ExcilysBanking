@@ -43,8 +43,8 @@
 				<a class="brand" href="#"><spring:message code="bank.name" /></a>
 				
 				<div class="btn-group pull-right">
-					<a class="btn" href="_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
-					<a class="btn" href="_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
+					<a class="btn" id="fr" href="_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>
+					<a class="btn" id="en" href="_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a>
 					<a class="btn" href="#moduleConnection"> <i class="icon-user"></i> <spring:message code="index.connect" /> &nbsp; </a>
 				</div>
 

@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.web.pages;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fluentlenium.core.filter.FilterConstructor.withText;
 
 public class LoginPage extends AbstractPage {
 
@@ -27,9 +28,19 @@ public class LoginPage extends AbstractPage {
 	}
 
 	public void isEnglish() {
-		
+		assertThat(find("#moduleConnection", withText("Connection"))).hasSize(1);
 	}
-	
-	public void isFrench(){
+
+	public void isFrench() {
+		assertThat(find("#moduleConnection", withText("Connexion"))).hasSize(1);
+	}
+
+	public void changeLangageToFr() {
+		click("#fr");
+	}
+
+	public void changeLangageToEn() {
+		click("#en");
+	}
 
 }

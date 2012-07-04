@@ -1,13 +1,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+</div>
+</div>
+
 <hr>
 <footer>
-	<div class="row-fluid">
+	<div id="footer" class="row-fluid">
 		<div class="span1"></div>
 		<div class="span10">
-			<img class="pull-left" src="/ebank/resources/img/excilys.jpeg" />
+			<a href="http://www.excilys.com/"><img class="pull-left" src="/ebank/resources/img/excilys.jpeg" /></a>
 			<br />
-			<img class="pull-right" src="/ebank/resources/img/ebi.png" />
+			<a href="http://www.ebusinessinformation.fr/"><img class="pull-right" src="/ebank/resources/img/ebi.png" /></a>
 			<br />
 			<p class="shiftToRight">
 				&copy;	<spring:message code="footer.companyName" />

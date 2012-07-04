@@ -34,6 +34,9 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<c:import url="../included/header.jsp"></c:import>
+
 	<!-- Set locale to format currencies -->
 	<fmt:setLocale value="${request.locale}" />
 
@@ -43,7 +46,7 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a> <a class="brand" href="/ebank/index"> <spring:message code="bank.name" /></a>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> 
 
 				<div class="btn-group pull-right">
 					<a class="btn" href="/ebank/_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a> <a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb" alt="English" /></a> <a class="btn dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> ${user.firstname} ${user.lastname} <span class="caret"></span></a>

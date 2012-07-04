@@ -31,6 +31,9 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<c:import url="../../included/header.jsp"></c:import>
+
 	<!-- Retrieve a UserDetails object from the session and store it under "user" -->
 	<security:authentication property="principal" var="user" scope="page"/>
 
@@ -39,7 +42,6 @@
 			<div class="container-fluid">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></a>
-				<a class="brand" href="/ebank/index.html"><spring:message code="bank.name" /></a>
 				<div class="btn-group pull-right">
 					<a class="btn" href="/ebank/_change_locale_to_fr">	<img class="flag flag-fr" alt="French" /></a>
 					<a class="btn" href="/ebank/_change_locale_to_en"><img class="flag flag-gb"	alt="English" /></a>

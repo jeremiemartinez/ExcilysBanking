@@ -30,6 +30,8 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<c:import url="./included/header.jsp"></c:import>
 
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -40,7 +42,6 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="#"><spring:message code="bank.name" /></a>
 				
 				<div class="btn-group pull-right">
 					<a class="btn" id="fr" href="_change_locale_to_fr"><img class="flag flag-fr" alt="French" /></a>

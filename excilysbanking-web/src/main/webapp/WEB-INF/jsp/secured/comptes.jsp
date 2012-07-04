@@ -35,6 +35,9 @@
 </head>
 <body>
 
+	<!-- Header -->
+	<c:import url="../included/header.jsp"></c:import>
+
 	<!-- Set locale to format currencies -->
 	<fmt:setLocale value="${request.locale}"/>
 
@@ -47,7 +50,6 @@
 
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span></a>
-					<a class="brand" href="/ebank/index"><spring:message code="bank.name" /></a>
 
 				<div class="btn-group pull-right">
 

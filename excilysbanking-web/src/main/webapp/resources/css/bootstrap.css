@@ -7,6 +7,7 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section
 	{
 	display: block;
@@ -4736,3 +4737,16 @@ to {
 .shiftToRight{
 	margin-left: 200px;	
 }
+
+/* Added to make sticky footer */
+/* Yeah I know that's dirty :-) */
+html, body, #container { height: 90%; }
+body > #container { height: auto; min-height: 90%; }
+#footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+#content { padding-bottom: 3em; }

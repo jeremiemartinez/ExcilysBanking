@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import com.excilys.excilysbanking.web.validators.constraints.CompteIdIsValid;
 import com.excilys.excilysbanking.web.validators.constraints.ComptesIdAreNotTheSame;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsNotBlank;
+import com.excilys.excilysbanking.web.validators.constraints.MontantIsPositive;
 import com.excilys.excilysbanking.web.validators.constraints.MontantIsValid;
 
 @MontantIsValid
@@ -20,6 +21,7 @@ public class VirementForm {
 	public Integer compteCredit;
 
 	@MontantIsNotBlank
+	@MontantIsPositive
 	public Double montant;
 
 	public String libelle;

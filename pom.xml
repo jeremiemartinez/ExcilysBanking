@@ -106,6 +106,7 @@
 		<module>excilysbanking-services</module>
 		<module>excilysbanking-services-impl</module>
 		<module>excilysbanking-web</module>
+		<module>excilysbanking-dto</module>
 	</modules>
 
 	<dependencyManagement>
@@ -125,6 +126,11 @@
 			<dependency>
 				<groupId>com.excilys</groupId>
 				<artifactId>excilysbanking-dao-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.excilys</groupId>
+				<artifactId>excilysbanking-dto</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

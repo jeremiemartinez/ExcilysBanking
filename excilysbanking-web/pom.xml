@@ -28,6 +28,10 @@
 			<artifactId>excilysbanking-services-impl</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.excilys</groupId>
+			<artifactId>excilysbanking-dto</artifactId>
+		</dependency>
 
 		<!-- Spring -->
 		<dependency>

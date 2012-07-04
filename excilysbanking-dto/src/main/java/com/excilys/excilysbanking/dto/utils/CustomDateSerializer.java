@@ -1,5 +1,5 @@
 
-package com.excilys.excilysbanking.entities.util;
+package com.excilys.excilysbanking.dto.utils;
 
 import java.io.IOException;
 import java.util.Locale;

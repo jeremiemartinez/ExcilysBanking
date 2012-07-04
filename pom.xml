@@ -96,6 +96,9 @@
 
 		<!-- Hibernate Validator -->
 		<hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
+		
+		<!-- WebServices -->
+		<cxf.version>2.6.1</cxf.version>
 
 	</properties>
 
@@ -107,6 +110,7 @@
 		<module>excilysbanking-services-impl</module>
 		<module>excilysbanking-web</module>
 		<module>excilysbanking-dto</module>
+		<module>excilysbanking-webservices-soap</module>
 	</modules>
 
 	<dependencyManagement>
@@ -146,6 +150,11 @@
 			<dependency>
 				<groupId>com.excilys</groupId>
 				<artifactId>excilysbanking-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.excilys</groupId>
+				<artifactId>excilysbanking-websercices-soap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -304,7 +313,7 @@
 				<version>${fluentlenium.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 
 			<!-- QueryDSL -->
 			<dependency>
@@ -350,6 +359,22 @@
 				<version>${hibernate.validator.version}</version>
 			</dependency>
 
+			<!-- WebServices -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

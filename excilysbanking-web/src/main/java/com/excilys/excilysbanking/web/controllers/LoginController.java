@@ -2,6 +2,7 @@
 package com.excilys.excilysbanking.web.controllers;
 
 import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -35,14 +36,14 @@ public class LoginController {
 	// Changing lang
 
 	@RequestMapping("/_change_locale_to_{lang}")
-	public String changeLocale(@PathVariable String lang, HttpSession session) {
+	public String changeLocale(@PathVariable String lang, HttpSession session, HttpServletRequest r) {
 		Locale l = null;
 		if ("fr".equals(lang))
 			l = Locale.FRENCH;
 		else
 			l = Locale.ENGLISH;
 		session.setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, l);
-		return "redirect:/index";
+		return "redirect:" + r.getHeader("referer");
 	}
 
 	// Login errors mappings

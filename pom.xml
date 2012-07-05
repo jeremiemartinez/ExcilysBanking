@@ -111,6 +111,7 @@
 		<module>excilysbanking-web</module>
 		<module>excilysbanking-dto</module>
 		<module>excilysbanking-webservices-soap</module>
+		<module>excilysbanking-webservices-soap-client</module>
 	</modules>
 
 	<dependencyManagement>

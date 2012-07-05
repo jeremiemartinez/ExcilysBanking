@@ -13,9 +13,6 @@
 	<import resource="classpath*:META-INF/cxf/cxf-extension-soap.xml"/>
 	<import resource="classpath*:META-INF/cxf/cxf-servlet.xml"/>
 
-	<bean id="compteServiceWSImpl"
-		class="com.excilys.excilysbanking.webservices.soap.impl.CompteServiceWSImpl" />
-
-	<jaxws:endpoint id="compteServiceWS" implementor="#compteServiceWSImpl"
+	<jaxws:endpoint id="compteServiceWS" implementor="com.excilys.excilysbanking.webservices.soap.impl.CompteServiceWSImpl"
 		address="/CompteServiceWS" />
 </beans>

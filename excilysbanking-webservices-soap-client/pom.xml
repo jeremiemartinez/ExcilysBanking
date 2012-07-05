@@ -32,7 +32,7 @@
 						<id>generate-sources</id>
 						<phase>generate-sources</phase>
 						<configuration>
-							<sourceRoot>src/main/java/com/excilys/excilysbanking/webservices/soap/client/generated</sourceRoot>
+							<sourceRoot>src/main/java/</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>http://localhost:8080/ebankWS-soap/services/CompteServiceWS?wsdl</wsdl>

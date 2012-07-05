@@ -41,7 +41,7 @@ public class CompteDTO {
 		return username;
 	}
 
-	public void setUser(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

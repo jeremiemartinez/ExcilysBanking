@@ -8,8 +8,8 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>excilysbanking-soap-webservices</artifactId>
-	<name>excilysbanking-soap-webservices</name>
+	<artifactId>excilysbanking-webservices-soap</artifactId>
+	<name>excilysbanking-webservices-soap</name>
 	<packaging>war</packaging>
 	<dependencies>
 
@@ -55,6 +55,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>ebankWSS</finalName>
+		<finalName>ebankWS-soap</finalName>
 	</build>
 </project>

@@ -424,11 +424,6 @@
 	</dependencies>
 
 	<build>
-		<!-- <finalName> -->
-		<!-- ${project.name}_${project.version} -->
-		<!-- </finalName> -->
-		<!-- Switched to the following for easier access in the browser while testing/demoing 
-			the webapp -->
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

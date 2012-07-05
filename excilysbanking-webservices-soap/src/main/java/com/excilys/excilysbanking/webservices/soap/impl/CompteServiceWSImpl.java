@@ -14,29 +14,29 @@ import com.excilys.excilysbanking.webservices.soap.CompteServiceWS;
 
 @WebService(endpointInterface = "com.excilys.formation.webservice.UserServiceWs")
 public class CompteServiceWSImpl implements CompteServiceWS {
-
+	
 	@Autowired
 	private Converter<Compte, CompteDTO> converter;
-
+	
 	@Autowired
 	private CompteService compteService;
-
+	
 	@Override
 	@WebMethod
 	public List<CompteDTO> getComptesByUsername(@WebParam String username) {
 		return converter.convert(compteService.getComptesByUsername(username));
 	}
-
+	
 	@Override
 	@WebMethod
 	public List<CompteDTO> getAllComptes() {
 		return converter.convert(compteService.getAllComptes());
 	}
-
+	
 	@Override
 	@WebMethod
 	public CompteDTO getCompteById(@WebParam Integer id) {
 		return converter.convert(compteService.getCompteById(id));
 	}
-
+	
 }

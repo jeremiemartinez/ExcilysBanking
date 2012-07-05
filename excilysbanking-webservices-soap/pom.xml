@@ -7,6 +7,7 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
+	
 	<artifactId>excilysbanking-webservices-soap</artifactId>
 	<name>excilysbanking-webservices-soap</name>
 	<packaging>war</packaging>
@@ -39,10 +40,6 @@
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
 		</dependency>
 
 	</dependencies>

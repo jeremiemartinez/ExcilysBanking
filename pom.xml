@@ -110,7 +110,7 @@
 		<module>excilysbanking-services-impl</module>
 		<module>excilysbanking-web</module>
 		<module>excilysbanking-dto</module>
-		<module>excilysbanking-webservices-soap</module>
+		<module>excilysbanking-soap-webservices</module>
 	</modules>
 
 	<dependencyManagement>

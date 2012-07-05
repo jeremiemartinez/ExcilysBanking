@@ -65,6 +65,9 @@
 								<wsdlOption>
 									<wsdl>http://localhost:8080/ebankWS-soap/services/CompteServiceWS?wsdl</wsdl>
 								</wsdlOption>
+								<wsdlOption>
+									<wsdl>http://localhost:8080/ebankWS-soap/services/VirementServiceWS?wsdl</wsdl>
+								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
 						<goals>

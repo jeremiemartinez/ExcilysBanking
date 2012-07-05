@@ -15,4 +15,7 @@
 
 	<jaxws:endpoint id="compteServiceWS" implementor="com.excilys.excilysbanking.webservices.soap.impl.CompteServiceWSImpl"
 		address="/CompteServiceWS" />
+
+	<jaxws:endpoint id="virementServiceWS" implementor="com.excilys.excilysbanking.webservices.soap.impl.VirementServiceWSImpl"
+		address="/VirementServiceWS" />
 </beans>

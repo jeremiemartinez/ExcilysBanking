@@ -429,7 +429,6 @@
 		<!-- </finalName> -->
 		<!-- Switched to the following for easier access in the browser while testing/demoing 
 			the webapp -->
-		<finalName>ebank</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

@@ -99,7 +99,7 @@
 						<div class="control-group">
 							<label class="control-label span6" for="compteDebit"><spring:message code="virements.compteDebit"/> &nbsp; &nbsp;<form:errors id="errorCompteDebit" class="label label-important" path="compteDebit" /></label>
 							<div class="controls">
-								<form:select class="span10" id="compteDebit" path="compteDebit">
+								<form:select class="span10" id="compteDebit" path="compteDebit" onclick="disableAccountCredit();">
 									<c:forEach var="c" items="${comptesList}">
 										<form:option value="${c.id}"><spring:message code="virements.compte"/> <strong>${c.id}</strong> &nbsp; &nbsp; <spring:message code="virements.solde"/> <strong><fmt:formatNumber value="${c.solde}"/> $</strong></form:option>
 									</c:forEach>
@@ -155,6 +155,19 @@
 	<!-- Javascript -->
 	<script src="/ebank/resources/js/jquery-1.7.2.js"></script>
 	<script src="/ebank/resources/js/bootstrap.js"></script>
+	
+	<script type="text/javascript">
+	disableAccountCredit();
+	function disableAccountCredit() {
+		var s = $('#compteDebit :selected').val();
+		jQuery('#compteCredit option').each(function(){
+			if ($(this).val() == s)
+				$(this).hide();
+			else
+				$(this).show();
+		});
+	}
+	</script>
 
 </body>
 </html>

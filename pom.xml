@@ -113,7 +113,8 @@
 		<module>excilysbanking-webservices-soap</module>
 		<module>excilysbanking-webservices-soap-client</module>
 		<module>excilysbanking-webservices-rest</module>
-	</modules>
+    	<module>excilysbanking-webservices-rest-client</module>
+  </modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -487,7 +488,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>

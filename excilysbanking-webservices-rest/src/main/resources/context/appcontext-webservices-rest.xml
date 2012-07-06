@@ -16,13 +16,15 @@
 
 	<jaxrs:server id="service" address="/">
 		<jaxrs:serviceBeans>
-			<ref bean="serviceImpl" />
+			<ref bean="compteServiceRS" />	
+			<ref bean="virementServiceRS" />		
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
 
-	<bean id="serviceImpl" class="com.excilys.excilysbanking.webservices.rest.impl.CompteServiceRSImpl" />
+	<bean id="compteServiceRS" class="com.excilys.excilysbanking.webservices.rest.impl.CompteServiceRSImpl" />
+	<bean id="virementServiceRS" class="com.excilys.excilysbanking.webservices.rest.impl.VirementServiceRSImpl" />
 
 </beans>

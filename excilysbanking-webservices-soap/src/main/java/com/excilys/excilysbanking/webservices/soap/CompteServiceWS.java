@@ -7,7 +7,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import com.excilys.excilysbanking.dto.CompteDTO;
 
-@WebService
+@WebService(endpointInterface = "com.excilys.excilysbanking.webservices.soap.CompteServiceWS")
 public interface CompteServiceWS {
 	
 	@WebMethod

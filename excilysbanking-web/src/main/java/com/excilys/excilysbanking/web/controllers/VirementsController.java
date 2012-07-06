@@ -52,8 +52,8 @@ public class VirementsController {
 	}
 
 	private void processVirement(VirementForm virementForm, Model m) {
-		boolean result = operationService.createVirementOperations(userService.getConnectedUser(), virementForm.compteDebit, virementForm.compteCredit,
-				Double.valueOf(virementForm.montant), virementForm.libelle);
+		boolean result = operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
+				virementForm.libelle);
 		if (result)
 			m.addAttribute("virementSucceed", true);
 		else

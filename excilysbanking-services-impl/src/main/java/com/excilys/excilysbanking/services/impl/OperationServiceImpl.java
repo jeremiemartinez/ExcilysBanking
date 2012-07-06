@@ -12,7 +12,6 @@ import com.excilys.excilysbanking.dao.OperationDAO;
 import com.excilys.excilysbanking.entities.Compte;
 import com.excilys.excilysbanking.entities.Operation;
 import com.excilys.excilysbanking.entities.Operation.OperationType;
-import com.excilys.excilysbanking.entities.User;
 import com.excilys.excilysbanking.services.OperationService;
 
 @Service("operationService")
@@ -42,31 +41,31 @@ public class OperationServiceImpl implements OperationService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public boolean createVirementOperations(User owner, Integer compteDebit, Integer compteCredit, Double montant, String libelle) {
+	public boolean createVirementOperations(Integer compteDebit, Integer compteCredit, Double montant, String libelle) {
 
 		Compte compteD = compteDAO.findCompteById(compteDebit);
 		Compte compteC = compteDAO.findCompteById(compteCredit);
 
-		if (compteD.getUser().equals(owner) && compteC.getUser().equals(owner)) {
+		// if (compteD.getUser().equals(owner) && compteC.getUser().equals(owner)) {
 
-			Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
-					.date(DateTime.now()).compteDestination(compteC).build();
-			Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
-					.date(DateTime.now()).compteDestination(compteD).build();
+		Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
+				.date(DateTime.now()).compteDestination(compteC).build();
+		Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
+				.date(DateTime.now()).compteDestination(compteD).build();
 
-			operationDAO.save(operationD);
-			operationDAO.save(operationC);
+		operationDAO.save(operationD);
+		operationDAO.save(operationC);
 
-			compteD.setSolde(compteD.getSolde() - montant);
-			compteC.setSolde(compteC.getSolde() + montant);
+		compteD.setSolde(compteD.getSolde() - montant);
+		compteC.setSolde(compteC.getSolde() + montant);
 
-			compteDAO.update(compteD);
-			compteDAO.update(compteC);
+		compteDAO.update(compteD);
+		compteDAO.update(compteC);
 
-			return true;
-		} else {
-			return false;
-		}
+		return true;
+		// } else {
+		// return false;
+		// }
 	}
 
 	@Override

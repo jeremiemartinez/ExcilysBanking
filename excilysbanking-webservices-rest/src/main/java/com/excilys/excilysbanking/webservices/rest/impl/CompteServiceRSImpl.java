@@ -15,15 +15,16 @@ import com.excilys.excilysbanking.services.CompteService;
 import com.excilys.excilysbanking.webservices.rest.CompteServiceRS;
 
 @Path("/services/CompteServiceRS")
+@Produces("application/json")
 public class CompteServiceRSImpl implements CompteServiceRS {
-	
+
 	@Autowired
 	@Qualifier("compteToCompteDTOConverter")
 	private Converter<Compte, CompteDTO> converter;
-	
+
 	@Autowired
 	private CompteService compteService;
-	
+
 	@Override
 	@GET
 	@Produces("application/json")
@@ -31,5 +32,5 @@ public class CompteServiceRSImpl implements CompteServiceRS {
 	public List<CompteDTO> getComptesByUsername(@PathParam("username") String username) {
 		return converter.convert(compteService.getComptesByUsername(username));
 	}
-	
+
 }

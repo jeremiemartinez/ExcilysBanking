@@ -13,7 +13,7 @@
 	<import resource="classpath*:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath*:META-INF/cxf/cxf-servlet.xml" />
 
-	<jaxrs:server id="service" address="/CompteServiceRS">
+	<jaxrs:server id="service" address="/">
 		<jaxrs:serviceBeans>
 			<ref bean="serviceImpl" />
 		</jaxrs:serviceBeans>

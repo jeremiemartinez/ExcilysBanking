@@ -1,8 +1,10 @@
 
 package com.excilys.excilysbanking.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import com.excilys.excilysbanking.entities.Compte.CompteType;
 
+@XmlRootElement(name = "compte")
 public class CompteDTO {
 
 	private Integer id;

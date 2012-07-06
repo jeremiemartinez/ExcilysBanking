@@ -20,25 +20,25 @@ import com.excilys.excilysbanking.web.views.VirementForm;
 @Controller
 @RequestMapping("/secured")
 public class VirementsController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private CompteService compteService;
-	
+
 	@Autowired
 	private OperationService operationService;
-	
+
 	// Virement Processor
-	
+
 	@RequestMapping(value = "/virement", method = RequestMethod.GET)
 	public String displayVirementForm(Model m) {
 		m.addAttribute("comptesList", compteService.getComptesByUsername(userService.getConnectedUser().getUsername()));
 		m.addAttribute("virementForm", new VirementForm());
 		return "/secured/virement";
 	}
-	
+
 	@RequestMapping(value = "/virement", method = RequestMethod.POST)
 	public String validateVirementForm(@Valid @ModelAttribute("virementForm") VirementForm virementForm, BindingResult result, Model m) {
 		if (result.hasErrors()) {
@@ -48,38 +48,41 @@ public class VirementsController {
 		}
 		processVirement(virementForm, m);
 		return "redirect:/secured/comptes";
-		
+
 	}
-	
+
 	private void processVirement(VirementForm virementForm, Model m) {
-		operationService.createVirementOperations(virementForm.compteDebit, virementForm.compteCredit, Double.valueOf(virementForm.montant),
-				virementForm.libelle);
-		m.addAttribute("virementSucceed", true);
+		boolean result = operationService.createVirementOperations(userService.getConnectedUser(), virementForm.compteDebit, virementForm.compteCredit,
+				Double.valueOf(virementForm.montant), virementForm.libelle);
+		if (result)
+			m.addAttribute("virementSucceed", true);
+		else
+			m.addAttribute("virementSucceed", false);
 	}
-	
+
 	// Manager of Historique Virement
-	
+
 	@RequestMapping("/historiqueVirements/id/{id}")
 	public String historiqueVirement(Model m, @PathVariable Integer id) {
 		return historiqueVirementPaged(m, id, 1);
 	}
-	
+
 	@RequestMapping("/historiqueVirements/id/{id}/page/{page}")
 	public String historiqueVirementPaged(Model m, @PathVariable Integer id, @PathVariable Integer page) {
-		
+
 		// Infos
 		m.addAttribute("id", id);
-		
+
 		// Pages navigation
 		Long totalOperations = operationService.getNumberOperationsVirementNegatifLast6Months(id);
 		long lastPage = totalOperations / VIREMENTS_PER_PAGE;
 		if (totalOperations % VIREMENTS_PER_PAGE != 0)
 			lastPage++;
-		
+
 		// Creating Model
 		m.addAttribute("operationsList", operationService.getOperationsVirementNegatifLast6Months(id, VIREMENTS_PER_PAGE, page));
 		addPagingInformation(m, page, lastPage);
-		
+
 		return "/secured/historiqueVirements";
 	}
 }

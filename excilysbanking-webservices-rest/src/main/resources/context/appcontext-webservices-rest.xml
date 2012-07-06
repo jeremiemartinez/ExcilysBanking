@@ -19,7 +19,7 @@
 			<ref bean="serviceImpl" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
-			<bean class="org.apache.cxf.jaxrs.provider.json.JSONProvider" />
+			<ref bean="jsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
 

@@ -38,7 +38,8 @@ public class OperationsController {
 	
 	@RequestMapping("/operations/id/{id}")
 	public String operations(Model m, @PathVariable Integer id) {
-		return operations(m, id, DateTime.now().getYear(), DateTime.now().getMonthOfYear(), 1);
+		DateTime now = DateTime.now();
+		return operations(m, id, now.getYear(), now.getMonthOfYear(), 1);
 	}
 	
 	@RequestMapping("/operations/id/{id}/year/{year}/month/{month}")

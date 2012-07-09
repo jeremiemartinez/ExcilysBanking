@@ -46,10 +46,12 @@ public class OperationServiceImpl implements OperationService {
 		Compte compteD = compteDAO.findCompteById(compteDebit);
 		Compte compteC = compteDAO.findCompteById(compteCredit);
 		
-		Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant)
-				.date(DateTime.now()).compteDestination(compteC).build();
-		Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant)
-				.date(DateTime.now()).compteDestination(compteD).build();
+		DateTime now = DateTime.now();
+		
+		Operation operationD = new Operation.Builder().compte(compteD).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(-montant).date(now)
+				.compteDestination(compteC).build();
+		Operation operationC = new Operation.Builder().compte(compteC).type(Operation.OperationType.VIREMENT).libelle(libelle).montant(montant).date(now)
+				.compteDestination(compteD).build();
 		
 		operationDAO.save(operationD);
 		operationDAO.save(operationC);

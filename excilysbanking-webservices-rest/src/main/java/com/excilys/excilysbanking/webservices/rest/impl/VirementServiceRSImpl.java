@@ -29,13 +29,13 @@ public class VirementServiceRSImpl implements VirementServiceRS {
 	}
 	
 	@Override
-	public List<OperationDTO> getHistoriqueVirementByCompteId(Integer compteId) {
-		return converter.convert(operationService.getOperationsVirementNegatifLast6Months(compteId, 5, 1));
+	public void performVirement(Integer compteDebit, Integer compteCredit, String libelle, Double montant) {
+		operationService.createVirementOperations(compteDebit, compteCredit, montant, libelle);
 	}
 	
 	@Override
-	public void performVirement(Integer compteDebit, Integer compteCredit, String libelle, Double montant) {
-		operationService.createVirementOperations(compteDebit, compteCredit, montant, libelle);
+	public List<OperationDTO> getHistoriqueVirementByCompteId(Integer compteId) {
+		return converter.convert(operationService.getOperationsVirementNegatifLast6Months(compteId, 5, 1));
 	}
 	
 }

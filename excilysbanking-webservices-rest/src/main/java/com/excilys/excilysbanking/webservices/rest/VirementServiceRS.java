@@ -13,18 +13,18 @@ import com.excilys.excilysbanking.dto.OperationDTO;
 @Path("/services/VirementServiceRS")
 @Produces("application/json")
 public interface VirementServiceRS {
-
-	@GET
-	@Path("/solde/compte/{compteId}")
-	Double getSoldeCompte(@PathParam("compteId") Integer compteId);
-
-	@GET
-	@Path("/record/compte/{compteId}")
-	List<OperationDTO> getHistoriqueVirementByCompteId(@PathParam("compteId") Integer compteId);
-
+	
 	@POST
 	@Consumes("application/json")
 	@Path("/virement/debit/{debit}/credit/{credit}/libelle/{libelle}/montant/{montant}")
 	void performVirement(@PathParam("debit") Integer compteDebit, @PathParam("credit") Integer compteCredit, @PathParam("libelle") String libelle,
 			@PathParam("montant") Double montant);
+	
+	@GET
+	@Path("/solde/compte/{compteId}")
+	Double getSoldeCompte(@PathParam("compteId") Integer compteId);
+	
+	@GET
+	@Path("/record/compte/{compteId}")
+	List<OperationDTO> getHistoriqueVirementByCompteId(@PathParam("compteId") Integer compteId);
 }

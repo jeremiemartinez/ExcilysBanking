@@ -19,6 +19,10 @@
 * Slf4j/Logback
 * Maven
 * PostgreSQL and H2
+* Fluentlenium
+* QueryDSL
+* Web Services SOAP
+* Web Services Rest
 * Tomcat
 
 ### Developpers:
